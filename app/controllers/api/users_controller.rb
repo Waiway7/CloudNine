@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
             login!(user)
             render "api/users/show"
         else
-            render json: ['Please try again!'], status 422
+            render json: ['Please try again!'], status: 422
     end
 
     private
