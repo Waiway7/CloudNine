@@ -10219,6 +10219,7 @@ Processing by Api::SessionsController#destroy as */*
 Completed 200 OK in 30ms (Views: 23.6ms | ActiveRecord: 1.9ms)
 
 
+<<<<<<< HEAD
 Started GET "/" for ::1 at 2019-08-01 12:27:56 -0400
   [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
@@ -10653,12 +10654,27 @@ Completed 200 OK in 474ms (Views: 472.4ms | ActiveRecord: 0.3ms)
 
 
 Started POST "/api/session" for ::1 at 2019-08-01 12:51:58 -0400
+=======
+Started GET "/" for ::1 at 2019-08-01 13:10:18 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 1576ms (Views: 1571.2ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/api/session" for ::1 at 2019-08-01 13:10:28 -0400
+>>>>>>> user-auth
 Processing by Api::SessionsController#create as */*
   Parameters: {"user"=>{"email"=>"test123@test.com", "username"=>"", "password"=>"[FILTERED]"}, "default"=>{"format"=>:json}}
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test123@test.com"], ["LIMIT", 1]]
   ↳ app/models/user.rb:23
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
   ↳ app/models/user.rb:38
+<<<<<<< HEAD
   [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "demo"], ["id", 4], ["LIMIT", 1]]
   ↳ app/models/user.rb:38
   [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test123@test.com"], ["id", 4], ["LIMIT", 1]]
@@ -10953,6 +10969,28 @@ Started DELETE "/api/session" for ::1 at 2019-08-01 13:08:09 -0400
 Processing by Api::SessionsController#destroy as */*
   Parameters: {"default"=>{"format"=>:json}}
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "KGpkP_FOP28ub_xd1EZVdw"], ["LIMIT", 1]]
+=======
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "demo"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:38
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test123@test.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:38
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "g8znVbtcO8_lBI8Lxpxd0g"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:38
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "g8znVbtcO8_lBI8Lxpxd0g"], ["updated_at", "2019-08-01 17:10:28.356901"], ["id", 4]]
+  ↳ app/models/user.rb:38
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:38
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered api/users/show.json.jbuilder (5.0ms)
+Completed 200 OK in 303ms (Views: 24.9ms | ActiveRecord: 7.2ms)
+
+
+Started DELETE "/api/session" for ::1 at 2019-08-01 13:10:32 -0400
+Processing by Api::SessionsController#destroy as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g8znVbtcO8_lBI8Lxpxd0g"], ["LIMIT", 1]]
+>>>>>>> user-auth
   ↳ app/controllers/application_controller.rb:5
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   ↳ app/models/user.rb:38
@@ -10960,15 +10998,25 @@ Processing by Api::SessionsController#destroy as */*
   ↳ app/models/user.rb:38
   [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test123@test.com"], ["id", 4], ["LIMIT", 1]]
   ↳ app/models/user.rb:38
+<<<<<<< HEAD
   [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "PJvsiaGasq8wnjpJXEo9DQ"], ["id", 4], ["LIMIT", 1]]
   ↳ app/models/user.rb:38
   [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "PJvsiaGasq8wnjpJXEo9DQ"], ["updated_at", "2019-08-01 17:08:09.723560"], ["id", 4]]
+=======
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "0azxaLx4l0T-DKD3PPgnuA"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:38
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "0azxaLx4l0T-DKD3PPgnuA"], ["updated_at", "2019-08-01 17:10:32.670464"], ["id", 4]]
+>>>>>>> user-auth
   ↳ app/models/user.rb:38
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   ↳ app/models/user.rb:38
   Rendering api/users/show.json.jbuilder
   Rendered api/users/_user.json.jbuilder (0.3ms)
   Rendered api/users/show.json.jbuilder (5.2ms)
+<<<<<<< HEAD
 Completed 200 OK in 33ms (Views: 25.1ms | ActiveRecord: 2.0ms)
+=======
+Completed 200 OK in 33ms (Views: 25.5ms | ActiveRecord: 1.9ms)
+>>>>>>> user-auth
 
 
