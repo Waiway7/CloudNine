@@ -13,7 +13,7 @@ const App = () => {
            
             <Switch>
                 <AuthRoute exact path='/' component={FrontHero}/>
-                <Route path="/discover" component={TestModel}/>
+                <ProtectedRoute path="/discover" component={TestModel}/>
             </Switch>
         </div>
     )    
