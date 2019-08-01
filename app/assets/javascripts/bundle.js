@@ -341,6 +341,14 @@ function (_React$Component) {
       this.props.userForm(this.state);
     }
   }, {
+    key: "demoSubmit",
+    value: function demoSubmit() {
+      this.props.demoUser({
+        email: "cloudnine@gmail.com",
+        password: "hunter12"
+      });
+    }
+  }, {
     key: "renderErrors",
     value: function renderErrors() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, idx) {
@@ -406,8 +414,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var switchForm = this.props.switchForm;
-
       if (this.props.formType === 'Login') {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "form-container"
@@ -609,13 +615,23 @@ function (_React$Component) {
         }, this.switchForm(), this.successfulLogin(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "other-btns"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "message-change-form"
+          className: "message-session"
         }, message), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "change-session-btn",
           onClick: function onClick() {
             return _this2.switchModal(changeModal);
           }
-        }, formType)))));
+        }, formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "message-session"
+        }, "Sign in as a demo user instead!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "demo-user-btn",
+          onClick: function onClick() {
+            return _this2.props.demoLogin({
+              email: "cloudnine@gmail.com",
+              password: "hunter12"
+            });
+          }
+        }, "Demo as user: High Nine")))));
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null);
@@ -641,6 +657,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _session_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_modal */ "./frontend/components/form/session_modal.jsx");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
@@ -659,6 +677,9 @@ var mdp = function mdp(dispatch) {
     },
     switchModal: function switchModal(mode) {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])(mode));
+    },
+    demoLogin: function demoLogin(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
     }
   };
 };
