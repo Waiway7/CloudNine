@@ -22,7 +22,7 @@ export const login = (user) => {
     
     return dispatch => {
         return UserApiUtil.login(user)
-            .then( user => dispatch(receiveUser(user)),error => { 
+            .then( user => dispatch(receiveUser(user)), error => { 
                return dispatch(receiveSessionErrors(error.responseJSON))}
             )}
 }

@@ -1,0 +1,50 @@
+.logo {
+    display: inline-block;
+    position: absolute;
+    left: 30px;
+    top: 23px;
+    font-weight: 100;
+    font-family: "Interstate regular", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
+    color: white;
+}
+
+.frontHero {
+    background-image: url(https://a-v2.sndcdn.com/assets/images/home/hp_image_creator_slide-50cfacf.jpg);
+    /* background-image: image-url("nightsky.jpg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%
+}
+
+.frontHeroContainer {
+    background-color: gray;
+    position: relative;
+    height: 450px;
+    border-top: 5px solid #48b8e6;
+    min-width: 93%;
+    margin: 0 auto;
+    max-width: 1180px;
+}
+
+.frontHero-content {
+    color: white;
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Interstate regular", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
+    text-align: center;
+}
+
+.frontHero-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.frontHero-description {
+    font-size: 16px;
+    display: block;
+    line-height: 150%;
+    font-family: "Interstate lite", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
+
+}
