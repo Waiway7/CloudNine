@@ -1,11 +1,20 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
-import LoginContainer from '../components/form/login_container';
+import {Route, Switch} from 'react-router-dom';
+import FrontHero from './splash/banner'
+import NavBarContainer from '../components/navbar/nav_bar_container';
+import SessionModal from '../components/form/session_modal_container';
+import { AuthRoute, ProtectedRoute } from '../util/route_util'
+import TestModel from './test_container'
 
 const App = () => {
     return (
-        <div>
-            <Route path='/login' component={LoginContainer} />
+        <div className="container">
+            <header></header>
+            <SessionModal />
+            <Switch>
+                <AuthRoute exact path='/' component={FrontHero}/>
+                <ProtectedRoute path="/discover" component={TestModel}/>
+            </Switch>
         </div>
     )    
 }

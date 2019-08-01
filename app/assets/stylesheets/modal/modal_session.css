@@ -1,0 +1,117 @@
+.modal-background {
+    background-color: rgba(242,242,242,.9);
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+/* .form-container {
+    position: absolute;
+    z-index: 1;
+    background: white;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    height: 80%;
+    transform: translate(-50%, -50%);
+    margin-top: 16px;
+} */
+
+.modal-form {
+    /* position: absolute;
+    width: 450px;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    margin-top: 16px; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+    background: white;
+    width: 450px;
+    height: 80%;
+}
+
+
+.close-x-btn {
+    right: 20px;
+    top: 15px;
+    position: absolute;
+    font-family: "Interstate regular", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
+    cursor: pointer;
+}
+
+.modal-container {
+    position: relative;
+    height: 70%;
+    top: 50;
+    left: 50%;
+    transform: translate(-50%, 25%);
+}
+
+.signup-input {
+    width: 88%;
+    height: 4%;
+    font-size: 18px;
+    position: relative;
+    font-family: "Interstate regular","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.submit-form {
+    width: 92.8%;
+    height: 8%;
+    font-size: 18px;
+    font-family: "Interstate regular","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+    background-color:#48b8e6; 
+    padding: 10px;
+    border-radius: 3px;
+    color: white;
+}
+
+.change-session-btn {
+    width: 92.8%;
+    height: 6%;
+    font-size: 18px;
+    font-family: "Interstate regular","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+    background-color:#48b8e6; 
+    padding: 10px;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+   
+}
+
+.message-change-form {
+    width: 92.8%;
+    height: 6%;
+    font-size: 18px;
+    font-family: "Interstate regular","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;    padding: 10px;
+    color: black;
+    text-align: center;
+}
+
+.session-form-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.other-btns{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
