@@ -1,6 +1,10 @@
 import {connect} from 'react-redux';
 import SessionModal from './session_modal';
 import {closeModal, openModal} from '../../actions/modal_actions';
+<<<<<<< HEAD
+=======
+import {login} from '../../actions/session_actions';
+>>>>>>> user-auth
 
 const msp = state => {
     return{
@@ -10,7 +14,8 @@ const msp = state => {
 
 const mdp = dispatch => ({
     closeModal: () => dispatch(closeModal()),
-    switchModal: (mode) => dispatch(openModal(mode))
+    switchModal: (mode) => dispatch(openModal(mode)),
+    demoLogin: (user) => dispatch(login(user))
 });
 
-export default connect(msp, mdp)(SessionModal)
+export default connect(msp, mdp)(SessionModal);

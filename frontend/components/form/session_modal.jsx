@@ -78,17 +78,21 @@ class Modal extends React.Component{
             modal === 'login' ? message = "Don't have an account?" : message = "Have an account?";
             return (
                 <div className="modal-background" onClick={() => this.closeModal()}>
-                
                 <div className="close-x-btn" onClick={() => this.closeModal()}>X</div>
                     <div className="modal-form" onClick={e => e.stopPropagation()}>
                         <div className="modal-container">
                             {this.switchForm()}
                             {this.successfulLogin()}
                             <div className="other-btns">
-                                <p className="message-change-form">{message}</p>
+                                <p className="message-session">{message}</p>
                                 <button className="change-session-btn" onClick={() => this.switchModal(changeModal)}>
                                     {formType}
-                            </button>
+                                </button>
+                                <p className="message-session">Sign in as a demo user instead!</p>
+                                <button className="demo-user-btn" 
+                                    onClick={() => this.props.demoLogin({email: "cloudnine@gmail.com", password: "hunter12"})}>
+                                    Demo as user: High Nine
+                                </button>
                             </div>
                         </div>
                     </div>
