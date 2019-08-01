@@ -8,12 +8,12 @@ import TestModel from './test_container'
 
 const App = () => {
     return (
-        <div className="container">
-            <header></header>
+        <div>
             <SessionModal />
+           
             <Switch>
                 <AuthRoute exact path='/' component={FrontHero}/>
-                <ProtectedRoute path="/discover" component={TestModel}/>
+                <Route path="/discover" component={TestModel}/>
             </Switch>
         </div>
     )    

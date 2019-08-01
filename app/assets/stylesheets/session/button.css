@@ -32,15 +32,5 @@
     overflow: hidden;
 }
 
-.change-session-modal {
-    background-color: transparent;
-    position: relative;
-    margin: 0 0 0 6px;
-    padding: 6px 16px;
-    font: 12px/1.4 "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
-    border-radius: 3px;
-    color: white;
-    cursor: pointer;
-    outline: none;
-    
-}
+
+

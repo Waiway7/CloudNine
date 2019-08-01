@@ -4,7 +4,7 @@ import { logout } from '../actions/session_actions';
 import {openModal} from '../actions/modal_actions';
  
 const msp = (state) => ({
-    currentUser: state.session.id,
+    currentUser: state.session.id
 });
 
 const mdp = dispatch => ({

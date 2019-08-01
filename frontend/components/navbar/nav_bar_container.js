@@ -3,9 +3,7 @@ import NavBar from './nav_bar';
 import { logout } from '../../actions/session_actions';
 import {openModal} from '../../actions/modal_actions';
  
-const msp = (state) => ({
-    currentUser: state.session.id,
-});
+
 
 const mdp = dispatch => ({
     logout: () => dispatch(logout()),
@@ -13,4 +11,4 @@ const mdp = dispatch => ({
     login: () => dispatch(openModal('login')),
 })
 
-export default connect(msp, mdp)(NavBar);
+export default connect(null, mdp)(NavBar);
