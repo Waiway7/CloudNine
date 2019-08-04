@@ -1,0 +1,142 @@
+
+.nav-bar {
+    min-width: 960px;
+    max-width: 1180px;
+    background: transparent;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+}
+
+.header {
+    width: 100%;
+    font: 100 14px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+    -webkit-transform: translateZ(0);
+    -webkit-font-smoothing: subpixel-antialiased;
+    height: 46px;
+    background: #333;
+    transition: height .2s ease-in-out;
+}
+
+
+
+.header-logo-left {
+    /* width: 20%;
+    display: flex;
+    float: left; */
+    /* display: inline-block; */
+    font-weight: 100;
+    font-family: "Interstate regular", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
+    color: white; 
+    right: 100px;
+    width: 485px;
+}
+
+.background-logo {
+    background: linear-gradient(#48b8e6, #8dd7f5);
+    color: white;
+    margin: 0 auto;
+    height: 46px;
+    text-align: center;
+    width: 170px;
+    display: inline-block;
+}
+
+.soundcloud-logo {
+    height: 25px;
+    width: 50px;
+    margin-top: 9px;
+    vertical-align: -30%;
+    margin-right: 6px;
+}
+
+.logout-btn {
+    background-color: #48b8e6;
+    /* position: relative; */
+    font: 12px/1.4 "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+    padding: 6px 16px;
+    margin: 0 0 0 6px;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+.container-logout-btn{
+    /* display: inline-block;
+    position: absolute; */
+}
+
+:target {
+    background-color: #111;
+    
+}
+
+.home-btn:hover {
+    color: white;
+}
+
+.home-btn {
+    padding: 12px 0;
+    width: 104px;
+    height: 46px;
+    border-right: 1px solid #111;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    color: #ccc;
+    margin: 0px auto;
+}
+
+.stream-btn:hover {
+    color: white;
+}
+
+.stream-btn {
+    display: block;
+    padding: 12px 0;
+    width: 104px;
+    height: 46px;
+    border-right: 1px solid #111;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    color: #ccc;
+    margin: 0px auto;
+}
+
+.library-btn:hover {
+    color: white;
+}
+
+.library-btn {
+    display: block;
+    padding: 12px 0;
+    width: 104px;
+    height: 46px;
+    border-right: 1px solid #111;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    color: #ccc;
+}
+
+.search-bar {
+    width: 30%; 
+    appearance: none;
+    background-color: transparent;
+    align-self: center; 
+}
+
+.search {
+    width: 100%;
+    margin: 0 0 0 5px;
+    border-radius: 3px;
+    box-shadow: none;
+    border: transparent;
+    padding: 5px;
+    font-size: 15px;
+    font-family: "Interstate regular", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
+}
+

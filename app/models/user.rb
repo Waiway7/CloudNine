@@ -20,7 +20,7 @@ class User < ApplicationRecord
     class_name: :Track,
     foreign_key: :uploader_id
 
-    has_one_attached :photo
+    has_one_attached :image
 
     after_initialize :ensure_session_token
     attr_reader :password

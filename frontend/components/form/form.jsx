@@ -17,9 +17,6 @@ class Form extends React.Component{
         this.props.userForm(this.state);
     }
 
-    demoSubmit(){
-        this.props.demoUser({email: "cloudnine@gmail.com", password: "hunter12"} )
-    }
 
     renderErrors() {
         return (
