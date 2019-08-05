@@ -34883,3 +34883,1172 @@ Processing by Api::SessionsController#create as */*
 Completed 200 OK in 284ms (Views: 24.4ms | ActiveRecord: 2.9ms)
 
 
+Started GET "/" for ::1 at 2019-08-05 13:10:45 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 1691ms (Views: 1682.3ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:11:03 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 464ms (Views: 461.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:12:25 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 541ms (Views: 539.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:13:03 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 524ms (Views: 522.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:16:33 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 446ms (Views: 444.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:16:52 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 30ms (Views: 28.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:21:49 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 449ms (Views: 446.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:22:51 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 459ms (Views: 457.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:24:28 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 450ms (Views: 448.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:28:15 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 467ms (Views: 465.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:29:06 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 23ms (Views: 21.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:30:22 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 522ms (Views: 519.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:31:39 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 457ms (Views: 455.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:32:07 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 620ms (Views: 617.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:33:23 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 452ms (Views: 450.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:33:59 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 446ms (Views: 444.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:35:42 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 451ms (Views: 449.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:38:10 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 512ms (Views: 510.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:40:36 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 452ms (Views: 450.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:40:54 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 447ms (Views: 445.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:41:20 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 449ms (Views: 447.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:44:21 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 446ms (Views: 444.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:45:22 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 446ms (Views: 444.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:45:37 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 517ms (Views: 515.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 13:47:04 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 456ms (Views: 454.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 14:11:22 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 1532ms (Views: 1523.7ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 14:11:33 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 25ms (Views: 23.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:11:50 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:36:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:12:08 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:36:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+Started GET "/" for ::1 at 2019-08-05 14:12:52 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 40ms (Views: 32.2ms | ActiveRecord: 5.8ms)
+
+
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:13:12 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:13:34 -0400
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:13:34 -0400
+Completed 400 Bad Request in 22158ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:12:in `create'
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 17243ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:12:in `create'
+  [1m[36mUser Load (207.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 400 Bad Request in 24517ms (ActiveRecord: 209.3ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:12:in `create'
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:16:49 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+Started GET "/" for ::1 at 2019-08-05 14:16:55 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 45ms (Views: 33.5ms | ActiveRecord: 10.1ms)
+
+
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:17:14 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+Started GET "/" for ::1 at 2019-08-05 14:18:03 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 472ms (Views: 468.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:18:41 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:19:28 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 22ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:22:10 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:22:10 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:22:19 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+Started GET "/" for ::1 at 2019-08-05 14:23:52 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 458ms (Views: 455.1ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:24:30 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+Started GET "/" for ::1 at 2019-08-05 14:25:01 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 534ms (Views: 532.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:25:24 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+Started GET "/" for ::1 at 2019-08-05 14:26:03 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 475ms (Views: 473.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:26:21 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+Started GET "/" for ::1 at 2019-08-05 14:27:37 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 486ms (Views: 482.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 14:29:47 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 457ms (Views: 455.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 14:32:39 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 476ms (Views: 473.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:32:55 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"track"=>{"title"=>"q", "description"=>"q", "audio"=>#<ActionDispatch::Http::UploadedFile:0x00007f9ffb5e45a0 @tempfile=#<Tempfile:/var/folders/x1/pszkcg6j3p5_d96t7vrdkp8h0000gn/T/RackMultipart20190805-57045-fubwvk.jpeg>, @original_filename="cats.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"track[audio]\"; filename=\"cats.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "uploader_id"=>"6", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007f9ffb5e44b0 @tempfile=#<Tempfile:/var/folders/x1/pszkcg6j3p5_d96t7vrdkp8h0000gn/T/RackMultipart20190805-57045-j8a9q.jpg>, @original_filename="musicians.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"track[image]\"; filename=\"musicians.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "default"=>{"format"=>:json}}
+[36m  S3 Storage (210.6ms) [0m[32mUploaded file to key: JSCiZJR1Hjqd7CUSKK9d8MBD (checksum: pODAtejdQb3cmR4J5smt+A==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[36mActiveStorage::Blob Create (5.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "JSCiZJR1Hjqd7CUSKK9d8MBD"], ["filename", "cats.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 48575], ["checksum", "pODAtejdQb3cmR4J5smt+A=="], ["created_at", "2019-08-05 18:32:56.106146"]]
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+[36m  S3 Storage (126.5ms) [0m[32mUploaded file to key: 4Y7v2BenLN7e1X194otBfFn9 (checksum: aI04P8MexkcWxqJMFs/V5w==)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[36mActiveStorage::Blob Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "4Y7v2BenLN7e1X194otBfFn9"], ["filename", "musicians.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 192687], ["checksum", "aI04P8MexkcWxqJMFs/V5w=="], ["created_at", "2019-08-05 18:32:56.256787"]]
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mTrack Create (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "description", "uploader_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "q"], ["description", "q"], ["uploader_id", 6], ["created_at", "2019-08-05 18:33:06.074518"], ["updated_at", "2019-08-05 18:33:06.074518"]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mActiveStorage::Attachment Create (46.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "audio"], ["record_type", "Track"], ["record_id", 9], ["blob_id", 1], ["created_at", "2019-08-05 18:33:06.076911"]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mActiveStorage::Attachment Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Track"], ["record_id", 9], ["blob_id", 2], ["created_at", "2019-08-05 18:33:06.125437"]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mTrack Update (1.0ms)[0m  [1m[33mUPDATE "tracks" SET "updated_at" = $1 WHERE "tracks"."id" = $2[0m  [["updated_at", "2019-08-05 18:33:06.127470"], ["id", 9]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:13
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: c0f3d936-c033-4c5e-a303-5606805caa7f) to Async(default) with arguments: #<GlobalID:0x00007fa001a407b0 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/1>>
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 6ac181cd-1e11-4574-8257-f9a5efdd4947) to Async(default) with arguments: #<GlobalID:0x00007f9ffb6d7688 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/2>>
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (21.1ms)
+  Rendered api/tracks/show.json.jbuilder (27.4ms)
+Completed 500 Internal Server Error in 10463ms (ActiveRecord: 76.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    1: json.extract! @song, :id, :uploader_id, :title, :description, :uploader_id, :created_at
+  
+app/views/api/tracks/_track.json.jbuilder:1:in `_app_views_api_tracks__track_json_jbuilder___4033409679066710476_70162594903740'
+app/views/api/tracks/show.json.jbuilder:2:in `block in _app_views_api_tracks_show_json_jbuilder___34087867726908954_70162534963360'
+app/views/api/tracks/show.json.jbuilder:1:in `_app_views_api_tracks_show_json_jbuilder___34087867726908954_70162534963360'
+app/controllers/api/tracks_controller.rb:14:in `create'
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0f3d936-c033-4c5e-a303-5606805caa7f] Performing ActiveStorage::AnalyzeJob (Job ID: c0f3d936-c033-4c5e-a303-5606805caa7f) from Async(default) with arguments: #<GlobalID:0x00007fa0032488a8 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/1>>
+  [1m[36mActiveStorage::Blob Load (1.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ac181cd-1e11-4574-8257-f9a5efdd4947] Performing ActiveStorage::AnalyzeJob (Job ID: 6ac181cd-1e11-4574-8257-f9a5efdd4947) from Async(default) with arguments: #<GlobalID:0x00007fa0023c1438 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ac181cd-1e11-4574-8257-f9a5efdd4947] [36m  S3 Storage (173.4ms) [0m[34mDownloaded file from key: 4Y7v2BenLN7e1X194otBfFn9[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0f3d936-c033-4c5e-a303-5606805caa7f] [36m  S3 Storage (208.4ms) [0m[34mDownloaded file from key: JSCiZJR1Hjqd7CUSKK9d8MBD[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ac181cd-1e11-4574-8257-f9a5efdd4947] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0f3d936-c033-4c5e-a303-5606805caa7f] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ac181cd-1e11-4574-8257-f9a5efdd4947]   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0f3d936-c033-4c5e-a303-5606805caa7f]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ac181cd-1e11-4574-8257-f9a5efdd4947]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0f3d936-c033-4c5e-a303-5606805caa7f]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ac181cd-1e11-4574-8257-f9a5efdd4947]   [1m[36mActiveStorage::Blob Update (2.0ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ac181cd-1e11-4574-8257-f9a5efdd4947]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0f3d936-c033-4c5e-a303-5606805caa7f]   [1m[36mActiveStorage::Blob Update (1.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0f3d936-c033-4c5e-a303-5606805caa7f]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ac181cd-1e11-4574-8257-f9a5efdd4947]   [1m[35m (40.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0f3d936-c033-4c5e-a303-5606805caa7f]   [1m[35m (39.8ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ac181cd-1e11-4574-8257-f9a5efdd4947]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0f3d936-c033-4c5e-a303-5606805caa7f]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ac181cd-1e11-4574-8257-f9a5efdd4947] Performed ActiveStorage::AnalyzeJob (Job ID: 6ac181cd-1e11-4574-8257-f9a5efdd4947) from Async(default) in 254.69ms
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0f3d936-c033-4c5e-a303-5606805caa7f] Performed ActiveStorage::AnalyzeJob (Job ID: c0f3d936-c033-4c5e-a303-5606805caa7f) from Async(default) in 259.8ms
+Started GET "/" for ::1 at 2019-08-05 14:34:56 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 27ms (Views: 25.0ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:35:10 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"track"=>{"title"=>"a", "description"=>"a", "audio"=>#<ActionDispatch::Http::UploadedFile:0x00007fa001e1e328 @tempfile=#<Tempfile:/var/folders/x1/pszkcg6j3p5_d96t7vrdkp8h0000gn/T/RackMultipart20190805-57045-1q4onss.jpeg>, @original_filename="cats.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"track[audio]\"; filename=\"cats.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "uploader_id"=>"6", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fa001e1e288 @tempfile=#<Tempfile:/var/folders/x1/pszkcg6j3p5_d96t7vrdkp8h0000gn/T/RackMultipart20190805-57045-3oa8g5.jpg>, @original_filename="nightsky.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"track[image]\"; filename=\"nightsky.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "default"=>{"format"=>:json}}
+[36m  S3 Storage (206.0ms) [0m[32mUploaded file to key: p3BepwikypGGjomQTKGg6QoY (checksum: pODAtejdQb3cmR4J5smt+A==)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[36mActiveStorage::Blob Create (0.8ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "p3BepwikypGGjomQTKGg6QoY"], ["filename", "cats.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 48575], ["checksum", "pODAtejdQb3cmR4J5smt+A=="], ["created_at", "2019-08-05 18:35:10.409753"]]
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+[36m  S3 Storage (115.5ms) [0m[32mUploaded file to key: WjkJYrLgaa4iK8YyXKYpRN1w (checksum: 4cau4JidMGttyENGWDN2iA==)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "WjkJYrLgaa4iK8YyXKYpRN1w"], ["filename", "nightsky.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 284576], ["checksum", "4cau4JidMGttyENGWDN2iA=="], ["created_at", "2019-08-05 18:35:10.532684"]]
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mTrack Create (0.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "description", "uploader_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "a"], ["description", "a"], ["uploader_id", 6], ["created_at", "2019-08-05 18:35:13.061480"], ["updated_at", "2019-08-05 18:35:13.061480"]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mActiveStorage::Attachment Create (1.0ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "audio"], ["record_type", "Track"], ["record_id", 10], ["blob_id", 3], ["created_at", "2019-08-05 18:35:13.064229"]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Track"], ["record_id", 10], ["blob_id", 4], ["created_at", "2019-08-05 18:35:13.066609"]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mTrack Update (0.5ms)[0m  [1m[33mUPDATE "tracks" SET "updated_at" = $1 WHERE "tracks"."id" = $2[0m  [["updated_at", "2019-08-05 18:35:13.067783"], ["id", 10]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[35m (40.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:13
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 2011c272-556d-4b96-a3f4-78d39d669571) to Async(default) with arguments: #<GlobalID:0x00007fa001e6df18 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/3>>
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 3625d754-671e-4436-ad5b-fb9601dfc0ff) to Async(default) with arguments: #<GlobalID:0x00007fa0013e2a08 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/4>>
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (0.4ms)
+  Rendered api/tracks/show.json.jbuilder (8.1ms)
+Completed 200 OK in 2941ms (Views: 29.6ms | ActiveRecord: 47.5ms)
+
+
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3625d754-671e-4436-ad5b-fb9601dfc0ff] Performing ActiveStorage::AnalyzeJob (Job ID: 3625d754-671e-4436-ad5b-fb9601dfc0ff) from Async(default) with arguments: #<GlobalID:0x00007fa0013c1948 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/4>>
+  [1m[36mActiveStorage::Blob Load (1.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2011c272-556d-4b96-a3f4-78d39d669571] Performing ActiveStorage::AnalyzeJob (Job ID: 2011c272-556d-4b96-a3f4-78d39d669571) from Async(default) with arguments: #<GlobalID:0x00007f9ffc860a80 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/3>>
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:35:13 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:37:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3625d754-671e-4436-ad5b-fb9601dfc0ff] [36m  S3 Storage (217.2ms) [0m[34mDownloaded file from key: WjkJYrLgaa4iK8YyXKYpRN1w[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2011c272-556d-4b96-a3f4-78d39d669571] [36m  S3 Storage (214.1ms) [0m[34mDownloaded file from key: p3BepwikypGGjomQTKGg6QoY[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3625d754-671e-4436-ad5b-fb9601dfc0ff] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2011c272-556d-4b96-a3f4-78d39d669571] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3625d754-671e-4436-ad5b-fb9601dfc0ff]   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3625d754-671e-4436-ad5b-fb9601dfc0ff]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2011c272-556d-4b96-a3f4-78d39d669571]   [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2011c272-556d-4b96-a3f4-78d39d669571]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3625d754-671e-4436-ad5b-fb9601dfc0ff]   [1m[36mActiveStorage::Blob Update (1.0ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 4]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3625d754-671e-4436-ad5b-fb9601dfc0ff]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2011c272-556d-4b96-a3f4-78d39d669571]   [1m[36mActiveStorage::Blob Update (0.8ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2011c272-556d-4b96-a3f4-78d39d669571]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3625d754-671e-4436-ad5b-fb9601dfc0ff]   [1m[35m (40.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2011c272-556d-4b96-a3f4-78d39d669571]   [1m[35m (40.2ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3625d754-671e-4436-ad5b-fb9601dfc0ff]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2011c272-556d-4b96-a3f4-78d39d669571]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3625d754-671e-4436-ad5b-fb9601dfc0ff] Performed ActiveStorage::AnalyzeJob (Job ID: 3625d754-671e-4436-ad5b-fb9601dfc0ff) from Async(default) in 273.91ms
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2011c272-556d-4b96-a3f4-78d39d669571] Performed ActiveStorage::AnalyzeJob (Job ID: 2011c272-556d-4b96-a3f4-78d39d669571) from Async(default) in 270.72ms
+  [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+Started GET "/" for ::1 at 2019-08-05 14:37:50 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 27ms (Views: 24.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/api/tracks" for ::1 at 2019-08-05 14:38:06 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"track"=>{"title"=>"w", "description"=>"w", "audio"=>#<ActionDispatch::Http::UploadedFile:0x00007fa0036dfc40 @tempfile=#<Tempfile:/var/folders/x1/pszkcg6j3p5_d96t7vrdkp8h0000gn/T/RackMultipart20190805-57045-1stqbh1.jpeg>, @original_filename="cats.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"track[audio]\"; filename=\"cats.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "uploader_id"=>"6", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fa0036dfba0 @tempfile=#<Tempfile:/var/folders/x1/pszkcg6j3p5_d96t7vrdkp8h0000gn/T/RackMultipart20190805-57045-famwy5.jpg>, @original_filename="musicians.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"track[image]\"; filename=\"musicians.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "default"=>{"format"=>:json}}
+[36m  S3 Storage (195.2ms) [0m[32mUploaded file to key: s34iQpoCkM1JVYd6ZgMEYzHY (checksum: pODAtejdQb3cmR4J5smt+A==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "s34iQpoCkM1JVYd6ZgMEYzHY"], ["filename", "cats.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 48575], ["checksum", "pODAtejdQb3cmR4J5smt+A=="], ["created_at", "2019-08-05 18:38:06.811599"]]
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+[36m  S3 Storage (125.6ms) [0m[32mUploaded file to key: tK6sPCd7pCTMd1trew7E1Lmo (checksum: aI04P8MexkcWxqJMFs/V5w==)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "tK6sPCd7pCTMd1trew7E1Lmo"], ["filename", "musicians.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 192687], ["checksum", "aI04P8MexkcWxqJMFs/V5w=="], ["created_at", "2019-08-05 18:38:06.944513"]]
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (3.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for ::1 at 2019-08-05 14:55:40 -0400
+  ↳ app/controllers/api/tracks_controller.rb:13
+Started GET "/" for ::1 at 2019-08-05 14:55:40 -0400
+Started GET "/" for ::1 at 2019-08-05 14:55:40 -0400
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mTrack Create (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "description", "uploader_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "w"], ["description", "w"], ["uploader_id", 6], ["created_at", "2019-08-05 18:55:40.822053"], ["updated_at", "2019-08-05 18:55:40.822053"]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mActiveStorage::Attachment Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "audio"], ["record_type", "Track"], ["record_id", 11], ["blob_id", 5], ["created_at", "2019-08-05 18:55:40.824391"]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mActiveStorage::Attachment Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Track"], ["record_id", 11], ["blob_id", 6], ["created_at", "2019-08-05 18:55:40.826977"]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+  [1m[36mTrack Update (0.4ms)[0m  [1m[33mUPDATE "tracks" SET "updated_at" = $1 WHERE "tracks"."id" = $2[0m  [["updated_at", "2019-08-05 18:55:40.828860"], ["id", 11]]
+  ↳ app/controllers/api/tracks_controller.rb:13
+Processing by StaticPagesController#root as HTML
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.0ms)
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.1ms)
+  [1m[35m (77.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:13
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 8b4c0e0c-abe3-43bd-9ad4-dc851314fb1a) to Async(default) with arguments: #<GlobalID:0x00007fa001a23020 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/5>>
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 1696c711-823e-4d5d-b0df-0a63cbaa8284) to Async(default) with arguments: #<GlobalID:0x00007fa001a1b2a8 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/6>>
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (0.3ms)
+  Rendered api/tracks/show.json.jbuilder (8.0ms)
+Completed 200 OK in 1054332ms (Views: 33.3ms | ActiveRecord: 87.9ms)
+
+
+  [1m[36mActiveStorage::Blob Load (1.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1696c711-823e-4d5d-b0df-0a63cbaa8284] Performing ActiveStorage::AnalyzeJob (Job ID: 1696c711-823e-4d5d-b0df-0a63cbaa8284) from Async(default) with arguments: #<GlobalID:0x00007fa004841f88 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/6>>
+  [1m[36mActiveStorage::Blob Load (1.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b4c0e0c-abe3-43bd-9ad4-dc851314fb1a] Performing ActiveStorage::AnalyzeJob (Job ID: 8b4c0e0c-abe3-43bd-9ad4-dc851314fb1a) from Async(default) with arguments: #<GlobalID:0x00007f9fff0a05e0 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/5>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b4c0e0c-abe3-43bd-9ad4-dc851314fb1a] [36m  S3 Storage (273.8ms) [0m[34mDownloaded file from key: s34iQpoCkM1JVYd6ZgMEYzHY[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1696c711-823e-4d5d-b0df-0a63cbaa8284] [36m  S3 Storage (397.3ms) [0m[34mDownloaded file from key: tK6sPCd7pCTMd1trew7E1Lmo[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b4c0e0c-abe3-43bd-9ad4-dc851314fb1a] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1696c711-823e-4d5d-b0df-0a63cbaa8284] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b4c0e0c-abe3-43bd-9ad4-dc851314fb1a]   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b4c0e0c-abe3-43bd-9ad4-dc851314fb1a]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1696c711-823e-4d5d-b0df-0a63cbaa8284]   [1m[35m (5.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b4c0e0c-abe3-43bd-9ad4-dc851314fb1a]   [1m[36mActiveStorage::Blob Update (3.9ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 5]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1696c711-823e-4d5d-b0df-0a63cbaa8284]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b4c0e0c-abe3-43bd-9ad4-dc851314fb1a]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1696c711-823e-4d5d-b0df-0a63cbaa8284]   [1m[36mActiveStorage::Blob Update (0.7ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 6]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1696c711-823e-4d5d-b0df-0a63cbaa8284]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b4c0e0c-abe3-43bd-9ad4-dc851314fb1a]   [1m[35m (42.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b4c0e0c-abe3-43bd-9ad4-dc851314fb1a]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b4c0e0c-abe3-43bd-9ad4-dc851314fb1a] Performed ActiveStorage::AnalyzeJob (Job ID: 8b4c0e0c-abe3-43bd-9ad4-dc851314fb1a) from Async(default) in 589.85ms
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 746ms (Views: 743.0ms | ActiveRecord: 2.0ms)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1696c711-823e-4d5d-b0df-0a63cbaa8284]   [1m[35m (122.9ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1696c711-823e-4d5d-b0df-0a63cbaa8284]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1696c711-823e-4d5d-b0df-0a63cbaa8284] Performed ActiveStorage::AnalyzeJob (Job ID: 1696c711-823e-4d5d-b0df-0a63cbaa8284) from Async(default) in 689.33ms
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 812ms (Views: 805.4ms | ActiveRecord: 1.5ms)
+
+
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 883ms (Views: 879.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 14:59:35 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 479ms (Views: 464.9ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:00:16 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 471ms (Views: 469.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:00:38 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 453ms (Views: 451.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:01:06 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 470ms (Views: 467.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:01:45 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 550ms (Views: 548.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:02:30 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 536ms (Views: 534.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:02:48 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 469ms (Views: 466.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:04:10 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 451ms (Views: 449.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:05:32 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 465ms (Views: 463.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:05:49 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 571ms (Views: 568.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:10:47 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 23ms (Views: 21.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:11:37 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 23ms (Views: 21.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:16:03 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 450ms (Views: 448.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:18:00 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 555ms (Views: 553.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:21:30 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 541ms (Views: 539.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:23:47 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 459ms (Views: 457.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:24:06 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 476ms (Views: 474.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:24:17 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 444ms (Views: 442.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:24:30 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 456ms (Views: 454.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:26:42 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 30ms (Views: 28.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:27:18 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 443ms (Views: 439.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:34:26 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 457ms (Views: 455.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:35:18 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 471ms (Views: 468.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:35:40 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 31ms (Views: 29.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:37:08 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 457ms (Views: 454.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-05 15:40:23 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 448ms (Views: 446.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/tracks" for ::1 at 2019-08-05 15:42:24 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"track"=>{"title"=>"summer cats", "description"=>"these are cats", "audio"=>#<ActionDispatch::Http::UploadedFile:0x00007fa001f9ae40 @tempfile=#<Tempfile:/var/folders/x1/pszkcg6j3p5_d96t7vrdkp8h0000gn/T/RackMultipart20190805-57045-ihnz19.mp3>, @original_filename="bensound-summer.mp3", @content_type="audio/mp3", @headers="Content-Disposition: form-data; name=\"track[audio]\"; filename=\"bensound-summer.mp3\"\r\nContent-Type: audio/mp3\r\n">, "uploader_id"=>"6", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fa001f9ada0 @tempfile=#<Tempfile:/var/folders/x1/pszkcg6j3p5_d96t7vrdkp8h0000gn/T/RackMultipart20190805-57045-1s130k.jpeg>, @original_filename="cats.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"track[image]\"; filename=\"cats.jpeg\"\r\nContent-Type: image/jpeg\r\n">}, "default"=>{"format"=>:json}}
+[36m  S3 Storage (446.1ms) [0m[32mUploaded file to key: mhyE5dPJT9X1SNw4pZtkargo (checksum: 3ZVeJfwJ2SofX6p5OFk00g==)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[36mActiveStorage::Blob Create (0.9ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "mhyE5dPJT9X1SNw4pZtkargo"], ["filename", "bensound-summer.mp3"], ["content_type", "audio/mp3"], ["metadata", "{\"identified\":true}"], ["byte_size", 4349086], ["checksum", "3ZVeJfwJ2SofX6p5OFk00g=="], ["created_at", "2019-08-05 19:42:25.097451"]]
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (41.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+[36m  S3 Storage (73.3ms) [0m[32mUploaded file to key: fMTRmQH3Koai62TzFyaY1BxS (checksum: pODAtejdQb3cmR4J5smt+A==)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "fMTRmQH3Koai62TzFyaY1BxS"], ["filename", "cats.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 48575], ["checksum", "pODAtejdQb3cmR4J5smt+A=="], ["created_at", "2019-08-05 19:42:25.227429"]]
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/tracks_controller.rb:12
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  [1m[36mTrack Create (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "description", "uploader_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "summer cats"], ["description", "these are cats"], ["uploader_id", 6], ["created_at", "2019-08-05 19:42:25.235629"], ["updated_at", "2019-08-05 19:42:25.235629"]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  [1m[36mActiveStorage::Attachment Create (0.9ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "audio"], ["record_type", "Track"], ["record_id", 12], ["blob_id", 7], ["created_at", "2019-08-05 19:42:25.237695"]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Track"], ["record_id", 12], ["blob_id", 8], ["created_at", "2019-08-05 19:42:25.239903"]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  [1m[36mTrack Update (0.5ms)[0m  [1m[33mUPDATE "tracks" SET "updated_at" = $1 WHERE "tracks"."id" = $2[0m  [["updated_at", "2019-08-05 19:42:25.241015"], ["id", 12]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/tracks_controller.rb:12
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 360d1884-9646-4d4e-b1bc-dbf40c7322e1) to Async(default) with arguments: #<GlobalID:0x00007f9ffd8c6910 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/7>>
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: cf4c858f-db43-48ed-8201-ecaf6f676890) to Async(default) with arguments: #<GlobalID:0x00007fa003202470 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/8>>
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (0.4ms)
+  Rendered api/tracks/show.json.jbuilder (7.6ms)
+Completed 200 OK in 685ms (Views: 28.4ms | ActiveRecord: 65.4ms)
+
+
+Started POST "/api/tracks" for ::1 at 2019-08-05 15:42:25 -0400
+Processing by Api::TracksController#create as */*
+  Parameters: {"default"=>{"format"=>:json}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: track):
+  
+app/controllers/api/tracks_controller.rb:36:in `track_params'
+app/controllers/api/tracks_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [360d1884-9646-4d4e-b1bc-dbf40c7322e1] Performing ActiveStorage::AnalyzeJob (Job ID: 360d1884-9646-4d4e-b1bc-dbf40c7322e1) from Async(default) with arguments: #<GlobalID:0x00007fa001fb6730 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/7>>
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf4c858f-db43-48ed-8201-ecaf6f676890] Performing ActiveStorage::AnalyzeJob (Job ID: cf4c858f-db43-48ed-8201-ecaf6f676890) from Async(default) with arguments: #<GlobalID:0x00007f9fff070b10 @uri=#<URI::GID gid://cloud-nine/ActiveStorage::Blob/8>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [360d1884-9646-4d4e-b1bc-dbf40c7322e1]   [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [360d1884-9646-4d4e-b1bc-dbf40c7322e1]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [360d1884-9646-4d4e-b1bc-dbf40c7322e1]   [1m[36mActiveStorage::Blob Update (1.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 7]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [360d1884-9646-4d4e-b1bc-dbf40c7322e1]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [360d1884-9646-4d4e-b1bc-dbf40c7322e1]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [360d1884-9646-4d4e-b1bc-dbf40c7322e1]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [360d1884-9646-4d4e-b1bc-dbf40c7322e1] Performed ActiveStorage::AnalyzeJob (Job ID: 360d1884-9646-4d4e-b1bc-dbf40c7322e1) from Async(default) in 8.31ms
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf4c858f-db43-48ed-8201-ecaf6f676890] [36m  S3 Storage (78.7ms) [0m[34mDownloaded file from key: fMTRmQH3Koai62TzFyaY1BxS[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf4c858f-db43-48ed-8201-ecaf6f676890] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf4c858f-db43-48ed-8201-ecaf6f676890]   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf4c858f-db43-48ed-8201-ecaf6f676890]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf4c858f-db43-48ed-8201-ecaf6f676890]   [1m[36mActiveStorage::Blob Update (0.8ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 8]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf4c858f-db43-48ed-8201-ecaf6f676890]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf4c858f-db43-48ed-8201-ecaf6f676890]   [1m[35m (40.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf4c858f-db43-48ed-8201-ecaf6f676890]   ↳ /Users/ugp/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cf4c858f-db43-48ed-8201-ecaf6f676890] Performed ActiveStorage::AnalyzeJob (Job ID: cf4c858f-db43-48ed-8201-ecaf6f676890) from Async(default) in 156.99ms
+  [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" ORDER BY "tracks"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" ORDER BY "tracks"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Track"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."uploader_id" = $1[0m  [["uploader_id", 6]]
+Started DELETE "/api/session" for ::1 at 2019-08-05 16:01:09 -0400
+Processing by Api::SessionsController#destroy as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UTTPMp-2Q1CzwVkmWE72Xg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "cloudnine"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "cloudnine@gmail.com"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "zTA9-yO81SfMnsrdk5Rt2Q"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "zTA9-yO81SfMnsrdk5Rt2Q"], ["updated_at", "2019-08-05 20:01:09.610616"], ["id", 6]]
+  ↳ app/models/user.rb:44
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:44
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (3.4ms)
+  [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."uploader_id" = $1[0m  [["uploader_id", 6]]
+  ↳ app/views/api/users/show.json.jbuilder:4
+  Rendered api/users/show.json.jbuilder (11.8ms)
+Completed 200 OK in 41ms (Views: 30.0ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/api/session" for ::1 at 2019-08-05 16:01:14 -0400
+Processing by Api::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"cloudnine@gmail.com", "password"=>"[FILTERED]"}, "default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "cloudnine@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "cloudnine"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "cloudnine@gmail.com"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "pA-gGr7RVMQ5b319NjN5kg"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "pA-gGr7RVMQ5b319NjN5kg"], ["updated_at", "2019-08-05 20:01:14.390035"], ["id", 6]]
+  ↳ app/models/user.rb:44
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:44
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."uploader_id" = $1[0m  [["uploader_id", 6]]
+  ↳ app/views/api/users/show.json.jbuilder:4
+  Rendered api/users/show.json.jbuilder (7.5ms)
+Completed 200 OK in 284ms (Views: 24.9ms | ActiveRecord: 3.2ms)
+
+
+Started DELETE "/api/session" for ::1 at 2019-08-05 16:01:43 -0400
+Processing by Api::SessionsController#destroy as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "pA-gGr7RVMQ5b319NjN5kg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "cloudnine"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "cloudnine@gmail.com"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "PQgDT_cLuDLBOAOE8dgNzw"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "PQgDT_cLuDLBOAOE8dgNzw"], ["updated_at", "2019-08-05 20:01:43.062793"], ["id", 6]]
+  ↳ app/models/user.rb:44
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:44
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."uploader_id" = $1[0m  [["uploader_id", 6]]
+  ↳ app/views/api/users/show.json.jbuilder:4
+  Rendered api/users/show.json.jbuilder (7.6ms)
+Completed 200 OK in 35ms (Views: 27.5ms | ActiveRecord: 2.6ms)
+
+

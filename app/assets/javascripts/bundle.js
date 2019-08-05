@@ -1180,7 +1180,7 @@ function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleCancel = _this.handleCancel.bind(_assertThisInitialized(_this));
-    _this.uploadModal = _this.props.uploadModal.bind(_assertThisInitialized(_this));
+    _this.handleAudioFile = _this.handleAudioFile.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1196,16 +1196,26 @@ function (_React$Component) {
   }, {
     key: "handleImageFile",
     value: function handleImageFile(e) {
-      this.setState({
-        image: e.currentTarget.files[0]
-      });
+      var imagetype = e.currentTarget.files[0].type.search("image");
+
+      if (imagetype === 0) {
+        this.setState({
+          image: e.currentTarget.files[0]
+        });
+      }
     }
   }, {
     key: "handleAudioFile",
     value: function handleAudioFile(e) {
-      this.setState({
-        audio: e.currentTarget.files[0]
-      });
+      var audiotype = e.currentTarget.files[0].type.search("audio");
+
+      if (audiotype === 0) {
+        this.setState({
+          audio: e.currentTarget.files[0]
+        });
+      } else {
+        return "error";
+      }
     }
   }, {
     key: "handleSubmit",
@@ -1221,7 +1231,8 @@ function (_React$Component) {
         formData.append('track[image]', this.state.image);
       }
 
-      this.props.uploadTrack(this.formData);
+      debugger;
+      this.props.uploadTrack(formData);
     }
   }, {
     key: "handleCancel",
@@ -1238,62 +1249,52 @@ function (_React$Component) {
   }, {
     key: "uploadForm",
     value: function uploadForm() {
-      if (!this.props.modal) {
-        return null;
+      var formComponent;
+
+      if (this.state.audio) {
+        formComponent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          id: "form-upload",
+          className: "upload-form"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          className: "track-title",
+          value: this.state.title,
+          onChange: this.update('title')
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+          type: "text",
+          className: "track-description",
+          value: this.state.description,
+          onChange: this.update('description')
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "file",
+          className: "track-image",
+          onChange: this.handleImageFile.bind(this)
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "upload-btn",
+          onClick: this.handleSubmit
+        }, "Upload"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "cancel-btn",
+          onClick: this.handleCancel
+        }, "Cancel"));
       }
 
-      var componentContainer;
-
-      switch (this.props.modal) {
-        case 'upload':
-          componentContainer = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-            className: "upload-form"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-            type: "text",
-            className: "track-title",
-            value: this.state.title,
-            onChange: this.update('title')
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-            type: "text",
-            className: "track-description",
-            value: this.state.description,
-            onChange: this.update('description')
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-            type: "file",
-            className: "track",
-            onChange: this.handleAudioFile.bind(this)
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-            type: "file",
-            className: "track-image",
-            onChange: this.handleImageFile.bind(this)
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "upload-btn",
-            onClick: this.handleSubmit
-          }, "Upload"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "cancel-btn",
-            onClick: this.handleCancel
-          }, "Cancel"));
-          break;
-
-        default:
-          return null;
-      }
-
-      return componentContainer;
+      return formComponent;
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-page"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.uploadModal();
-        },
-        className: "upload-btn-form"
-      }, "Choose to Upload an Audio"), this.uploadForm());
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        id: "audio-file",
+        form: "form-upload",
+        className: "hidden",
+        onChange: this.handleAudioFile
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "audio-file"
+      }, "choose file to upload"), this.uploadForm());
     }
   }]);
 
@@ -1314,8 +1315,10 @@ var mdp = function mdp(dispatch) {
     },
     uploadModal: function uploadModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openUploadModal"])('upload'));
-    } // closeModal: () => dispatch(closeUploadModal())
-
+    },
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeUploadModal"])());
+    }
   };
 };
 
@@ -1688,9 +1691,9 @@ var createTrack = function createTrack(track) {
   return $.ajax({
     method: "POST",
     url: "/api/tracks",
-    data: {
-      track: track
-    }
+    data: track,
+    contentType: false,
+    processData: false
   });
 };
 var fetchUserTracks = function fetchUserTracks(id) {
