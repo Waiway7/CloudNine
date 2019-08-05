@@ -8,9 +8,9 @@ class Api::TracksController < ApplicationController
     end
 
     def create
-        @track = current_user.tracks.new(track_params)
+        @track = Track.new(track_params)
         if @track.save
-
+            render 'api/tracks/show'
         else 
             render json: @track, status: :unprocessable_entity
         end
@@ -33,7 +33,7 @@ class Api::TracksController < ApplicationController
 
     private
     def track_params
-        params.require(:track).permit(:title, :description, :audio, :image)
+        params.require(:track).permit(:title, :description, :audio, :image, :uploader_id)
     end
 
 end

@@ -9,9 +9,9 @@ const navBar = ({currentUser, logout, signup, login}) => {
     const display = currentUser ? (
         <button className="logout-btn" onClick={() => logout()}>Logout</button> 
         ) : (
-        <div className="session-form-btn">
-            <button className='login-btn' onClick={() => login()}>Sign in</button>
-            <button className='signup-btn' onClick={() => signup()}>Create account</button>
+        <div className="nav-form-container">
+            <button className='nav-login-btn' onClick={() => login()}>Sign in</button>
+            <button className='nav-signup-btn' onClick={() => signup()}>Create account</button>
         </div>
         );
     return (
@@ -44,10 +44,12 @@ const navBar = ({currentUser, logout, signup, login}) => {
                     <input className="search" type="text" placeholder="Search.."/>
                 </div>
                 <div className="right-menu-nav">
-                    <div className="container-logout-btn">
-                        {display}
-                    </div>
+                    {display}
                 </div>
+                <Link to='/upload' style={{textDecoration: 'none'}}>
+                        <div className="upload">Upload</div>
+                </Link>
+                <button className="nav-dropdown"><p className="dot">...</p></button>
             </div>
         </div>
     )   
