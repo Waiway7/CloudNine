@@ -1,7 +1,6 @@
 import React from 'react';
 import { createTrack } from '../../actions/track_actions'
 import { connect } from 'react-redux';
-import {openUploadModal, closeUploadModal} from '../../actions/modal_actions'
 
 class UploadTrack extends React.Component {
     constructor(props){
@@ -11,6 +10,7 @@ class UploadTrack extends React.Component {
             description: "", 
             image: null,
             audio: null,
+            playlistId: null,
             uploaderId: this.props.currentUser.id,
             };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,7 +26,8 @@ class UploadTrack extends React.Component {
         const imagetype = e.currentTarget.files[0].type.search("image")
         if (imagetype === 0){
             this.setState({image: e.currentTarget.files[0]})
-        }
+        } else {this.setState({image: e.currentTarget.files[0]})
+    }
 
     }
 
@@ -34,22 +35,21 @@ class UploadTrack extends React.Component {
         const audiotype = e.currentTarget.files[0].type.search("audio");
         if (audiotype === 0){
             this.setState({audio: e.currentTarget.files[0]});
-        } else {
-            return "error"
         }
     }
 
     handleSubmit(e){
+        debugger
         e.preventDefault();
         const formData = new FormData();
         formData.append('track[title]', this.state.title);
+        formData.append('track[playlist_id]', this.state.playlistId);
         formData.append('track[description]', this.state.description);
         formData.append('track[audio]', this.state.audio);
         formData.append('track[uploader_id]', this.state.uploaderId);
         if (this.state.image) {
             formData.append('track[image]', this.state.image)
         }
-        debugger
         this.props.uploadTrack(formData)
     }
     
@@ -68,7 +68,7 @@ class UploadTrack extends React.Component {
         let formComponent;
        if (this.state.audio){
             formComponent = 
-                <form id="form-upload" className="upload-form">
+                <form id="form-upload" className="upload-form" onSubmit={this.handleSubmit}>
                     <input 
                         type="text" 
                         className="track-title"
@@ -86,7 +86,7 @@ class UploadTrack extends React.Component {
                         className="track-image"
                         onChange={this.handleImageFile.bind(this)}
                     />
-                    <button className="upload-btn" onClick={this.handleSubmit}>Upload</button>
+                    <button className="upload-btn">Upload</button>
                     <button className="cancel-btn" onClick={this.handleCancel}>Cancel</button>
                 </form>
                 
@@ -95,7 +95,6 @@ class UploadTrack extends React.Component {
     }
 
     render () {
-        debugger
         return (
             <div className="upload-page">
                 <input 
@@ -122,8 +121,6 @@ const msp = (state) => {
 const mdp = (dispatch) => {
     return {
         uploadTrack: (track) => dispatch(createTrack(track)),
-        uploadModal: () => dispatch(openUploadModal('upload')),
-        closeModal: () => dispatch(closeUploadModal())
     }
 }
 

@@ -30,9 +30,10 @@ export const createTrack = (track) => {
     })
 }
 
-export const fetchUserTracks = (id) => {
+export const fetchUserTracks = (uploader) => {
+    debugger
     return $.ajax({
         method: "GET",
-        url: `/api/users/${id}`
+        url: `/api/users/${uploader.id}/tracks`
     })
 }

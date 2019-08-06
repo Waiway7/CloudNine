@@ -34,7 +34,7 @@ const navBar = ({currentUser, logout, signup, login}) => {
                             Stream
                         </div>
                     </Link>
-                    <Link to="/library" style={{textDecoration: 'none'}}>
+                    <Link to="/you/library" style={{textDecoration: 'none'}}>
                         <div id="/library" className="library-btn">
                             Library
                         </div>

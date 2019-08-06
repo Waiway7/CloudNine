@@ -1,7 +1,16 @@
 class Api::TracksController < ApplicationController
 
     # before_action :require_to_be_logged, only: [:create, :update, :destroy]
-
+    # testing
+    def index 
+        @tracks = Track.with_attached_audio.with_attached_image.includes(:users)
+        if @tracks
+            render "api/users/show_tracks"
+        else 
+            render ["User does not exist! Please try again."], status: 404
+        end
+    end
+    #testing
     def show
         @track = Track.find(params[:id])
         render "api/tracks/show"
@@ -33,7 +42,7 @@ class Api::TracksController < ApplicationController
 
     private
     def track_params
-        params.require(:track).permit(:title, :description, :audio, :image, :uploader_id)
+        params.require(:track).permit(:title, :description, :playlist_id, :audio, :image, :uploader_id)
     end
 
 end

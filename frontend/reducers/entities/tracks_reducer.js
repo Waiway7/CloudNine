@@ -6,7 +6,7 @@ const tracksReducer = (state = {}, action) => {
     Object.freeze(state)
     switch (action.type) {
         case RECEIVE_USER_LIBRARY:
-            return merge({}, state, action.tracks)
+            return merge({}, action.tracks)
         case RECEIVE_TRACK: 
             return merge({}, state, action.track);
         case REMOVE_TRACK:

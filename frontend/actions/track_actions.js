@@ -54,15 +54,15 @@ export const updateTrack = (track) => {
 export const createTrack = (track) => {
     return dispatch => {
         return TrackApiUtil.createTrack(track)
-            .then( track => dispatch(createTrack(track)), error => {
+            .then( track => dispatch(receiveTrack(track)), error => {
                 return dispatch(receiveErrors(error.responseJSON))
             })
     }
 }
 
-export const fetchUserTracks = (id) => {
+export const fetchUserTracks = (user) => {
     return dispatch => {
-        return TrackApiUtil.fetchUserTracks(id)
+        return TrackApiUtil.fetchUserTracks(user.id)
             .then( tracks => {return dispatch(receiveUserLibrary(tracks))}
                 , error => {
                 return dispatch(receiveErrors(error.responseJSON))
