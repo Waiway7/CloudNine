@@ -8,10 +8,10 @@ const tracksReducer = (state = {}, action) => {
         case RECEIVE_USER_LIBRARY:
             return merge({}, action.tracks)
         case RECEIVE_TRACK: 
-            return merge({}, state, action.track);
+            return merge({}, state, {[action.track.id]: action.track});
         case REMOVE_TRACK:
             let newState = merge({}, state);
-            delete newState[action.track.id];
+            delete newState[action.trackId];
             return newState;
         case LOGOUT_USER:
             return {}

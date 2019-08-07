@@ -35,7 +35,7 @@ const navBar = ({currentUser, logout, signup, login}) => {
                         </div>
                     </Link>
                     <Link to="/you/library" style={{textDecoration: 'none'}}>
-                        <div id="/library" className="library-btn">
+                        <div id="/you/library" className="library-btn">
                             Library
                         </div>
                     </Link>

@@ -6,15 +6,17 @@ export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RECEIVE_USER_LIBRARY = 'RECEIVE_USER_LIBRARY';
 
 
-const receiveTrack = (track) => ({
+const receiveTrack = (track) => {
+    return{
     type: RECEIVE_TRACK,
     track
-})
+    }}
 
-const removeTrack = (trackId) =>({
+const removeTrack = (trackId) =>{
+    return {
     type: REMOVE_TRACK,
     trackId
-})
+}}
 
 export const receiveErrors = errors => ({
     type: RECEIVE_ERRORS,
@@ -38,13 +40,16 @@ export const fetchTrack = (id) => {
 export const deleteTrack = (id) => {
     return dispatch => {
         return TrackApiUtil.deleteTrack(id)
-            .then( track => dispatch(removeTrack(track)))
+            .then( track => 
+                {
+                    return dispatch(removeTrack(track.id))}
+                )
     }
 }
 
-export const updateTrack = (track) => {
+export const updateTrack = (track, id) => {
     return dispatch => {
-        return TrackApiUtil.updateTrack(track.id)
+        return TrackApiUtil.updateTrack(track, id)
             .then( track => dispatch(receiveTrack(track)), error => {
                 return dispatch(receiveErrors(error.responseJSON))
             })
@@ -62,7 +67,7 @@ export const createTrack = (track) => {
 
 export const fetchUserTracks = (user) => {
     return dispatch => {
-        return TrackApiUtil.fetchUserTracks(user.id)
+        return TrackApiUtil.fetchUserTracks(user)
             .then( tracks => {return dispatch(receiveUserLibrary(tracks))}
                 , error => {
                 return dispatch(receiveErrors(error.responseJSON))

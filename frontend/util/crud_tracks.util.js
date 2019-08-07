@@ -12,11 +12,13 @@ export const deleteTrack = (id) => {
     })
 }
 
-export const updateTrack = (track) => {
+export const updateTrack = (track, id) => {
     return $.ajax({
         method: "PATCH",
-        url: `/api/tracks/${track.id}`,
-        data: {track}
+        url: `/api/tracks/${id}`,
+        data: track,
+        contentType: false,
+        processData: false,
     })
 }
 
@@ -30,10 +32,9 @@ export const createTrack = (track) => {
     })
 }
 
-export const fetchUserTracks = (uploader) => {
-    debugger
+export const fetchUserTracks = (user) => {
     return $.ajax({
         method: "GET",
-        url: `/api/users/${uploader.id}/tracks`
+        url: `/api/users/${user.id}/tracks`
     })
 }

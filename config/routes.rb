@@ -7,6 +7,6 @@ Rails.application.routes.draw do
       resources :tracks, only: [:index]
     end
     resource :session, only: [:create, :destroy]
-    resources :tracks, only: [:create, :upload, :destroy, :show]
+    resources :tracks, only: [:create, :update, :destroy, :show]
   end
 end

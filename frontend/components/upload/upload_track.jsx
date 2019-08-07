@@ -32,6 +32,7 @@ class UploadTrack extends React.Component {
     }
 
     handleAudioFile(e) {
+        
         const audiotype = e.currentTarget.files[0].type.search("audio");
         if (audiotype === 0){
             this.setState({audio: e.currentTarget.files[0]});
@@ -39,7 +40,6 @@ class UploadTrack extends React.Component {
     }
 
     handleSubmit(e){
-        debugger
         e.preventDefault();
         const formData = new FormData();
         formData.append('track[title]', this.state.title);

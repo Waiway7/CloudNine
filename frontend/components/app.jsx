@@ -6,7 +6,7 @@ import SessionModal from '../components/form/session_modal_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 import MainNavBar from './main_nav_bar/nav_bar'
 import UploadTrack from './upload/upload_track'
-import YouTracks from './Tracks/tracks'
+import YouTracks from './current_user_tracks/tracks'
 
 const App = () => {
     return (
