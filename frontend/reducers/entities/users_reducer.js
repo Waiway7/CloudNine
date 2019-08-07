@@ -1,5 +1,5 @@
 import {merge} from "lodash";
-import {RECEIVE_USER} from '../../actions/session_actions';
+import {RECEIVE_USER, LOGOUT_USER} from '../../actions/session_actions';
 
 
 const usersReducer = (state = {}, action) => {
@@ -7,6 +7,8 @@ const usersReducer = (state = {}, action) => {
     switch(action.type){
         case RECEIVE_USER:
             return merge({}, state, {[action.user.id]: action.user});
+        case LOGOUT_USER:
+            return {}
         default: 
             return state;
     }

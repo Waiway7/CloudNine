@@ -91,7 +91,7 @@ class Modal extends React.Component{
                                 <p className="message-session">Sign in as a demo user instead!</p>
                                 <button className="demo-user-btn" 
                                     onClick={() => this.props.demoLogin({email: "cloudnine@gmail.com", password: "hunter12"})}>
-                                    Demo as user: High Nine
+                                    Demo as user: CloudNine
                                 </button>
                             </div>
                         </div>

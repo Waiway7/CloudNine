@@ -20,6 +20,6 @@ class ApplicationController < ActionController::Base
     end
 
     def require_to_be_logged
-        render json ['Please login or create a new account!'], status: 401
+        render json: ['Please login or create a new account!'], status: 401 unless current_user
     end
 end
