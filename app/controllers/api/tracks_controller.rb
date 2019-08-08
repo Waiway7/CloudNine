@@ -1,8 +1,9 @@
+require 'open-uri'
 class Api::TracksController < ApplicationController
 
     # before_action :require_to_be_logged, only: [:create, :update, :destroy]
     # testing
-    def index 
+    def index
         @tracks = Track.with_attached_audio.with_attached_image.includes(:uploader).where(uploader_id: params[:user_id])
         if @tracks
             render "api/users/show_tracks"
@@ -18,6 +19,10 @@ class Api::TracksController < ApplicationController
 
     def create
         @track = Track.new(track_params)
+        if !@track.image.attached?
+            file = open('https://cloudnine-upload-dev.s3.amazonaws.com/starecat.jpg')
+            @track.image.attach(io: file, filename: 'starecat.jpg')
+        end
         if @track.save
             render 'api/tracks/show'
         else 

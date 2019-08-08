@@ -602,21 +602,12 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Music).call(this, props));
     _this.state = {
       play: false,
-      duration: null,
-      currentTime: 0,
-      progress: 0
+      duration: null
     };
-    _this.audio = new Audio(_this.props.track.audioUrl);
     _this.togglePlay = _this.togglePlay.bind(_assertThisInitialized(_this));
     _this.togglePause = _this.togglePause.bind(_assertThisInitialized(_this));
-    _this.updateTime = _this.updateTime.bind(_assertThisInitialized(_this));
     return _this;
-  } // handleStop() {
-  //     this.audio.currentTime = 0;
-  //     this.slider.value = 0;
-  //     // this.audio.pause
-  // }
-
+  }
 
   _createClass(Music, [{
     key: "togglePlay",
@@ -625,10 +616,10 @@ function (_React$Component) {
 
       this.setState({
         play: true,
-        duration: this.audio.duration,
-        currentTime: this.audio.currentTime
+        duration: this.player.duration,
+        currentTime: this.player.currentTime
       }, function () {
-        _this2.audio.play();
+        _this2.player.play();
       });
     }
   }, {
@@ -639,31 +630,42 @@ function (_React$Component) {
       this.setState({
         play: false
       }, function () {
-        _this3.audio.pause();
+        _this3.player.pause();
       });
     }
   }, {
-    key: "updateTime",
-    value: function updateTime() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var _this4 = this;
 
-      if (this.audio.currentTime === this.audio.duration) {
-        this.audio.load();
-      }
-
-      setInterval(function () {
-        return _this4.state.currentTime;
-      }, 1000);
-      this.setState({
-        progress: "".concat(this.audio.currentTime)
+      this.player = new Audio(this.props.track.audioUrl);
+      this.player.addEventListener("timeupdate", function (e) {
+        _this4.setState({
+          currentTime: e.target.currentTime,
+          duration: e.target.duration
+        });
       });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.player.removeEventListener("timeupdate", function () {});
+    }
+  }, {
+    key: "getTime",
+    value: function getTime(time) {
+      if (!isNaN(time)) {
+        return Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2);
+      }
     }
   }, {
     key: "render",
     value: function render() {
+      var currentTime = this.getTime(this.state.currentTime);
+      var duration = this.getTime(this.state.duration);
       var play;
 
-      if (this.state.play === false) {
+      if (this.state.play === false || currentTime === duration) {
         play = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           key: "play-".concat(this.props.track.id),
           onClick: this.togglePlay
@@ -673,7 +675,7 @@ function (_React$Component) {
         onClick: this.togglePause
       }, "Pause");
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, play, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.progress), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.duration));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, play, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, currentTime, " / ", duration));
     }
   }]);
 
@@ -708,6 +710,8 @@ var TrackItem = function TrackItem(_ref) {
       deleteTrack = _ref.deleteTrack,
       openUploadModal = _ref.openUploadModal,
       closeUploadModal = _ref.closeUploadModal;
+  // const trackImage = new Image(100, 200);
+  // trackImage.src = 'track.jpg'
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "audio".concat(track.id)
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -831,8 +835,18 @@ function (_React$Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "track-list"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, trackList), modalComponent);
+        className: "your-track-list"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "user-nav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upload-tag"
+      }, "Upload"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tracks-tag"
+      }, "Your Tracks")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "header-tracks"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Your Tracks")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "user-track-list"
+      }, trackList), modalComponent);
     }
   }]);
 

@@ -1,0 +1,19 @@
+.your-track-list {
+    position: relative;
+    height: 450px;
+    min-width: 920px;
+    margin: 0 auto;
+    max-width: 1120px;
+    padding: 0 30px;
+    background-color: white;
+}
+
+.preview {
+    width: 50px;
+    height: 50px;
+  
+}
+
+.user-nav (max-width: ){
+    display: block;
+}

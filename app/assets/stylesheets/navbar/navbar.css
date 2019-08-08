@@ -69,7 +69,19 @@
 
 :target {
     background-color: #111;
-    
+    color: white;
+}
+
+.home-btn:target {
+    color: white;
+}
+
+.stream-btn:target {
+    color: white;
+}
+
+.library-btn:target {
+    color: white;
 }
 
 .home-btn:hover {

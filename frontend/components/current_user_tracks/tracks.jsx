@@ -38,6 +38,7 @@ class Tracks extends React.Component {
                 />
             )})
         }
+
         let modalComponent;
         if (this.props.modal) {
             modalComponent = (
@@ -45,12 +46,21 @@ class Tracks extends React.Component {
                     track={this.props.tracks[this.props.modal]} 
                     updateTrack={this.props.updateTrack}
                     closeUploadModal={this.props.closeUploadModal}
-                    />
+                />
             )
         }
         return (
-            <div className="track-list">
-                <ul>{trackList}</ul>
+            <div className="your-track-list">
+                <div className="user-nav">
+                    <div className="upload-tag">
+                        Upload
+                    </div>
+                    <div className="tracks-tag">
+                        Your Tracks
+                    </div>
+                </div>
+                <div className="header-tracks"><p>Your Tracks</p></div>
+                <ul className="user-track-list">{trackList}</ul>
                 {modalComponent}
                 {/* <UploadModal track={this.props.tracks} modal={this.props.modal}/> */}
             </div>

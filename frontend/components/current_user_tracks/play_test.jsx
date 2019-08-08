@@ -6,58 +6,67 @@ class Music extends React.Component {
         this.state = {
           play: false,
           duration: null,
-          currentTime: 0,
-          progress: 0,
         };
-        this.audio = new Audio(this.props.track.audioUrl);
         this.togglePlay = this.togglePlay.bind(this);
         this.togglePause = this.togglePause.bind(this);
-        this.updateTime = this.updateTime.bind(this)
     }
 
-    // handleStop() {
-    //     this.audio.currentTime = 0;
-    //     this.slider.value = 0;
-    //     // this.audio.pause
-    // }
 
     togglePlay() {
         this.setState({ 
           play: true,
-          duration: this.audio.duration,
-          currentTime: this.audio.currentTime
+          duration: this.player.duration,
+          currentTime: this.player.currentTime
         }, 
-          () => {this.audio.play()});
+          () => {this.player.play()});
     }
 
     togglePause() {
         this.setState({
             play: false,
-        }, () => {this.audio.pause()})
+        }, () => {this.player.pause()})
     }
 
-    updateTime() {
-        if (this.audio.currentTime === this.audio.duration) {
-            this.audio.load()
-        }
-            setInterval(() => this.state.currentTime, 1000)
-            this.setState({progress: `${this.audio.currentTime}`})
-        
+    componentDidMount(){
+        this.player = new Audio(this.props.track.audioUrl);
+        this.player.addEventListener("timeupdate", e => {
+            this.setState({
+                currentTime: e.target.currentTime,
+                duration: e.target.duration
+            })
+        })
+    }
+
+    componentWillUnmount() {
+        this.player.removeEventListener("timeupdate", () => {});
+    }
+
+    getTime(time){
+        if (!isNaN(time)) {return Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2)}
     }
 
     render() {
-     
+      const currentTime = this.getTime(this.state.currentTime)
+      const duration = this.getTime(this.state.duration)
       let play;
-      if (this.state.play === false) { play =
-        <button key={`play-${this.props.track.id}`} onClick={this.togglePlay}>Play</button>
-      }  else ( play =
-        <button key={`play-${this.props.track.id}`} onClick={this.togglePause}>Pause</button>
+
+      if (this.state.play === false || currentTime === duration) { 
+        play = 
+            <button key={`play-${this.props.track.id}`} onClick={this.togglePlay}>
+                Play
+            </button>
+      }  
+      else ( 
+        play = 
+            <button key={`play-${this.props.track.id}`} onClick={this.togglePause}>
+                Pause
+            </button>
       )
+
       return (
         <div>
             {play}
-            <div>{this.state.progress}</div>
-            <div>{this.state.duration}</div>
+            <div>{currentTime} / {duration}</div>
         </div>
       );
     }
