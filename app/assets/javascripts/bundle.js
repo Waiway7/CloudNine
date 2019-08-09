@@ -2044,9 +2044,9 @@ __webpack_require__.r(__webpack_exports__);
     className: "frontHero-content"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "frontHero-title"
-  }, "Discover more with CloudNine+"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, "Discover music that's so free! LITERALLY!!!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "frontHero-description"
-  }, "Cloudnine is an euphoric once in a lifetime experience. A journey that's everlasting!"))));
+  }, "Enjoy our free Royalty music. Here you don't need to be afraid of copyright infringement!"))));
 });
 
 /***/ }),
