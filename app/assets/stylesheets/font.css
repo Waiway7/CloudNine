@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'interstate regular';
+    src: url('./interstatelite.otf');
+
+}
+
+@font-face {
+    font-family: 'interstate light';
+    src: url('./interstateregular.ttf') 
+}

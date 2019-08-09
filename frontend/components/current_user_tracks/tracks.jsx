@@ -4,6 +4,8 @@ import {fetchUserTracks, deleteTrack, updateTrack} from '../../actions/track_act
 import {openUploadModal, closeUploadModal} from '../../actions/modal_actions';
 import TrackItem from './track_item'
 import UpdateModal from './modal_update'
+import {Link} from 'react-router-dom'
+import UserNav from './user_nav'
 
 class Tracks extends React.Component {
     constructor(props){
@@ -21,6 +23,11 @@ class Tracks extends React.Component {
     //       }
     // }
 
+    // toggleNav(){
+    //     className
+    // }
+    
+
     render(){
         let tracks;
         let trackList;
@@ -35,6 +42,7 @@ class Tracks extends React.Component {
                     openUploadModal={this.props.openUploadModal}
                     closeUploadModal={this.props.closeUploadModal}
                     modal={this.props.modal}
+                    user={this.props.currentUser}
                 />
             )})
         }
@@ -50,17 +58,12 @@ class Tracks extends React.Component {
             )
         }
         return (
-            <div className="your-track-list">
-                <div className="user-nav">
-                    <div className="upload-tag">
-                        Upload
-                    </div>
-                    <div className="tracks-tag">
-                        Your Tracks
-                    </div>
-                </div>
-                <div className="header-tracks"><p>Your Tracks</p></div>
+            <div className="body">
+                <UserNav pathname={this.props.location.pathname}/>
+                <div className="header-tracks"><h1 className="your-tracks">Your Tracks</h1></div>
+                <div className="track-list-container">
                 <ul className="user-track-list">{trackList}</ul>
+                </div>
                 {modalComponent}
                 {/* <UploadModal track={this.props.tracks} modal={this.props.modal}/> */}
             </div>

@@ -55,11 +55,13 @@
     /* position: relative; */
     font: 12px/1.4 "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
     padding: 6px 16px;
-    margin: 0 0 0 6px;
+    margin: 0 10px 0 10px;
     border-radius: 3px;
     color: white;
     cursor: pointer;
     outline: none;
+    position: relative;
+    top: 8px;
 }
 
 .container-logout-btn{
@@ -91,7 +93,7 @@
 .home-btn {
     padding: 12px 0;
     width: 104px;
-    height: 46px;
+    height: auto;
     border-right: 1px solid #111;
     box-sizing: border-box;
     text-align: center;
@@ -108,7 +110,7 @@
     display: block;
     padding: 12px 0;
     width: 104px;
-    height: 46px;
+    height: auto;
     border-right: 1px solid #111;
     box-sizing: border-box;
     text-align: center;
@@ -124,7 +126,7 @@
 .library-btn {
     padding: 12px 0;
     width: 104px;
-    height: 46px;
+    height: auto;
     border-right: 1px solid #111;
     box-sizing: border-box;
     text-align: center;
@@ -216,6 +218,10 @@
     position: relative;
     color: #ccc;
     font-family: "Interstate regular", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
+}
+
+.upload:hover{
+    color: white;
 }
 
 /* .right-menu-nav {

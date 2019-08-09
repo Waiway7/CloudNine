@@ -1,0 +1,90 @@
+.hidden {
+    visibility: hidden;
+    position: absolute;
+    display: none;
+}
+
+.upload-page {
+        margin: 0 auto;
+        width: 800px;
+}
+
+.fillblock {
+        width: 800px;
+        height: 90px;
+        transition: height .1s ease-in-out;
+        margin: 0 auto;
+}
+
+.upload-shrink-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 5px 0;
+    border-radius: 2px;
+    background-color: #fff;
+    text-align: center;
+    position: relative;
+    box-sizing: border-box;
+    border: 2px dashed #F2F2F2;
+}
+
+.upload-form-container {
+   
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 5px 0;
+    border-radius: 2px;
+    background-color: #fff;
+    text-align: center;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid #f2f2f2;
+    box-shadow: 0 2px 12px -5px rgba(0,0,0,.1);
+}
+
+.upload-meter {
+    height: 50px;
+    padding: 30px 20px 0 20px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.upload-main-container {
+    margin: 100px 0;
+    transition: margin .3s cubic-bezier(.175,.885,.32,1.275);
+}
+
+.choose-file {
+    display: inline-block;
+    position: relative;
+    width: 300px;
+    background-color: #48b8e6;
+    border-color: #48b8e6;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 3px;
+    font-family: "Interstate regular","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+
+}
+
+.upload-header {
+    font-size: 22px;
+    color: #333;
+    font-weight: 100;
+    line-height: 3.5;
+    font-family: "Interstate regular","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+
+}
+
+
+.best-type {
+    margin-bottom: 26px;
+    font-family: "interstate regular","Lucida Grande",Arial,sans-serif;
+}
+
+

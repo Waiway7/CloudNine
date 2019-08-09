@@ -1,19 +1,240 @@
-.your-track-list {
+.body {
     position: relative;
-    height: 450px;
+    top: 0;
+    bottom: 0;
+    min-height: 100%;
     min-width: 920px;
     margin: 0 auto;
-    max-width: 1120px;
-    padding: 0 30px;
-    background-color: white;
+    max-width: 1180px;
+    background-color: #fff;
 }
 
 .preview {
-    width: 50px;
-    height: 50px;
-  
+    display: block;
+    float: left;
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: 50% 50%;
+    box-shadow: rgba(0,0,0,.1)0 0 0 1px inset;
+    opacity: 1;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 30px;
+    background-color: transparent;
+    border-color: transparent;
+    margin-bottom: 10px;
 }
 
-.user-nav (max-width: ){
+
+.user-nav {
+    max-width: 100%;
+    border-bottom: 1px solid #f2f2f2;
+    list-style: none;
+    min-height: 48px;
+    margin: 0;
+    font-family: "Interstate regular","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+    font-size: 14px;
+    line-height: 2;
+    align-content: center;
+}
+
+.upload-tag, .tracks-tag {
+    width: auto;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    color: #333;
+    margin: 0px auto;
+    height: 36px;
+    margin-top: 12px;
+    margin-left: 30px;
+}
+
+.selected-tracks-tag, .selected-upload-tag {
+    width: auto;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    color:  rgb(50, 162, 227);
+    border-bottom: 1px solid rgb(50, 162, 227);
+    margin: 0px auto;
+    height: 36px;
+    margin-top: 12px;
+    margin-left: 30px;
+}
+
+.upload-tag:hover, .tracks-tag:hover {
+    color: rgb(50, 162, 227);
+    border-bottom: 1px solid rgb(50, 162, 227);
+}
+
+.header-tracks {
+    height: 120px;
+    margin: 0 auto;
+    margin-top: -1px;
+    
+
+}
+
+.your-tracks {
+    margin-bottom: 10px;
+    padding-top: 30px;
+    font-size: 32px;
+    font-weight: 100;
+    line-height: 1.3;
+    margin-right: 18px;
+    font-family: "Interstate regular";
+    display: block;
+    padding-left: 25px;
+}
+
+.user-track-list {
+    list-style: none;
+    padding-right: 30px;
+    padding-left: 30px;
     display: block;
 }
+
+.track-item {
+    border-top: 1px solid #f2f2f2;
+    display: list-item;
+    list-style: none;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;    
+}
+
+.track-item-container, .hover-track, .play-track-item {
+    cursor: pointer;
+    position: relative;
+    height: 80px;
+    border-radius: 4px;
+    display: inline-block;
+    width: 100%;
+    /* z-index: -1; */
+}
+
+
+.right-track-info{
+    float: right;
+    display: flex;
+    margin-bottom: 10px;
+    position: relative;
+    height: auto;
+    flex-wrap: nowrap;
+    bottom: 18px;
+}
+
+.user-name {
+    margin-top: 10px;
+    display: block;
+    font-family: "Interstate regular";
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: normal;
+    font-size: 14px;
+    color: #999;
+}
+
+.song-title{
+    display: block;
+    /* flex-direction: column; */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: normal;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 2px;
+    font-family: "Interstate regular";
+}
+
+.duration-length {
+    display: block;
+    margin-right: 30px;
+    text-align: right;
+    font-family: "Interstate regular";
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: normal;
+    font-size: 14px;
+}
+
+
+
+.hover-track, .play-track-item {
+    background-color: #f2f2f2;
+}
+
+.play-track-item {
+    border-bottom: 1px solid rgb(50, 162, 227);
+    height: 79px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.fa-play-circle, .fa-circle {
+    display: block;
+    position: absolute;
+    top: 23px;
+    left: 45px;
+    width: 100%;
+    height: 100%;
+    content: "";
+    opacity: 1;
+    transition: opacity .3s;
+    background-position: center center;
+    color: rgb(50, 162, 227);
+}
+
+.fa-circle {
+    color: white;
+}
+
+.fa-trash, .fa-pencil-alt {
+    position: relative;
+    left: 3px;
+    top: 0.3px;
+}
+
+.buttons-up-del {
+    position: absolute;
+    left: 65%;
+    top: 35%;
+    width: 100px;
+    height: 50px;
+}
+
+.status-btn:focus {
+    outline: none;
+}
+
+.empty-btn {
+    visibility: hidden;
+}
+
+.hover-i-button {
+    display: inline-block;
+    position: relative;
+    min-width: 18px;
+    height: 20px;
+    line-height: 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    background-color: #fff;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: 0;
+    margin-right: 5px;
+}
+
+.hover-i-button:focus {
+    outline: none;
+}
+
+.hover-i-button:hover {
+    border: 1px solid #999;
+}
+

@@ -7,10 +7,11 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util'
 import MainNavBar from './main_nav_bar/nav_bar'
 import UploadTrack from './upload/upload_track'
 import YouTracks from './current_user_tracks/tracks'
+import MusicPlayer from './current_user_tracks/play_test'
 
 const App = () => {
     return (
-        <div>
+        <div className="app">
             <header>
                 <Route path='/:subpath' component={MainNavBar} />
             </header>
@@ -22,6 +23,8 @@ const App = () => {
                 <ProtectedRoute exact path='/upload' component={UploadTrack}/>
                 <ProtectedRoute exact path='/you/library' component={YouTracks}/>
             </Switch>
+
+            <footer><MusicPlayer /></footer>
         </div>
     )    
 }
