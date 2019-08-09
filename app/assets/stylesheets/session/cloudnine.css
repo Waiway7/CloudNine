@@ -1,3 +1,5 @@
+/* Image from soundcloud */
+
 .logo {
     display: inline-block;
     position: absolute;
@@ -35,7 +37,7 @@
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: "Interstate regular", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
 
@@ -48,5 +50,5 @@
     font-size: 16px;
     display: block;
     line-height: 150%;
-    font-family: "Interstate lite", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
