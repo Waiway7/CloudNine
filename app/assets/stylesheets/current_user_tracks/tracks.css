@@ -16,8 +16,7 @@
     height: 60px;
     background-size: cover;
     background-position: 50% 50%;
-    box-shadow: rgba(0,0,0,.1)0 0 0 1px inset;
-    opacity: 1;
+    box-shadow:black 1px;
     margin-top: 10px;
     margin-right: 10px;
     margin-left: 30px;
@@ -30,10 +29,9 @@
 .user-nav {
     max-width: 100%;
     border-bottom: 1px solid #f2f2f2;
-    list-style: none;
     min-height: 48px;
     margin: 0;
-    font-family: "Interstate regular","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     line-height: 2;
     align-content: center;
@@ -84,7 +82,7 @@
     font-weight: 100;
     line-height: 1.3;
     margin-right: 18px;
-    font-family: "Interstate regular";
+    font-family: Arial, Helvetica, sans-serif;
     display: block;
     padding-left: 25px;
 }
@@ -111,7 +109,6 @@
     border-radius: 4px;
     display: inline-block;
     width: 100%;
-    /* z-index: -1; */
 }
 
 
@@ -128,11 +125,8 @@
 .user-name {
     margin-top: 10px;
     display: block;
-    font-family: "Interstate regular";
+    font-family: Arial, Helvetica, sans-serif;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    word-break: normal;
     font-size: 14px;
     color: #999;
 }
@@ -141,24 +135,18 @@
     display: block;
     /* flex-direction: column; */
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    word-break: normal;
     font-size: 14px;
     line-height: 1.5;
     margin-top: 2px;
-    font-family: "Interstate regular";
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .duration-length {
     display: block;
     margin-right: 30px;
     text-align: right;
-    font-family: "Interstate regular";
+    font-family: Arial, Helvetica, sans-serif;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    word-break: normal;
     font-size: 14px;
 }
 
@@ -182,10 +170,6 @@
     left: 45px;
     width: 100%;
     height: 100%;
-    content: "";
-    opacity: 1;
-    transition: opacity .3s;
-    background-position: center center;
     color: rgb(50, 162, 227);
 }
 
@@ -220,7 +204,6 @@
     position: relative;
     min-width: 18px;
     height: 20px;
-    line-height: 16px;
     border: 1px solid #e5e5e5;
     border-radius: 3px;
     background-color: #fff;

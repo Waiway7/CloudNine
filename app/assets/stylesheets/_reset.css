@@ -35,9 +35,9 @@ html {
 
 header {
 	width: 100%;
+	height: 47px;
 	background-color: transparent;
-	overflow: hidden;
-	display: block;
+	display: flex;
 }
 body {
 	margin: 0 auto;

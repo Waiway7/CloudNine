@@ -1835,7 +1835,9 @@ var navBar = function navBar(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "/discover",
     className: "home-btn"
-  }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "home-text"
+  }, "Home"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/stream",
     style: {
       textDecoration: 'none'
@@ -1843,7 +1845,9 @@ var navBar = function navBar(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "/stream",
     className: "stream-btn"
-  }, "Stream")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "stream-text"
+  }, "Stream"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/you/library",
     style: {
       textDecoration: 'none'
@@ -1851,7 +1855,9 @@ var navBar = function navBar(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "/you/library",
     className: "library-btn"
-  }, "Library"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "library-text"
+  }, "Library")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "search-bar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "search",

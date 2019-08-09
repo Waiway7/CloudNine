@@ -69,10 +69,9 @@
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 50% 50%;
     display: block;
-    background-image: linear-gradient(135deg,#846170,#70929c); 
-    box-shadow: rgba(0,0,0,.1)0 0 0 1px inset;
+    background-image: linear-gradient(150deg, rgba(2,0,36,1) 0%, rgba(150,150,208,1) 0%, rgba(0,251,255,0.5060399159663865) 78%);
+    box-shadow: 1px solid, black;
 }
 
 .upload-title {
@@ -87,7 +86,7 @@
 .title-string {
     display: inline-block;
     font-size: 12px;
-    font-family: "interstate regular";
+    font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 3px;
 }
 .ast {
@@ -100,16 +99,14 @@
     display: flex;
     width: 100%;
     position: relative;
-    z-index: 1;
     display: inline-block;
-    font-family: "interstate regular";
+    font-family: Arial;
     font-weight: 100;
     font-size: 14px;
     line-height: 20px;
     padding: 2px 7px;
     border-radius: 4px;
     border: 1px solid #ccc;
-    transition: border-color .1s;
 }
 
 .track-title:focus, .track-description:focus, .upload-btn:focus, .cancel-btn:focus {
@@ -123,9 +120,8 @@
 
 .track-description {
     position: relative;
-    z-index: 1;
     display: inline-block;
-    font-family: "interstate regular";
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 100;
     font-size: 14px;
     line-height: 20px;
@@ -142,7 +138,7 @@
 
 .description {
     font-size: 12px;
-    font-family: "interstate regular";
+    font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 3px;
 }
 
@@ -159,8 +155,7 @@
     color: #333;
     font-size: 14px;
     line-height: 20px;
-    white-space: nowrap;
-    font-family: "interstate-regular";
+    font-family: Arial, Helvetica, sans-serif
     font-weight: 100;
     text-align: center;
     box-sizing: border-box;
@@ -175,7 +170,7 @@
 
 .upload-text {
     display: inline-block;
-    font-family: "interstate regular";
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .track-image {
@@ -197,7 +192,7 @@
     margin-top: 10px;
     display: block;
     font-size: 12px;
-    font-family: "interstate regular";
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 26px;
     color: rgb(50, 162, 227);
     margin-right: 2px;
@@ -208,7 +203,7 @@
     margin-top: 10px;
     display: block;
     font-size: 12px;
-    font-family: "interstate regular";
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 26px;
 }
 
@@ -223,8 +218,7 @@
     display: inline-block;
     position: relative;
     height: 26px;
-    margin: 0;
-    padding: 2px 11px 2px 10px;
+    margin: 0 auto;
     border: 1px solid #e5e5e5;
     border-radius: 3px;
     margin-top: 10px;
@@ -234,10 +228,9 @@
     font-size: 14px;
     line-height: 20px;
     white-space: nowrap;
-    font-family: "interstate regular";
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 100;
     text-align: center;
-    vertical-align: baseline;
 }
 
 .cancel-btn {
@@ -247,16 +240,13 @@
     position: relative;
     height: 26px;
     margin: 0;
-    padding: 2px 11px 2px 10px;
     border-radius: 3px;
     margin-top: 10px;
     cursor: pointer;
     color: black;
     font-size: 14px;
     line-height: 20px;
-    white-space: nowrap;
-    font-family: "interstate regular";
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 100;
     text-align: center;
-    vertical-align: baseline;
 }

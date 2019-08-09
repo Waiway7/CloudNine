@@ -59,7 +59,8 @@ class Music extends React.Component {
     }
 
     getTime(time){
-        if (!isNaN(time)) {return Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2)}
+        if (!isNaN(time)) 
+            {return Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2)}
     }
 
     render() {

@@ -26,17 +26,17 @@ const navBar = ({currentUser, logout, signup, login}) => {
                     </Link>
                     <Link to="/discover" style={{textDecoration: 'none'}}>
                         <div id="/discover" className="home-btn">
-                            Home
+                            <p className="home-text">Home</p>
                         </div>
                     </Link>
                     <Link to="/stream" style={{textDecoration: 'none'}}>
                         <div id="/stream" className="stream-btn">
-                            Stream
+                        <p className="stream-text">Stream</p>
                         </div>
                     </Link>
                     <Link to="/you/library" style={{textDecoration: 'none'}}>
                         <div id="/you/library" className="library-btn">
-                            Library
+                            <p className="library-text">Library</p>
                         </div>
                     </Link>
                 </div>
