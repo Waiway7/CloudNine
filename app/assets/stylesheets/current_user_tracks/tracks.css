@@ -92,6 +92,7 @@
     padding-right: 30px;
     padding-left: 30px;
     display: block;
+    min-height: 100%;
 }
 
 .track-item {
@@ -219,5 +220,9 @@
 
 .hover-i-button:hover {
     border: 1px solid #999;
+}
+
+.track-list-container {
+    min-height: 100%;
 }
 

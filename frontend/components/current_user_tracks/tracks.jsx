@@ -62,7 +62,7 @@ class Tracks extends React.Component {
                 <UserNav pathname={this.props.location.pathname}/>
                 <div className="header-tracks"><h1 className="your-tracks">Your Tracks</h1></div>
                 <div className="track-list-container">
-                <ul className="user-track-list">{trackList}</ul>
+                    <ul className="user-track-list">{trackList}</ul>
                 </div>
                 {modalComponent}
                 {/* <UploadModal track={this.props.tracks} modal={this.props.modal}/> */}
