@@ -273,6 +273,7 @@ var deleteTrack = function deleteTrack(id) {
 };
 var updateTrack = function updateTrack(track, id) {
   return function (dispatch) {
+    debugger;
     return _util_crud_tracks_util__WEBPACK_IMPORTED_MODULE_0__["updateTrack"](track, id).then(function (track) {
       return dispatch(receiveTrack(track));
     }, function (error) {
@@ -543,15 +544,7 @@ function (_React$Component) {
   }, {
     key: "handleCancel",
     value: function handleCancel() {
-      this.setState({
-        title: this.props.track.title,
-        description: this.props.track.description,
-        image: this.props.track.imageUrl,
-        audio: this.props.track.audioUrl,
-        playlistId: null,
-        uploaderId: this.props.track.uploader_id
-      });
-      this.props.closeUploadModal();
+      this.closeModal(); // this.props.closeUploadModal()
     }
   }, {
     key: "update",
@@ -569,14 +562,15 @@ function (_React$Component) {
       var formData = new FormData();
       formData.append('track[title]', this.state.title);
       formData.append('track[playlist_id]', this.state.playlistId);
-      formData.append('track[description]', this.state.description);
-      formData.append('track[audio]', this.state.audio);
+      formData.append('track[description]', this.state.description); // formData.append('track[audio]', this.state.audio);
+
       formData.append('track[uploader_id]', this.state.uploaderId);
 
       if (this.state.image) {
         formData.append('track[image]', this.state.image);
       }
 
+      debugger;
       this.props.updateTrack(formData, this.props.track.id);
     }
   }, {
@@ -601,7 +595,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-upload-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container-upload"
+        className: "container-upload",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-nav"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -653,7 +650,7 @@ function (_React$Component) {
         className: "upload-buttons"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "cancel-btn",
-        onClick: this.handleCancel
+        onClick: this.closeModal
       }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "upload-btn"
       }, "Update"))))))));
@@ -2623,6 +2620,7 @@ __webpack_require__.r(__webpack_exports__);
 var modalReducer = function modalReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
 
   switch (action.type) {
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL"]:
@@ -2713,6 +2711,7 @@ __webpack_require__.r(__webpack_exports__);
 var modalUploadReducer = function modalUploadReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
 
   switch (action.type) {
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_UPLOAD_MODAL"]:

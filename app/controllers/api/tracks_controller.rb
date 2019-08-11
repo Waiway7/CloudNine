@@ -32,12 +32,11 @@ class Api::TracksController < ApplicationController
 
     def update
         @track = Track.find(params[:id])
-        if (@track.image.attached?)
+        if !image_param[:image].include?('/rails/active_storage')
             @track.image.purge
+            @track.image.attach(image_param[:image])
         end
-        @track.image.attach(image_param[:image])
-        if @track.update(no_blob_params)
-
+        if @track.update(update_params)
             render "api/tracks/show"
         else
             render @track.errors.full_messages, status: 401
@@ -55,7 +54,7 @@ class Api::TracksController < ApplicationController
         params.require(:track).permit(:title, :description, :playlist_id, :audio, :image, :uploader_id)
     end
 
-    def no_blob_params
+    def update_params
         params.require(:track).permit(:title, :description, :playlist_id, :uploader_id)
     end
 

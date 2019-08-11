@@ -49,6 +49,7 @@ export const deleteTrack = (id) => {
 
 export const updateTrack = (track, id) => {
     return dispatch => {
+        debugger
         return TrackApiUtil.updateTrack(track, id)
             .then( track => dispatch(receiveTrack(track)), error => {
                 return dispatch(receiveErrors(error.responseJSON))

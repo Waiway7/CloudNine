@@ -14,7 +14,7 @@ class UpdateModal extends React.Component{
             // imagePreview: this.props.track.imageUrl
         }
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.closeModal = this.props.closeUploadModal.bind(this);
+        this.closeModal = this.props.closeUploadModal.bind(this)
     }
 
     handleImageFile(e) {
@@ -40,16 +40,8 @@ class UpdateModal extends React.Component{
     // }
 
     handleCancel(){
-        this.setState({
-            title: this.props.track.title, 
-            description: this.props.track.description, 
-            image: this.props.track.imageUrl,
-            audio: this.props.track.audioUrl,
-            playlistId: null,
-            uploaderId: this.props.track.uploader_id,
-        })
-        this.props.closeUploadModal();
-
+        this.closeModal();
+        // this.props.closeUploadModal()
     }
     
     update(field) {
@@ -62,11 +54,12 @@ class UpdateModal extends React.Component{
         formData.append('track[title]', this.state.title);
         formData.append('track[playlist_id]', this.state.playlistId);
         formData.append('track[description]', this.state.description);
-        formData.append('track[audio]', this.state.audio);
+        // formData.append('track[audio]', this.state.audio);
         formData.append('track[uploader_id]', this.state.uploaderId);
         if (this.state.image) {
             formData.append('track[image]', this.state.image)
         }
+        debugger
         this.props.updateTrack(formData, this.props.track.id)
     }
 
@@ -77,7 +70,7 @@ class UpdateModal extends React.Component{
                 <div className="modal-background" onClick={() => this.closeModal()}>
                     <div className="upload-dropdown">
                 <div className="form-upload-main">
-                    <div className="container-upload">  
+                    <div className="container-upload" onClick={e => e.stopPropagation()}>  
                     <div className="form-nav">
                         <div className="basic-info">Basic info</div>
                     </div>
@@ -112,7 +105,7 @@ class UpdateModal extends React.Component{
                         <div className="footer-upload">
                             <div className="aster">*</div><div className="require">Required</div>
                             <div className="upload-buttons">
-                                <button className="cancel-btn" onClick={this.handleCancel}>Cancel</button>
+                                <button className="cancel-btn" onClick={this.closeModal}>Cancel</button>
                                 <button className="upload-btn">Update</button>
                             </div>
                         </div>
