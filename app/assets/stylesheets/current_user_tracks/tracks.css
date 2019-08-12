@@ -2,7 +2,7 @@
     position: relative;
     top: 0;
     bottom: 0;
-    height: auto;
+    min-height: 800px;
     min-width: 920px;
     margin: 0 auto;
     max-width: 1180px;
