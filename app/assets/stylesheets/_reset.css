@@ -34,7 +34,7 @@ header {
 	background-color: transparent;
 	display: flex;
 }
-body {
+html, body {
 	margin: 0 auto;
 	background-color: #f2f2f2;
 }
