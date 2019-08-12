@@ -13,13 +13,13 @@ class Music extends React.Component {
 
 
     togglePlay() {
+        if (this.props.track.src) {
         this.setState({ 
           duration: this.props.track.duration,
           currentTime: this.props.track.currentTime
         })
         this.props.receivePlay()
-        debugger
-        this.props.track.play()
+        this.props.track.play()}
     }
 
     togglePause() {
@@ -43,6 +43,7 @@ class Music extends React.Component {
                     currentTime: e.target.currentTime,
                     duration: e.target.duration
             })})}
+      
         
     }
 
@@ -73,22 +74,34 @@ class Music extends React.Component {
         if (this.getTime(this.state.duration)) {
             duration = this.getTime(this.state.duration)
         }
-      let play;
+        let play;
 
-      if (this.props.play != true || currentTime === duration) { 
-        play = 
+        if (this.props.play != true || currentTime === duration) { 
+          play = 
 
-            <button className="status-btn" onClick={this.togglePlay}>
-                <i className="fas fa-play"></i>
-            </button>
+              <button className="status-btn" onClick={this.togglePlay}>
+                  <i className="fas fa-play"></i>
+              </button>
 
-      }  
-      else ( 
-        play = 
-            <button className="status-btn" onClick={this.togglePause}>
-                <i className="fas fa-pause"></i>
-            </button>
-      )
+        }  
+        else ( 
+          play = 
+              <button className="status-btn" onClick={this.togglePause}>
+                  <i className="fas fa-pause"></i>
+              </button>
+        )
+        let content;
+        if (this.props.track.src){
+            content =
+                <div className="info-container">
+                    <img className="preview-music" src={this.props.info.imageUrl} />
+                    <div className="title-uploader">
+                        <p className="music-uploader">Cloudnine</p>
+                        <p className="music-track-title">{this.props.info.title}</p>
+                    </div>
+                </div>
+        }
+      
 
       return (
         <div className="player-container">
@@ -103,17 +116,22 @@ class Music extends React.Component {
                 <div className="track-time">{duration}</div>
                 <div className="volume"><i className="fas fa-volume-up"></i></div>
             </div>
+           {content}
         </div>
       );
     }
 }
 
 const msp = (state) => {
+    const track = state.entities.currentTrack.audio || {};
+    const info = state.entities.currentTrack.info || {};
     return {
         trackList: state.entities.tracks,
         library: state.entities.tracklist,
         play: state.ui.player,
-        track: state.entities.currentTrack
+        user: state.session,
+        track,
+        info
     }
 }
 

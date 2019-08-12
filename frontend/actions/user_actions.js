@@ -32,9 +32,10 @@ export const receiveLibrary = (library) => {
     }
 }
 
-export const receiveCurrentAudio = (track) => {
+export const receiveCurrentAudio = (track, trackInfo) => {
     return {
         type: RECEIVE_CURRENT_AUDIO,
-        track
+        track,
+        trackInfo
     }
 }

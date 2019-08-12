@@ -350,10 +350,11 @@ var receiveLibrary = function receiveLibrary(library) {
     library: library
   };
 };
-var receiveCurrentAudio = function receiveCurrentAudio(track) {
+var receiveCurrentAudio = function receiveCurrentAudio(track, trackInfo) {
   return {
     type: RECEIVE_CURRENT_AUDIO,
-    track: track
+    track: track,
+    trackInfo: trackInfo
   };
 };
 
@@ -727,13 +728,14 @@ function (_React$Component) {
   _createClass(Music, [{
     key: "togglePlay",
     value: function togglePlay() {
-      this.setState({
-        duration: this.props.track.duration,
-        currentTime: this.props.track.currentTime
-      });
-      this.props.receivePlay();
-      debugger;
-      this.props.track.play();
+      if (this.props.track.src) {
+        this.setState({
+          duration: this.props.track.duration,
+          currentTime: this.props.track.currentTime
+        });
+        this.props.receivePlay();
+        this.props.track.play();
+      }
     }
   }, {
     key: "togglePause",
@@ -811,6 +813,23 @@ function (_React$Component) {
         className: "fas fa-pause"
       }));
 
+      var content;
+
+      if (this.props.track.src) {
+        content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "preview-music",
+          src: this.props.info.imageUrl
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "title-uploader"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "music-uploader"
+        }, "Cloudnine"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "music-track-title"
+        }, this.props.info.title)));
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "player-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -831,7 +850,7 @@ function (_React$Component) {
         className: "volume"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-volume-up"
-      }))));
+      }))), content);
     }
   }]);
 
@@ -839,11 +858,15 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var msp = function msp(state) {
+  var track = state.entities.currentTrack.audio || {};
+  var info = state.entities.currentTrack.info || {};
   return {
     trackList: state.entities.tracks,
     library: state.entities.tracklist,
     play: state.ui.player,
-    track: state.entities.currentTrack
+    user: state.session,
+    track: track,
+    info: info
   };
 };
 
@@ -973,24 +996,29 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "handleClick",
+    value: function handleClick(e) {}
+  }, {
     key: "handlePlay",
     value: function handlePlay(e) {
-      var value = e.currentTarget.id; // this.props.receivePause();
+      var value = e.currentTarget.id;
+      var audio = this.props.trackList[value]; // this.props.receivePause();debugge
 
-      if (this.state.value === value && !this.props.play) {
+      if (this.props.currentTrackInfo.id === Number(value) && !this.props.play) {
         this.props.receivePlay();
         this.props.audio.play();
+      } else if (this.props.play && this.props.currentTrackInfo.id === Number(value)) {
+        this.props.receivePause();
+        this.props.audio.pause();
       } else {
         if (this.props.play) {
+          this.props.receivePause();
           this.props.audio.pause();
         }
 
         this.props.receivePlay();
         this.props.receiveLibrary(this.props.trackList);
-        this.props.receiveCurrentAudio(new Audio(this.props.trackList[value].audioUrl));
-        this.setState({
-          value: value
-        });
+        this.props.receiveCurrentAudio(new Audio(audio.audioUrl), audio);
       } // this.props.song.play()
       // this.props.receivePlay();
       // if (value === this.state.play) {
@@ -1005,18 +1033,21 @@ function (_React$Component) {
 
       var date;
       var track = this.props.track;
-      var hover = this.state.hover ? "hover-track" : "track-item-container";
-      var bottomBorder = this.state.hover ? "play-track-item" : "track-item-container";
-      var hoverPlay = this.state.hover ? "fas fa-play-circle fa-2x" : "";
-      var hoverCircle = this.state.hover ? "fas fa-circle fa-2x" : "";
-      var hoverTrash = this.state.hover ? "hover-i-button" : "empty-btn"; // const puasePlayer = this.sta
-      // if (this.state.hover === true || Number(this.state.value) === track.id) {
-      //     hover = "hover-track";
-      //     bottomBorder = "play-track-item";
-      // } else {
-      //     hover = "track-item-container"
-      //     bottomBorder = "track-item-container"
-      // }
+      var id = this.props.currentTrackInfo.id;
+      var play = this.props.play;
+      var hover = this.state.hover || id === track.id && play ? "hover-track" : "track-item-container";
+      var bottomBorder = this.state.hover || id === track.id && play ? "play-track-item" : "track-item-container";
+      var hoverPlay;
+      var hoverCircle = this.state.hover || id === track.id && play ? "fas fa-circle fa-2x" : "";
+      var hoverTrash = this.state.hover || id === track.id && play ? "hover-i-button" : "empty-btn";
+
+      if (id === track.id && play) {
+        hoverPlay = "fas fa-pause-circle fa-2x";
+      } else if (!this.state.hover) {
+        hoverPlay = "";
+      } else if (this.state.hover && id != track.id || !play) {
+        hoverPlay = "fas fa-play-circle fa-2x";
+      }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         key: "audio".concat(track.id),
@@ -1029,13 +1060,15 @@ function (_React$Component) {
         key: "img-".concat(track.id),
         className: "preview",
         src: track.imageUrl
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "play-pause-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: hoverCircle
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: hoverPlay,
         id: track.id,
         onClick: this.handlePlay.bind(this)
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "track-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "user-name"
@@ -1071,11 +1104,12 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var msp = function msp(state) {
+  var currentTrackInfo = state.entities.currentTrack.info || {};
   return {
     trackList: state.entities.tracks,
     play: state.ui.player,
-    audio: state.entities.currentTrack // currentTrack: state.entities.player
-
+    audio: state.entities.currentTrack.audio,
+    currentTrackInfo: currentTrackInfo
   };
 };
 
@@ -1090,8 +1124,8 @@ var mdp = function mdp(dispatch) {
     receivePlay: function receivePlay() {
       return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__["receivePlay"])());
     },
-    receiveCurrentAudio: function receiveCurrentAudio(audio) {
-      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__["receiveCurrentAudio"])(audio));
+    receiveCurrentAudio: function receiveCurrentAudio(audio, info) {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__["receiveCurrentAudio"])(audio, info));
     }
   };
 };
@@ -2395,7 +2429,10 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_AUDIO"]:
-      return action.track;
+      return {
+        audio: action.track,
+        info: action.trackInfo
+      };
 
     default:
       return state;

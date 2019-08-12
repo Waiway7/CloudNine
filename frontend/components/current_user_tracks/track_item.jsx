@@ -57,19 +57,28 @@ class TrackItem extends React.Component {
         this.setState({hover: false})
     }
 
+    handleClick(e){
+    }
+
     handlePlay(e){
         const value = e.currentTarget.id;
-        // this.props.receivePause();
-        if (this.state.value === value && !this.props.play) {
+        const audio = this.props.trackList[value];
+        // this.props.receivePause();debugge
+        if (this.props.currentTrackInfo.id === Number(value) && !this.props.play) {
             this.props.receivePlay();
             this.props.audio.play();
+        } else  if (this.props.play && this.props.currentTrackInfo.id === Number(value)){
+            this.props.receivePause();
+            this.props.audio.pause();
         }
         else {
-            if (this.props.play){ this.props.audio.pause();}
-        this.props.receivePlay();
-        this.props.receiveLibrary(this.props.trackList);
-        this.props.receiveCurrentAudio(new Audio(this.props.trackList[value].audioUrl));
-        this.setState({value})
+            if (this.props.play){ 
+                this.props.receivePause();
+                this.props.audio.pause();
+            }
+            this.props.receivePlay();
+            this.props.receiveLibrary(this.props.trackList);
+            this.props.receiveCurrentAudio(new Audio(audio.audioUrl), audio);
     }
         // this.props.song.play()
         
@@ -81,28 +90,36 @@ class TrackItem extends React.Component {
 
     render() {
         let date;
-        const {track} = this.props;
-        let hover = this.state.hover ? "hover-track" : "track-item-container";
-        let bottomBorder = this.state.hover ? "play-track-item" : "track-item-container";
-        let hoverPlay = this.state.hover ? "fas fa-play-circle fa-2x" : "";
-        let hoverCircle = this.state.hover ? "fas fa-circle fa-2x" : "";
-        let hoverTrash = this.state.hover ? "hover-i-button" : "empty-btn";
-        // const puasePlayer = this.sta
+        const {track} = this.props; 
+        const {id} = this.props.currentTrackInfo;
+        const {play} = this.props
+        const hover = this.state.hover || (id === track.id && play)  ? "hover-track" : "track-item-container";
+        const bottomBorder = this.state.hover || (id === track.id && play)? "play-track-item" : "track-item-container";
+        let hoverPlay;
+        const hoverCircle = this.state.hover || (id === track.id && play) ? "fas fa-circle fa-2x" : "";
+        const hoverTrash = this.state.hover || (id === track.id && play)  ? "hover-i-button" : "empty-btn";
         
-        // if (this.state.hover === true || Number(this.state.value) === track.id) {
-        //     hover = "hover-track";
-        //     bottomBorder = "play-track-item";
-        // } else {
-        //     hover = "track-item-container"
-        //     bottomBorder = "track-item-container"
-        // }
+        if (id === track.id && play) {
+            hoverPlay = "fas fa-pause-circle fa-2x" 
+        }
+        else if (!this.state.hover) {
+            hoverPlay = ""
+        }
+        else if (this.state.hover && id != track.id || !play) {
+            hoverPlay =  "fas fa-play-circle fa-2x"
+        }
+
         return (
             <li key={`audio${track.id}`} className={"track-item"}>
-                <div className={`${bottomBorder} ${hover}`} onMouseOver={this.onHover.bind(this)} onMouseOut={this.offHover.bind(this)}>
-                   
+                <div className={`${bottomBorder} ${hover}` } 
+                    onMouseOver={this.onHover.bind(this)} 
+                    onMouseOut={this.offHover.bind(this)}
+                    >
                     <img key={`img-${track.id}`} className="preview" src={track.imageUrl} />
-                    <i className={hoverCircle} ></i> 
-                    <i className={hoverPlay} id={track.id} onClick={this.handlePlay.bind(this)}></i>                
+                    <div className="play-pause-container">
+                        <i className={hoverCircle} ></i> 
+                        <i className={hoverPlay} id={track.id} onClick={this.handlePlay.bind(this)}></i>
+                    </div>
                     <div className="track-info">
                         <span className="user-name">{this.props.user.username}</span>
                         <span className="song-title">{track.title}</span>
@@ -133,12 +150,12 @@ class TrackItem extends React.Component {
 
 
 const msp = (state) => {
+    const currentTrackInfo = state.entities.currentTrack.info || {}
     return {
         trackList: state.entities.tracks,
         play: state.ui.player,
-        audio: state.entities.currentTrack
-
-        // currentTrack: state.entities.player
+        audio: state.entities.currentTrack.audio,
+        currentTrackInfo
     }
 }
 
@@ -147,7 +164,7 @@ const mdp = (dispatch) => {
         receiveLibrary: (library) => dispatch(receiveLibrary(library)),
         receivePause: () => dispatch(receivePause()),
         receivePlay: () => dispatch(receivePlay()),
-        receiveCurrentAudio: (audio) => dispatch(receiveCurrentAudio(audio)) 
+        receiveCurrentAudio: (audio, info) => dispatch(receiveCurrentAudio(audio, info)) 
     }
 }
 
