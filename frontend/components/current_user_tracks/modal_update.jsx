@@ -11,7 +11,6 @@ class UpdateModal extends React.Component{
             audio: this.props.track.audioUrl,
             playlistId: null,
             uploaderId: this.props.track.uploader_id,
-            // imagePreview: this.props.track.imageUrl
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.closeModal = this.props.closeUploadModal.bind(this)

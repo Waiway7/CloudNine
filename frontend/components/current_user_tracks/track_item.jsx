@@ -2,7 +2,7 @@ import React from 'react';
 import UploadModal from "./modal_update"
 import Music from "./play_test";
 import {connect} from "react-redux"
-import {receiveLibrary, receivePlay, receivePause} from "../../actions/user_actions"
+import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "../../actions/user_actions"
 
 // const TrackItem = ({track, modal, updateTrack, deleteTrack, openUploadModal, closeUploadModal}) => {
 
@@ -29,7 +29,6 @@ class TrackItem extends React.Component {
         super(props)
         this.state = {
             hover: false,
-            play: null
         }
         this.audio = new Audio(this.props.track.audioUrl)
         // this.audio.addEventListener('loadedmetadata', () => 
@@ -60,27 +59,43 @@ class TrackItem extends React.Component {
 
     handlePlay(e){
         const value = e.currentTarget.id;
-        this.props.receivePause();
-        this.props.receiveLibrary(this.props.trackList[value]);
+        // this.props.receivePause();
+        if (this.state.value === value && !this.props.play) {
+            this.props.receivePlay();
+            this.props.audio.play();
+        }
+        else {
+            if (this.props.play){ this.props.audio.pause();}
+        this.props.receivePlay();
+        this.props.receiveLibrary(this.props.trackList);
+        this.props.receiveCurrentAudio(new Audio(this.props.trackList[value].audioUrl));
+        this.setState({value})
+    }
+        // this.props.song.play()
+        
         // this.props.receivePlay();
-        if (value === this.state.play) {
-            this.setState({play: null})
-        } else {this.setState({play: `play-${this.props.track.id}`})}
+        // if (value === this.state.play) {
+        //     this.setState({play: null})
+        // } 
     }
 
     render() {
         let date;
         const {track} = this.props;
-        const hover = this.state.hover ? "hover-track" : "track-item-container";
-        const bottomBorder = this.state.hover ? "play-track-item" : "track-item-container";
-        const hoverPlay = this.state.hover ? "fas fa-play-circle fa-2x" : "";
-        const hoverCircle = this.state.hover ? "fas fa-circle fa-2x" : "";
-        const hoverTrash = this.state.hover ? "hover-i-button" : "empty-btn";
-        const pauseCircle = this.state.play != track.id && this.state.play ? "fas fa-play-circle fa-2x" : "";
+        let hover = this.state.hover ? "hover-track" : "track-item-container";
+        let bottomBorder = this.state.hover ? "play-track-item" : "track-item-container";
+        let hoverPlay = this.state.hover ? "fas fa-play-circle fa-2x" : "";
+        let hoverCircle = this.state.hover ? "fas fa-circle fa-2x" : "";
+        let hoverTrash = this.state.hover ? "hover-i-button" : "empty-btn";
         // const puasePlayer = this.sta
-
-        if (this.props.track.created_at){
-             date = new Date(track.created_at)}
+        
+        // if (this.state.hover === true || Number(this.state.value) === track.id) {
+        //     hover = "hover-track";
+        //     bottomBorder = "play-track-item";
+        // } else {
+        //     hover = "track-item-container"
+        //     bottomBorder = "track-item-container"
+        // }
         return (
             <li key={`audio${track.id}`} className={"track-item"}>
                 <div className={`${bottomBorder} ${hover}`} onMouseOver={this.onHover.bind(this)} onMouseOut={this.offHover.bind(this)}>
@@ -120,16 +135,19 @@ class TrackItem extends React.Component {
 const msp = (state) => {
     return {
         trackList: state.entities.tracks,
-        song: state.entities.tracklist,
-        play: state.ui.player
+        play: state.ui.player,
+        audio: state.entities.currentTrack
+
+        // currentTrack: state.entities.player
     }
 }
 
 const mdp = (dispatch) => {
     return {
-        receiveLibrary: (track) => dispatch(receiveLibrary(track)),
+        receiveLibrary: (library) => dispatch(receiveLibrary(library)),
         receivePause: () => dispatch(receivePause()),
-        receivePlay: () => dispatch(receivePlay())
+        receivePlay: () => dispatch(receivePlay()),
+        receiveCurrentAudio: (audio) => dispatch(receiveCurrentAudio(audio)) 
     }
 }
 

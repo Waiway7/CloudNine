@@ -9,39 +9,41 @@ class Music extends React.Component {
         }
         this.togglePlay = this.togglePlay.bind(this);
         this.togglePause = this.togglePause.bind(this);
-        this.player = new Audio()
     }
 
 
     togglePlay() {
         this.setState({ 
-          duration: this.player.duration,
-          currentTime: this.player.currentTime
+          duration: this.props.track.duration,
+          currentTime: this.props.track.currentTime
         })
         this.props.receivePlay()
-        this.player.play()
+        debugger
+        this.props.track.play()
     }
 
     togglePause() {
 
         this.props.receivePause()
-        this.player.pause()
+        this.props.track.pause()
 
     }
 
     componentDidUpdate(prevProps){
-        if (prevProps.track.id != this.props.track.id){
-            if (this.player.src){
-                this.player.pause()
-            }
-            this.player.src = this.props.track.audioUrl;
-            this.player.play();
-            this.props.receivePlay();
-            this.player.addEventListener("timeupdate", e => {
+        if (prevProps.track.src != this.props.track.src){
+            // if (this.props.track.src){
+            //     this.props.track.pause()
+            // }
+            // this.player.src = this.props.track.audioUrl;
+            // this.player.play();
+            // this.props.receivePlay();
+            this.props.track.play()
+            this.props.track.addEventListener("timeupdate", e => {
                 this.setState({
                     currentTime: e.target.currentTime,
                     duration: e.target.duration
             })})}
+        
     }
 
     // componentDidMount(){
@@ -53,10 +55,10 @@ class Music extends React.Component {
     //     })})}
     // }
 
-    componentWillUnmount() {
-        if (this.props.track.audioUrl){
-        this.player.removeEventListener("timeupdate", () => {})};
-    }
+    // componentWillUnmount() {
+    //     if (this.props.track.audioUrl){
+    //     this.player.removeEventListener("timeupdate", () => {})};
+    // }
 
     getTime(time){
         if (!isNaN(time)) 
@@ -76,14 +78,14 @@ class Music extends React.Component {
       if (this.props.play != true || currentTime === duration) { 
         play = 
 
-            <button className="status-btn" key={`play-${this.props.track.id}`} onClick={this.togglePlay}>
+            <button className="status-btn" onClick={this.togglePlay}>
                 <i className="fas fa-play"></i>
             </button>
 
       }  
       else ( 
         play = 
-            <button className="status-btn" key={`play-${this.props.track.id}`} onClick={this.togglePause}>
+            <button className="status-btn" onClick={this.togglePause}>
                 <i className="fas fa-pause"></i>
             </button>
       )
@@ -109,8 +111,9 @@ class Music extends React.Component {
 const msp = (state) => {
     return {
         trackList: state.entities.tracks,
-        track: state.entities.tracklist,
-        play: state.ui.player
+        library: state.entities.tracklist,
+        play: state.ui.player,
+        track: state.entities.currentTrack
     }
 }
 
