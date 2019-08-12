@@ -7,6 +7,10 @@
     margin: 0 auto;
     max-width: 1180px;
     background-color: #fff;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .preview {
@@ -92,7 +96,7 @@
     padding-right: 30px;
     padding-left: 30px;
     display: block;
-    min-height: 100%;
+    min-height: 100vh;
 }
 
 .track-item {
@@ -234,7 +238,7 @@
 }
 
 .track-list-container {
-    min-height: 100%;
+    min-height: 100vh;
 }
 
 
