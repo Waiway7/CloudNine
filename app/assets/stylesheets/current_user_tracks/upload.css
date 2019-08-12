@@ -7,12 +7,14 @@
 .upload-page {
         margin: 0 auto;
         width: 800px;
+        height: 100vh;
 }
 
 .fillblock {
         width: 800px;
         height: 90px;
         margin: 0 auto;
+
 }
 
 .upload-shrink-container {
