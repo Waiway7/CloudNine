@@ -58,8 +58,7 @@ class UpdateModal extends React.Component{
         if (this.state.image) {
             formData.append('track[image]', this.state.image)
         }
-        debugger
-        this.props.updateTrack(formData, this.props.track.id)
+        this.props.updateTrack(formData, this.props.track.id).then(() => this.handleCancel())
     }
 
     render () {

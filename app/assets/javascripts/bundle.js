@@ -567,6 +567,8 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this4 = this;
+
       e.preventDefault();
       var formData = new FormData();
       formData.append('track[title]', this.state.title);
@@ -579,13 +581,14 @@ function (_React$Component) {
         formData.append('track[image]', this.state.image);
       }
 
-      debugger;
-      this.props.updateTrack(formData, this.props.track.id);
+      this.props.updateTrack(formData, this.props.track.id).then(function () {
+        return _this4.handleCancel();
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       var preview = this.state.imagePreview ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "empty-profile",
@@ -597,7 +600,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-background",
         onClick: function onClick() {
-          return _this4.closeModal();
+          return _this5.closeModal();
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-dropdown"
