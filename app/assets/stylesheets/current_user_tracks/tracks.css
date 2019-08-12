@@ -3,14 +3,11 @@
     top: 0;
     bottom: 0;
     min-height: 800px;
-    min-width: 920px;
+    min-width: 100vh;
     margin: 0 auto;
     max-width: 1180px;
     background-color: #fff;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    overflow:hidden;
 }
 
 .preview {
