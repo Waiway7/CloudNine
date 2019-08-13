@@ -1,6 +1,9 @@
 /* Image from soundcloud */
-
-.logo {
+/* Image for .frontHero background image.
+Credit goes to Kristopher Roller on unsplash.com. Please visit his profile
+if you like the image.
+https://unsplash.com/photos/zepnJQycr4U */
+.logo-text{
     display: inline-block;
     position: absolute;
     left: 30px;
@@ -9,16 +12,27 @@
     font-family: "Interstate regular", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
     color: white;
 }
+.logo-background{
+    position: absolute;
+    left: -17px;
+    top: -13px;
+    width: 190px;
+    height: 90px;
+    transform: rotate(220deg);
+}
+
+
+
+/* .logo-background {} */
 
 .frontHero {
-    background-image: url(https://a-v2.sndcdn.com/assets/images/home/hp_image_creator_slide-50cfacf.jpg);
+    background-image: url(https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
     /* background-image: image-url("nightsky.jpg"); */
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
     max-width: 1180px;
     min-width: 920px;
-
 }
 
 .frontHeroContainer {
@@ -34,7 +48,7 @@
 .frontHero-content {
     color: white;
     position: relative;
-    top: 35%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: Arial, Helvetica, sans-serif;
@@ -51,6 +65,14 @@
     display: block;
     line-height: 150%;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.splash {
+    min-height: 100vh;
+    max-width: 1180px;
+    min-width: 920px;
+    margin: 0 auto;
+    background-color: white;
 }
 
 

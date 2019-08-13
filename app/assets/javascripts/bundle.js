@@ -2085,18 +2085,33 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "frontHeroContainer"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "frontHero"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "logo"
-  }, "CLOUDNINE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_nav_bar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "logo-background",
+    src: "https://cloudnine-upload-dev.s3.amazonaws.com/5d51df08e88bf.png"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "logo-text"
+  }, "CLOUDNINE")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_nav_bar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "frontHero-content"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "frontHero-title"
   }, "Discover music that's so free! LITERALLY!!!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "frontHero-description"
-  }, "Enjoy our free Royalty music. Here you don't need to be afraid of copyright infringement!"))));
+  }, "Enjoy our free Royalty music. Here you don't need to be afraid of copyright infringement!")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "upload-search-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "search-splash",
+    type: "text",
+    placeholder: "Search.."
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "upload-splash"
+  }, "Upload your own")));
 });
 
 /***/ }),
