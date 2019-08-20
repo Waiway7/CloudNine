@@ -73,13 +73,19 @@ class Modal extends React.Component{
             let changeModal;
             let formType;
             let message;
+            let formTitle;
+            let formText
             modal === 'signup' ? changeModal= 'login' : changeModal = 'signup'; 
             modal === 'signup' ? formType = 'Sign in' : formType = 'Create account'; 
             modal === 'login' ? message = "Don't have an account?" : message = "Have an account?";
+            modal === 'login' ? formTitle = "Login now to access your music" : formTitle = "Create your CloudNine account";
+            modal === 'login' ? formText = "login-form-title" : formText = "signup-form-title";
+
             return (
                 <div className="modal-background" onClick={() => this.closeModal()}>
                 <div className="close-x-btn" onClick={() => this.closeModal()}>X</div>
                     <div className="modal-form" onClick={e => e.stopPropagation()}>
+                        <div className={formText}>{formTitle}</div>
                         <div className="modal-container">
                             {this.switchForm()}
                             {this.successfulLogin()}

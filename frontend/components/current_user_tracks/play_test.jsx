@@ -101,9 +101,10 @@ class Music extends React.Component {
                     </div>
                 </div>
         }
-      
-
-      return (
+        let musicPlayer = (<div></div>);
+       if (this.props.play != null) {
+        musicPlayer =  (
+        <footer>
         <div className="player-container">
             <div className="button-container">
                 <i className="fas fa-step-backward"></i>
@@ -118,7 +119,9 @@ class Music extends React.Component {
             </div>
            {content}
         </div>
-      );
+        </footer>
+      ) }
+      return musicPlayer
     }
 }
 

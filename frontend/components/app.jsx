@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
-import FrontHero from './splash/banner'
+import FrontHero from "./splash/splash"
 import NavBarContainer from '../components/navbar/nav_bar_container';
 import SessionModal from '../components/form/session_modal_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
@@ -9,7 +9,7 @@ import UploadTrack from './upload/upload_track'
 import YouTracks from './current_user_tracks/tracks'
 import MusicPlayer from './current_user_tracks/play_test'
 
-const App = () => {
+const App = () => {    
     return (
         <div className="app">
             <header>
@@ -22,11 +22,15 @@ const App = () => {
                 <AuthRoute exact path='/' component={FrontHero}/>
                 <ProtectedRoute exact path='/upload' component={UploadTrack}/>
                 <ProtectedRoute exact path='/you/library' component={YouTracks}/>
+                <Route path="/discover"/>
             </Switch>
 
-            <footer><MusicPlayer /></footer>
+            <MusicPlayer />
         </div>
     )    
 }
 
+
+
 export default App;
+

@@ -1,5 +1,5 @@
 .modal-background {
-    background-color: rgba(242,242,242,.9);
+    background-color: rgba(242,242,242, 0.5);
     position: fixed;
     z-index: 10;
     top: 0;
@@ -34,9 +34,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -52%);
-    background: white;
+    background: #fff;
     width: 450px;
     height: 80%;
+    border-radius: 3px;
 }
 
 
@@ -51,7 +52,7 @@
 .modal-container {
     position: relative;
     height: 70%;
-    top: 50;
+    top: -10%;
     left: 50%;
     transform: translate(-50%, 20%);
 }
@@ -66,6 +67,7 @@
     padding: 10px;
     border-radius: 3px;
     margin-bottom: 15px;
+    outline: black;
 }
 
 .submit-form {
@@ -127,4 +129,24 @@
     border-radius: 3px;
     color: white;
     cursor: pointer;
+}
+
+.login-form-title {
+    margin: 0 auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    width: 350px;
+    margin-top: 70px;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.signup-form-title {
+    margin: 0 auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    width: 400px;
+    margin-top: 50px;
+    font-size: 32px;
+    font-weight: 400;
 }

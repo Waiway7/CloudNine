@@ -418,7 +418,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _splash_banner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./splash/banner */ "./frontend/components/splash/banner.jsx");
+/* harmony import */ var _splash_splash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./splash/splash */ "./frontend/components/splash/splash.jsx");
 /* harmony import */ var _components_navbar_nav_bar_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/navbar/nav_bar_container */ "./frontend/components/navbar/nav_bar_container.js");
 /* harmony import */ var _components_form_session_modal_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/form/session_modal_container */ "./frontend/components/form/session_modal_container.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
@@ -446,7 +446,7 @@ var App = function App() {
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_session_modal_container__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     exact: true,
     path: "/",
-    component: _splash_banner__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _splash_splash__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/upload",
@@ -455,7 +455,9 @@ var App = function App() {
     exact: true,
     path: "/you/library",
     component: _current_user_tracks_tracks__WEBPACK_IMPORTED_MODULE_8__["default"]
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_current_user_tracks_play_test__WEBPACK_IMPORTED_MODULE_9__["default"], null)));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/discover"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_current_user_tracks_play_test__WEBPACK_IMPORTED_MODULE_9__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -833,27 +835,33 @@ function (_React$Component) {
         }, this.props.info.title)));
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "player-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "button-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-step-backward"
-      }), play, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-step-forward"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-bar-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "current-time"
-      }, currentTime), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-bar"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "track-time"
-      }, duration), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "volume"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-volume-up"
-      }))), content);
+      var musicPlayer = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+
+      if (this.props.play != null) {
+        musicPlayer = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "player-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "button-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-step-backward"
+        }), play, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-step-forward"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "progress-bar-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "current-time"
+        }, currentTime), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "progress-bar"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "track-time"
+        }, duration), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "volume"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-volume-up"
+        }))), content));
+      }
+
+      return musicPlayer;
     }
   }]);
 
@@ -1686,9 +1694,13 @@ function (_React$Component) {
         var changeModal;
         var formType;
         var message;
+        var formTitle;
+        var formText;
         modal === 'signup' ? changeModal = 'login' : changeModal = 'signup';
         modal === 'signup' ? formType = 'Sign in' : formType = 'Create account';
         modal === 'login' ? message = "Don't have an account?" : message = "Have an account?";
+        modal === 'login' ? formTitle = "Login now to access your music" : formTitle = "Create your CloudNine account";
+        modal === 'login' ? formText = "login-form-title" : formText = "signup-form-title";
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "modal-background",
           onClick: function onClick() {
@@ -1705,6 +1717,8 @@ function (_React$Component) {
             return e.stopPropagation();
           }
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: formText
+        }, formTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "modal-container"
         }, this.switchForm(), this.successfulLogin(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "other-btns"
@@ -2079,8 +2093,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _navbar_nav_bar_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../navbar/nav_bar_container */ "./frontend/components/navbar/nav_bar_container.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -2108,11 +2120,268 @@ __webpack_require__.r(__webpack_exports__);
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "search-splash",
     type: "text",
-    placeholder: "Search.."
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    placeholder: "Search for artists, bands, tracks, podcasts"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "or"
+  }, "or"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "upload-splash"
-  }, "Upload your own")));
+  }, "Upload your own")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "filler-block"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "filler-text"
+  }, "Hear what's trending for free in the CloudNine Community")));
 });
+
+/***/ }),
+
+/***/ "./frontend/components/splash/splash.jsx":
+/*!***********************************************!*\
+  !*** ./frontend/components/splash/splash.jsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _banner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./banner */ "./frontend/components/splash/banner.jsx");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var Splash =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Splash, _React$Component);
+
+  function Splash(props) {
+    var _this;
+
+    _classCallCheck(this, Splash);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Splash).call(this, props));
+    _this.state = {
+      favAudio: ["https://cloudnine-upload-dev.s3.amazonaws.com/Tiffany+Young+-+Remember+Me+(from+Disneys+COCO).mp3", "https://cloudnine-upload-dev.s3.amazonaws.com/Ludovico+Einaudi+-+Nuvole+Bianche.mp3", "https://cloudnine-upload-dev.s3.amazonaws.com/%5BSTATION+X+0%5D+John+Legend+X+%EC%9B%AC%EB%94%94+(WENDY)+'Written+In+The+Stars'+MV.mp3", "https://cloudnine-upload-dev.s3.amazonaws.com/John+Legend+-+All+of+Me+(Edited+Video).mp3", "https://cloudnine-upload-dev.s3.amazonaws.com/Calum+Scott+-+No+Matter+What.mp3", "https://cloudnine-upload-dev.s3.amazonaws.com/Eminem+-+Not+Afraid+(Official+Video).mp3", "https://cloudnine-upload-dev.s3.amazonaws.com/Diddy+-+Dirty+Money+-+Coming+Home+ft.+Skylar+Grey+(Official+Video).mp3", "https://cloudnine-upload-dev.s3.amazonaws.com/Akon+-+Lonely+(Offiical+Video).mp3", "https://cloudnine-upload-dev.s3.amazonaws.com/Empire+State+Of+Mind+(Made+Famous+by+Jay-Z+feat.+Alicia+Keys).mp3", "https://cloudnine-upload-dev.s3.amazonaws.com/Talking+to+the+Moon.mp3", "https://cloudnine-upload-dev.s3.amazonaws.com/In+The+End+(Official+Video)+-+Linkin+Park.mp3", "https://cloudnine-upload-dev.s3.amazonaws.com/Far+East+Movement%2C+Ryan+Tedder+-+Rocketeer+ft.+Ryan+Tedder.mp3"],
+      audioInfo: [{
+        id: 1,
+        imageUrl: "https://cloudnine-upload-dev.s3.amazonaws.com/remember.jpg",
+        title: "Remember Me",
+        artist: "Tiffany Young"
+      }, {
+        id: 2,
+        imageUrl: "https://cloudnine-upload-dev.s3.amazonaws.com/bianche.jpg",
+        title: "Nuvole Bianche",
+        artist: "Ludovico Einaudi"
+      }, {
+        id: 3,
+        imageUrl: "https://cloudnine-upload-dev.s3.amazonaws.com/written.jpg",
+        title: "Written In The Stars",
+        artist: "John Legend X Wendy"
+      }, {
+        id: 4,
+        imageUrl: "https://cloudnine-upload-dev.s3.amazonaws.com/all.jpg",
+        title: "All of Me",
+        artist: "John Legend"
+      }, {
+        id: 5,
+        imageUrl: "https://cloudnine-upload-dev.s3.amazonaws.com/matter.jpg",
+        title: "No Matter What",
+        artist: "Calum Scott"
+      }, {
+        id: 6,
+        imageUrl: "https://cloudnine-upload-dev.s3.amazonaws.com/afraid.png",
+        title: "Not Afraid",
+        artist: "Eminem"
+      }, {
+        id: 7,
+        imageUrl: "https://cloudnine-upload-dev.s3.amazonaws.com/coming.jpg",
+        title: "Coming Home",
+        artist: "Dirty Money ft. Skylar Gray"
+      }, {
+        id: 8,
+        imageUrl: "https://cloudnine-upload-dev.s3.amazonaws.com/lonely.jpg",
+        title: "Lonely",
+        artist: "Akon"
+      }, {
+        id: 9,
+        imageUrl: "https://cloudnine-upload-dev.s3.amazonaws.com/empire.jpg",
+        title: "Empire State Of Mind",
+        artist: "Jay-Z feat. Alicia Keys"
+      }, {
+        id: 10,
+        imageUrl: "https://cloudnine-upload-dev.s3.amazonaws.com/moon.jpg",
+        title: "Talking to the Moon",
+        artist: "Bruno Mars"
+      }, {
+        id: 11,
+        imageUrl: "https://cloudnine-upload-dev.s3.amazonaws.com/end.jpg",
+        title: "In the End",
+        artist: "Linkin Park"
+      }, {
+        id: 12,
+        imageUrl: "https://cloudnine-upload-dev.s3.amazonaws.com/rocketeer.jpg",
+        title: "Rocketeer",
+        artist: "Far East Movement ft. Ryan Tedder"
+      }],
+      hover: false
+    };
+    return _this;
+  }
+
+  _createClass(Splash, [{
+    key: "handlePlay",
+    value: function handlePlay(e) {
+      var value = e.currentTarget.id;
+
+      if (this.props.currentTrackInfo.id === Number(value) + 1 && !this.props.play) {
+        this.props.receivePlay();
+        this.props.audio.play();
+      } else if (this.props.play && this.props.currentTrackInfo.id === Number(value) + 1) {
+        this.props.receivePause();
+        this.props.audio.pause();
+      } else {
+        if (this.props.play) {
+          this.props.receivePause();
+          this.props.audio.pause();
+        }
+
+        this.props.receivePlay(); // this.props.receiveLibrary(this.props.trackList);
+
+        this.props.receiveCurrentAudio(new Audio(this.state.favAudio[value]), this.state.audioInfo[value]);
+      }
+    }
+  }, {
+    key: "onHover",
+    value: function onHover(e) {
+      var value = Number(e.currentTarget.id);
+      this.setState({
+        value: value,
+        hover: true
+      });
+    }
+  }, {
+    key: "offHover",
+    value: function offHover() {
+      this.setState({
+        value: "",
+        hover: false
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var id = this.props.currentTrackInfo.id;
+      var play = this.props.play;
+      var tracks = this.state.audioInfo.map(function (trackInfo, idx) {
+        var hoverPlay;
+        var hoverCircle;
+
+        if (id === trackInfo.id && play) {
+          hoverPlay = "fas fa-pause-circle fa-4x";
+        } else if (!_this2.state.hover) {
+          hoverPlay = "";
+        } else if (_this2.state.hover && _this2.state.value === idx || !play && _this2.state.value === idx) {
+          hoverPlay = "fas fa-play-circle fa-4x";
+        }
+
+        hoverCircle = _this2.state.hover && _this2.state.value === idx || id === trackInfo.id && play ? "fas fa-circle fa-4x" : "";
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "cover-container",
+          key: "info-".concat(idx)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          id: idx,
+          src: trackInfo.imageUrl,
+          className: "cover",
+          onMouseOver: _this2.onHover.bind(_this2),
+          onMouseOut: _this2.offHover.bind(_this2)
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: hoverCircle
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: hoverPlay,
+          id: idx,
+          onClick: _this2.handlePlay.bind(_this2),
+          onMouseOver: _this2.onHover.bind(_this2),
+          onMouseOut: _this2.offHover.bind(_this2)
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "top-title"
+        }, trackInfo.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "top-artist"
+        }, trackInfo.artist));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container-splash-front"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_banner__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "editor-top"
+      }, tracks), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bottom-splash"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+        to: "/discover",
+        style: {
+          textDecoration: 'none'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "trend-btn"
+      }, "Explore trending playlists")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "splash-footer"
+      }));
+    }
+  }]);
+
+  return Splash;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var msp = function msp(state) {
+  var currentTrackInfo = state.entities.currentTrack.info || {};
+  return {
+    audio: state.entities.currentTrack.audio,
+    play: state.ui.player,
+    currentTrackInfo: currentTrackInfo
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    receivePause: function receivePause() {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["receivePause"])());
+    },
+    receivePlay: function receivePlay() {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["receivePlay"])());
+    },
+    receiveCurrentAudio: function receiveCurrentAudio(audio, info) {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["receiveCurrentAudio"])(audio, info));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(msp, mdp)(Splash));
 
 /***/ }),
 

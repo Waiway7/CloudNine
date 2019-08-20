@@ -1,8 +1,8 @@
 import React from 'react';
 import NavBarContainer from '../navbar/nav_bar_container';
-import { connect } from 'react-redux';
 
 export default () => {
+
         return (
             <div className="splash">
                 <div className="frontHeroContainer">
@@ -19,8 +19,14 @@ export default () => {
                     </div>
                 </div>
                 <div className="upload-search-container">
-                    <input className="search-splash" type="text" placeholder="Search.."/>
+                    <input className="search-splash" type="text" placeholder="Search for artists, bands, tracks, podcasts"/>
+                    {/* <i class="fas fa-search"></i> */}
+                    <p className="or">or</p>
                     <button className="upload-splash">Upload your own</button>
+                </div>
+
+                <div className="filler-block">
+                    <p className="filler-text">Hear what's trending for free in the CloudNine Community</p>
                 </div>
             </div>
         )
