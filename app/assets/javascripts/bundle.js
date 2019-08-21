@@ -436,6 +436,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _upload_upload_track__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./upload/upload_track */ "./frontend/components/upload/upload_track.jsx");
 /* harmony import */ var _current_user_tracks_tracks__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./current_user_tracks/tracks */ "./frontend/components/current_user_tracks/tracks.jsx");
 /* harmony import */ var _current_user_tracks_play_test__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./current_user_tracks/play_test */ "./frontend/components/current_user_tracks/play_test.jsx");
+/* harmony import */ var _dashboard_profile__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dashboard/profile */ "./frontend/components/dashboard/profile.jsx");
+
 
 
 
@@ -467,6 +469,14 @@ var App = function App() {
     component: _current_user_tracks_tracks__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/discover"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
+    exact: true,
+    path: "/profile/:currentUsername/:currentUserId/tracks",
+    component: _dashboard_profile__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
+    exact: true,
+    path: "/profile/:currentUsername/:currentUserId/playlists",
+    component: _dashboard_profile__WEBPACK_IMPORTED_MODULE_10__["default"]
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_current_user_tracks_play_test__WEBPACK_IMPORTED_MODULE_9__["default"], null));
 };
 
@@ -1390,6 +1400,119 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./frontend/components/dashboard/profile.jsx":
+/*!***************************************************!*\
+  !*** ./frontend/components/dashboard/profile.jsx ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var UserProfile =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(UserProfile, _React$Component);
+
+  function UserProfile(props) {
+    _classCallCheck(this, UserProfile);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(UserProfile).call(this, props));
+  }
+
+  _createClass(UserProfile, [{
+    key: "render",
+    value: function render() {
+      var linkTrack = "dashboard-link";
+      var linkPlaylist = "dashboard-link";
+      var params = this.props.match.params;
+      debugger;
+      var path = this.props.location.pathname || null;
+
+      if (path.includes("tracks")) {
+        linkTrack = "dashboard-link targeted";
+      } else if (path.includes("playlists")) {
+        linkPlaylist = "dashboard-link targeted";
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboard-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "header-content-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://cloudnine-upload-dev.s3.amazonaws.com/starecat.jpg",
+        className: "profile-pic"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "right-content-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "header-content-username"
+      }, params.currentUsername)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-links"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/profile/".concat(params.currentUsername, "/").concat(params.currentUserId, "/tracks"),
+        style: {
+          textDecoration: 'none'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: linkTrack
+      }, "Tracks")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/profile/".concat(params.currentUsername, "/").concat(params.currentUserId, "/playlists"),
+        style: {
+          textDecoration: 'none'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: linkPlaylist
+      }, "Playlists"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "track-list-container"
+      }))));
+    }
+  }]);
+
+  return UserProfile;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var msp = function msp(state, ownProps) {
+  return {
+    currentUser: state.session.id
+  };
+};
+
+var mdp = function mdp(_mdp) {
+  return {};
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (UserProfile);
+
+/***/ }),
+
 /***/ "./frontend/components/form/form.jsx":
 /*!*******************************************!*\
   !*** ./frontend/components/form/form.jsx ***!
@@ -1999,16 +2122,16 @@ var navBar = function navBar(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "home-text"
   }, "Home"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/stream",
+    to: "/profile/".concat(currentUser.username, "/").concat(currentUser.id, "/tracks"),
     style: {
       textDecoration: 'none'
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    id: "/stream",
+    id: "/profile",
     className: "stream-btn"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "stream-text"
-  }, "Stream"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, "Profile"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/you/library",
     style: {
       textDecoration: 'none'

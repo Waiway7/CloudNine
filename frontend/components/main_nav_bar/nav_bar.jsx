@@ -29,9 +29,9 @@ const navBar = ({currentUser, logout, signup, login}) => {
                             <p className="home-text">Home</p>
                         </div>
                     </Link>
-                    <Link to="/stream" style={{textDecoration: 'none'}}>
-                        <div id="/stream" className="stream-btn">
-                        <p className="stream-text">Stream</p>
+                    <Link to={`/profile/${currentUser.username}/${currentUser.id}/tracks`} style={{textDecoration: 'none'}}>
+                        <div id="/profile" className="stream-btn">
+                        <p className="stream-text">Profile</p>
                         </div>
                     </Link>
                     <Link to="/you/library" style={{textDecoration: 'none'}}>
