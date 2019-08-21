@@ -2,10 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {fetchUserTracks, deleteTrack, updateTrack} from '../../actions/track_actions';
 import {openUploadModal, closeUploadModal} from '../../actions/modal_actions';
-import TrackItem from './track_item'
-import UpdateModal from './modal_update'
-import {Link} from 'react-router-dom'
-import UserNav from './user_nav'
+import TrackItem from './profile_tracks_items'
+import UpdateModal from '../current_user_tracks/modal_update'
 
 class Tracks extends React.Component {
     constructor(props){
@@ -15,8 +13,6 @@ class Tracks extends React.Component {
     componentDidMount(){
         this.props.fetchUserTracks(this.props.currentUser)
     }
-    
-    
 
     render(){
         let tracks;
@@ -47,15 +43,13 @@ class Tracks extends React.Component {
                 />
             )
         }
+
         return (
-            <div className="body">
-                <UserNav pathname={this.props.location.pathname}/>
-                <div className="header-tracks"><h1 className="your-tracks">Your Tracks</h1></div>
-                <div className="track-list-container">
-                    <ul className="user-track-list">{trackList}</ul>
+            <div className="track-index-container">
+                <div className="container-tracks">
+                    <ul className="index-list-tracks">{trackList}</ul>
                 </div>
                 {modalComponent}
-                {/* <UploadModal track={this.props.tracks} modal={this.props.modal}/> */}
             </div>
         )
     }

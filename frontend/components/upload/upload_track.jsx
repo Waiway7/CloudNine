@@ -133,7 +133,6 @@ class UploadTrack extends React.Component {
                             className="track-image"
                             onChange={this.handleImageFile.bind(this)}
                         />
-                        
                     </form>
                     </div>
                 </div>

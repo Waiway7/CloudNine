@@ -2,26 +2,6 @@ import React from 'react';
 import {connect} from "react-redux"
 import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "../../actions/user_actions"
 
-// const TrackItem = ({track, modal, updateTrack, deleteTrack, openUploadModal, closeUploadModal}) => {
-
-//     // const trackImage = new Image(100, 200);
-//     // trackImage.src = 'track.jpg'
-//     // const audio = new Audio(track.audioUrl)
-//     // const duration = parseInt(audio.duration)
-//     // debugger
-//     return (
-//         <li className={`audio${track.id}`}>
-//             <img key={`img-${track.id}`} className="preview" src={track.imageUrl} />
-//             <button className={`delete-btn${track.id}`} onClick={() => deleteTrack(track.id)}>delete</button>
-//             <button className={`update-btn${track.id}`} onClick={() => openUploadModal(track.id)}>modal</button> 
-//             {/* will dispatch a player action add the track to the state and play as well */}
-//             <Music track={track}/>
-//             <p>{duration}</p>
-//         </li>
-//     )
-// } 
-
-
 class TrackItem extends React.Component {
     constructor(props) {
         super(props)
@@ -29,19 +9,12 @@ class TrackItem extends React.Component {
             hover: false,
         }
         this.audio = new Audio(this.props.track.audioUrl)
-        // this.audio.addEventListener('loadedmetadata', () => 
-        // this.setState({duration: this.audio.duration}))
     }
 
     componentDidMount(){
         this.audio.addEventListener('loadedmetadata', () => 
         this.setState({duration: this.audio.duration}))
     }
-
-    // componentWillUnmount(){
-    //     this.audio.removeEventListener('loadedmetadata', () => 
-    //         this.setState({duration: this.audio.duration}))
-    // }
 
     getTime(time){
         return Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2)
@@ -78,51 +51,39 @@ class TrackItem extends React.Component {
             this.props.receiveLibrary(this.props.trackList);
             this.props.receiveCurrentAudio(new Audio(audio.audioUrl), audio);
     }
-        // this.props.song.play()
-        
-        // this.props.receivePlay();
-        // if (value === this.state.play) {
-        //     this.setState({play: null})
-        // } 
     }
 
     render() {
-        let date;
         const {track} = this.props; 
         const {id} = this.props.currentTrackInfo;
         const {play} = this.props
-        const hover = this.state.hover || (id === track.id && play)  ? "hover-track" : "track-item-container";
-        const bottomBorder = this.state.hover || (id === track.id && play)? "play-track-item" : "track-item-container";
         let hoverPlay;
-        const hoverCircle = this.state.hover || (id === track.id && play) ? "fas fa-circle fa-2x" : "";
         const hoverTrash = this.state.hover || (id === track.id && play)  ? "hover-i-button" : "empty-btn";
         
         if (id === track.id && play) {
-            hoverPlay = "fas fa-pause-circle fa-2x" 
+            hoverPlay = "fas fa-pause-circle fa-3x index-play" 
         }
         else if (!this.state.hover) {
-            hoverPlay = ""
+            hoverPlay = "fas fa-play-circle fa-3x index-play"
         }
         else if (this.state.hover && id != track.id || !play) {
-            hoverPlay =  "fas fa-play-circle fa-2x"
+            hoverPlay =  "fas fa-play-circle fa-3x index-play"
         }
 
         return (
-            <li key={`audio${track.id}`} className={"track-item"}>
-                <div className={`${bottomBorder} ${hover}` } 
-                    onMouseOver={this.onHover.bind(this)} 
-                    onMouseOut={this.offHover.bind(this)}
-                    >
-                    <img key={`img-${track.id}`} className="preview" src={track.imageUrl} />
-                    <div className="play-pause-container">
-                        <i className={hoverCircle} ></i> 
-                        <i className={hoverPlay} id={track.id} onClick={this.handlePlay.bind(this)}></i>
+            <li key={`audio${track.id}`} className="index-track-item">
+                <div className="index-track-item-container">
+                    <img key={`img-${track.id}`} className="index-preview" src={track.imageUrl} />
+                    <div className="container-track-info-index">
+                        <div className="index-btn-container">
+                            <i className={hoverPlay} id={track.id} onClick={this.handlePlay.bind(this)}></i>
+                        </div>
+                        <div className="index-track-item-info">
+                            <span className="index-username">{this.props.user.username}</span>
+                            <span className="index-title">{track.title}</span>
+                        </div>
                     </div>
-                    <div className="track-info">
-                        <span className="user-name">{this.props.user.username}</span>
-                        <span className="song-title">{track.title}</span>
-                    </div>
-                    <div className="buttons-up-del">
+                    <div className="index-buttons-up-del">
                         <button 
                             className={hoverTrash}
                             key={`delete-btn${track.id}`} 
@@ -136,9 +97,9 @@ class TrackItem extends React.Component {
                                 <i className="fas fa-pencil-alt"></i>
                         </button>
                     </div>
-                    <div className="right-track-info">
-                        <div className="duration-length">{this.getTime(this.state.duration)}</div>
-                    </div> 
+                    
+                    {/* <div className="duration-length">{this.getTime(this.state.duration)}</div> */}
+        
                     {/* will dispatch a player action add the track to the state and play as well */}
                 </div>
             </li>
@@ -167,7 +128,3 @@ const mdp = (dispatch) => {
 }
 
 export default connect(msp, mdp)(TrackItem);
-
-
-
-

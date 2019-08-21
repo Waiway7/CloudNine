@@ -14,6 +14,7 @@ class UpdateModal extends React.Component{
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.closeModal = this.props.closeUploadModal.bind(this)
+        this.handleCancel = this.handleCancel.bind(this)
     }
 
     handleImageFile(e) {
@@ -28,7 +29,7 @@ class UpdateModal extends React.Component{
             fileReader.readAsDataURL(imageFile);
         }
         // this.setState({image: e.currentTarget.files[0]})
-        this.handleCancel = this.handleCancel.bind(this)
+        // this.handleCancel = this.handleCancel.bind(this)
     }
 
     // handleImageFile(e) {
@@ -58,7 +59,7 @@ class UpdateModal extends React.Component{
         if (this.state.image) {
             formData.append('track[image]', this.state.image)
         }
-        this.props.updateTrack(formData, this.props.track.id).then(() => this.handleCancel())
+        this.props.updateTrack(formData, this.props.track.id).then(() => this.handleCancel)
     }
 
     render () {
@@ -97,6 +98,12 @@ class UpdateModal extends React.Component{
                                         onChange={this.update('description')}
                                     />
                                 </div>
+                                <input 
+                                    type="file" 
+                                    id="image-file"
+                                    className="track-image"
+                                    onChange={this.handleImageFile.bind(this)}
+                                />
                             </div>
                         </div>
                        
@@ -112,33 +119,6 @@ class UpdateModal extends React.Component{
                     </div>
                 </div>
             </div>
-                    {/* {preview}
-                    <div className="close-x-btn" onClick={() => this.closeModal()}>X</div>
-                    <div className="form-upload-main" onClick={e => e.stopPropagation()}></div>
-                    <div className="form-nav">
-                        <div className="basic-info">Basic info</div>
-                    </div>
-                    <form id="form-upload" className="upload-form" onSubmit={this.handleSubmit}>
-                        <input 
-                            type="text" 
-                            className="track-title"
-                            value={this.state.title}
-                            onChange={this.update('title')}
-                        />
-                        <textarea
-                            type="text" 
-                            className="track-description"
-                            value={this.state.description}
-                            onChange={this.update('description')}
-                        />
-                        <input 
-                            type="file" 
-                            className="track-image"
-                            onChange={this.handleImageFile.bind(this)}
-                        />
-                        <button className="upload-btn">Upload</button>
-                        <button className="cancel-btn" onClick={() => this.closeModal()}>Cancel</button>
-                </form> */}
                 </div>
         )
     }
