@@ -136,7 +136,7 @@ var closeUploadModal = function closeUploadModal() {
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_USER, LOGOUT_USER, RECEIVE_SESSION_ERRORS, login, signup, logout */
+/*! exports provided: RECEIVE_USER, LOGOUT_USER, RECEIVE_SESSION_ERRORS, RESET_ERRORS, resetErrors, login, signup, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -144,14 +144,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_USER", function() { return RECEIVE_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_USER", function() { return LOGOUT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SESSION_ERRORS", function() { return RECEIVE_SESSION_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RESET_ERRORS", function() { return RESET_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetErrors", function() { return resetErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 /* harmony import */ var _util_session_utl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_utl */ "./frontend/util/session_utl.js");
+/* harmony import */ var _track_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./track_actions */ "./frontend/actions/track_actions.js");
+
 
 var RECEIVE_USER = 'RECEIVE_USER';
 var LOGOUT_USER = 'LOGOUT_USER';
 var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+var RESET_ERRORS = "RESET_ERRORS";
 
 var receiveUser = function receiveUser(user) {
   return {
@@ -173,6 +178,11 @@ var receiveSessionErrors = function receiveSessionErrors(errors) {
   };
 };
 
+var resetErrors = function resetErrors() {
+  return {
+    type: RESET_ERRORS
+  };
+};
 var login = function login(user) {
   return function (dispatch) {
     return _util_session_utl__WEBPACK_IMPORTED_MODULE_0__["login"](user).then(function (user) {
@@ -1404,9 +1414,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1430,8 +1440,8 @@ function (_React$Component) {
       email: '',
       username: '',
       password: ''
-    };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    }; // this.handleSubmit = this.handleSubmit.bind(this);
+
     return _this;
   }
 
@@ -1448,36 +1458,104 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
+      var errors = this.props.errors;
+      var errorEmail;
+      var errorUsername;
+      var errorPassword;
+      errors.forEach(function (error) {
+        if (error.includes("Email")) {
+          errorEmail = error;
+        } else if (error.includes("Username")) {
+          errorUsername = error;
+        } else if (error.includes("Password")) {
+          errorPassword = error;
+        }
+      });
+      this.setState({
+        errorEmail: errorEmail,
+        errorUsername: errorUsername,
+        errorPassword: errorPassword
+      });
+      debugger;
       this.props.userForm(this.state);
+    } // renderErrors() {
+    //     const listErrors = (
+    //         <ul>
+    //             {this.props.errors.map((error, idx) => (
+    //                 <li key={`error-${idx}`}>{error}</li>
+    //             ))}
+    //         </ul>
+    //     );
+    //     debugger
+    //     return listErrors
+    // }
+
+  }, {
+    key: "clearErrors",
+    value: function clearErrors() {
+      this.props.resetErrors();
     }
   }, {
-    key: "renderErrors",
-    value: function renderErrors() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: "error-".concat(idx)
-        }, error);
-      }));
+    key: "clearUserError",
+    value: function clearUserError() {
+      this.setState({
+        errorUsername: undefined
+      });
+    }
+  }, {
+    key: "clearPasswordError",
+    value: function clearPasswordError() {
+      this.setState({
+        errorPassword: undefined
+      });
+    }
+  }, {
+    key: "clearEmailError",
+    value: function clearEmailError() {
+      this.setState({
+        errorEmail: undefined
+      });
     }
   }, {
     key: "loginInput",
     value: function loginInput() {
+      var errors = this.props.errors;
+      var usernameError = errors[0] != undefined ? errors[0] : null;
+      var passwordLengthError = errors[1] !== undefined && this.state.password.length < 6 ? errors[1] : null;
+      var email = "signup-input";
+
+      if (usernameError) {
+        email = "signup-input error-signup";
+      }
+
+      var password = "signup-input";
+
+      if (passwordLengthError) {
+        password = "signup-input error-password";
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "session-form-box",
-        onSubmit: this.handleSubmit
-      }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onSubmit: this.handleSubmit.bind(this)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.email,
         placeholder: "Your email address",
         onChange: this.update('email'),
-        className: "signup-input"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: email,
+        onClick: this.clearErrors.bind(this)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "error-credentials"
+      }, usernameError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
         onChange: this.update('password'),
         placeholder: "Your Password",
-        className: "signup-input"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: password,
+        onClick: this.clearErrors.bind(this)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "error-credentials"
+      }, passwordLengthError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "submit-form",
         type: "submit",
         value: this.props.formType
@@ -1486,28 +1564,40 @@ function (_React$Component) {
   }, {
     key: "signupInput",
     value: function signupInput() {
+      var email = this.state.errorEmail !== undefined ? "signup-input error-signup" : "signup-input";
+      var username = this.state.errorUsername !== undefined ? "signup-input error-signup" : "signup-input";
+      var password = this.state.errorPassword !== undefined ? "signup-input error-signup" : "signup-input";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "session-form-box",
-        onSubmit: this.handleSubmit
-      }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onSubmit: this.handleSubmit.bind(this)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.email,
         placeholder: "Your email address",
         onChange: this.update('email'),
-        className: "signup-input"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: email,
+        onClick: this.clearEmailError.bind(this)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "error-credentials"
+      }, this.state.errorEmail), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.username,
         placeholder: "Username",
         onChange: this.update('username'),
-        className: "signup-input"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: username,
+        onClick: this.clearUserError.bind(this)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "error-credentials"
+      }, this.state.errorUsername), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
         onChange: this.update('password'),
         placeholder: "Your Password",
-        className: "signup-input"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: password,
+        onClick: this.clearPasswordError.bind(this)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "error-credentials"
+      }, this.state.errorPassword), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "submit-form",
         type: "submit",
         value: this.props.formType
@@ -1554,8 +1644,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state) {
+  var errors = state.errors || [];
   return {
-    errors: state.errors,
+    errors: errors,
     formType: 'Login'
   };
 };
@@ -1564,6 +1655,9 @@ var mdp = function mdp(dispatch) {
   return {
     userForm: function userForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["login"])(user));
+    },
+    resetErrors: function resetErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["resetErrors"])());
     }
   };
 };
@@ -1696,11 +1790,13 @@ function (_React$Component) {
         var message;
         var formTitle;
         var formText;
+        var modalForm;
         modal === 'signup' ? changeModal = 'login' : changeModal = 'signup';
         modal === 'signup' ? formType = 'Sign in' : formType = 'Create account';
         modal === 'login' ? message = "Don't have an account?" : message = "Have an account?";
-        modal === 'login' ? formTitle = "Login now to access your music" : formTitle = "Create your CloudNine account";
+        modal === 'login' ? formTitle = null : formTitle = "Create your CloudNine account";
         modal === 'login' ? formText = "login-form-title" : formText = "signup-form-title";
+        modal === 'login' ? modalForm = "modal-container login-fc" : modalForm = "modal-container signup-fc";
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "modal-background",
           onClick: function onClick() {
@@ -1719,8 +1815,16 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: formText
         }, formTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "modal-container"
-        }, this.switchForm(), this.successfulLogin(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: modalForm
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "demo-user-btn",
+          onClick: function onClick() {
+            return _this2.props.demoLogin({
+              email: "cloudnine@gmail.com",
+              password: "hunter12"
+            });
+          }
+        }, "Demo as user: CloudNine"), this.switchForm(), this.successfulLogin(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "other-btns"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "message-session"
@@ -1729,17 +1833,7 @@ function (_React$Component) {
           onClick: function onClick() {
             return _this2.switchModal(changeModal);
           }
-        }, formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "message-session"
-        }, "Sign in as a demo user instead!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "demo-user-btn",
-          onClick: function onClick() {
-            return _this2.props.demoLogin({
-              email: "cloudnine@gmail.com",
-              password: "hunter12"
-            });
-          }
-        }, "Demo as user: CloudNine")))));
+        }, formType)))));
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null);
@@ -1823,6 +1917,9 @@ var mdp = function mdp(dispatch) {
   return {
     userForm: function userForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["signup"])(user));
+    },
+    resetErrors: function resetErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["resetErrors"])());
     }
   };
 };
@@ -2897,6 +2994,9 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_USER"]:
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL"]:
+      return [];
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RESET_ERRORS"]:
       return [];
 
     default:

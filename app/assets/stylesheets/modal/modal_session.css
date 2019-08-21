@@ -1,5 +1,5 @@
 .modal-background {
-    background-color: rgba(242,242,242, 0.5);
+    background-color: rgba(242,242,242, 0.7);
     position: fixed;
     z-index: 10;
     top: 0;
@@ -36,7 +36,7 @@
     transform: translate(-50%, -52%);
     background: #fff;
     width: 450px;
-    height: 80%;
+    height: 620px;
     border-radius: 3px;
 }
 
@@ -52,9 +52,14 @@
 .modal-container {
     position: relative;
     height: 70%;
-    top: -10%;
+    top: 0%;
     left: 50%;
     transform: translate(-50%, 20%);
+    margin: 0 auto;
+}
+
+.signup-fc {
+    top: -19%;
 }
 
 .signup-input {
@@ -66,11 +71,12 @@
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 3px;
-    margin-bottom: 15px;
-    outline: black;
+    margin-top: 15px;
+    outline: none;
 }
 
-.submit-form {
+.submit-form, .change-session-btn{
+    margin-top: 15px;
     width: 92.8%;
     height: 8%;
     font-size: 18px;
@@ -79,9 +85,14 @@
     padding: 10px;
     border-radius: 3px;
     color: white;
+    outline: none;
+    margin-bottom: 10px;
 }
 
-.change-session-btn {
+
+
+
+/* .change-session-btn {
     width: 92.8%;
     height: 6%;
     font-size: 18px;
@@ -92,16 +103,16 @@
     color: white;
     cursor: pointer;
    
-}
+} */
 
 .message-session {
     width: 92.8%;
     height: 6%;
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;   
-    padding: 10px;
     color: black;
     text-align: center;
+    margin: 0 auto;
 }
 
 .session-form-box{
@@ -121,7 +132,7 @@
 
 .demo-user-btn {
     width: 92.8%;
-    height: 6%;
+    height: 10%;
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
     background-color:#48b8e6; 
@@ -129,9 +140,13 @@
     border-radius: 3px;
     color: white;
     cursor: pointer;
+    position: relative;
+    margin: 0 auto;
+    margin-left: 16.5px;
+    margin-top: 50px;
 }
 
-.login-form-title {
+/* .login-form-title {
     margin: 0 auto;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
@@ -139,14 +154,34 @@
     margin-top: 70px;
     font-size: 32px;
     font-weight: 400;
-}
+} */
 
 .signup-form-title {
     margin: 0 auto;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
     width: 400px;
-    margin-top: 50px;
+    margin-top: 60px;
     font-size: 32px;
     font-weight: 400;
+    height: auto;
+    display: flex;
+}
+
+.error-credentials {
+    display: flex; 
+    position: relative;    
+    margin: 0 auto;
+    width: 92%;
+    float: left;    
+}
+
+.error-signup {
+    border: 1px solid rgba(216, 0, 12, 1);
+    box-shadow: 0 0 5px rgba(216, 0, 12, 1);
+}
+
+.error-password{
+    border: 1px solid rgba(216, 0, 12, 1);
+    box-shadow: 0 0 5px rgba(216, 0, 12, 1);
 }
