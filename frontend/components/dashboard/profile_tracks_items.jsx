@@ -58,7 +58,6 @@ class TrackItem extends React.Component {
         const {id} = this.props.currentTrackInfo;
         const {play} = this.props
         let hoverPlay;
-        const hoverTrash = this.state.hover || (id === track.id && play)  ? "hover-i-button" : "empty-btn";
         
         if (id === track.id && play) {
             hoverPlay = "fas fa-pause-circle fa-3x index-play" 
@@ -81,22 +80,20 @@ class TrackItem extends React.Component {
                         <div className="index-track-item-info">
                             <span className="index-username">{this.props.user.username}</span>
                             <span className="index-title">{track.title}</span>
-                        </div>
                     </div>
                     <div className="index-buttons-up-del">
                         <button 
-                            className={hoverTrash}
-                            key={`delete-btn${track.id}`} 
+                            className="delete-track-index"
                             onClick={() => this.props.deleteTrack(track.id)}>
-                                <i className="fas fa-trash fa"></i>
+                                <i className="fas fa-trash audio-trash"></i><p className="delete-text">Delete</p>
                         </button>
                         <button 
-                            key={`update-btn${track.id}`} 
-                            className={hoverTrash}
+                            className="update-track-index"
                             onClick={() => this.props.openUploadModal(track.id)}>
-                                <i className="fas fa-pencil-alt"></i>
-                        </button>
-                    </div>
+                                <i className="fas fa-pencil-alt audio-trash"></i><p className="edit-text">Edit</p>
+                    </button>
+                </div>
+                </div>
                     
                     {/* <div className="duration-length">{this.getTime(this.state.duration)}</div> */}
         

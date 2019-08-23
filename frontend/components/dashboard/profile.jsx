@@ -15,11 +15,11 @@ class UserProfile extends React.Component{
         const {params} = this.props.match
         const path = this.props.location.pathname || null
         if (path.includes("tracks")) {
-            linkTrack = "dashboard-link targeted"
+            linkTrack = "targeted"
             index = <ProfileTracks />
         }
         else if (path.includes("playlists")){
-             linkPlaylist = "dashboard-link targeted"
+             linkPlaylist = "targeted"
         }
        return( 
        <div className="body">
@@ -38,11 +38,15 @@ class UserProfile extends React.Component{
                     </Link>
                 </div>
                 
-                <div className="track-list-container">
+                <div className="track-list-container profile-index">
                     {index}
                 </div>
+
                </div>
            </div>
+           <div className="github-links">
+                    
+            </div>
         </div>
        )}
 }

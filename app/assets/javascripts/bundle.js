@@ -955,23 +955,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
- // const TrackItem = ({track, modal, updateTrack, deleteTrack, openUploadModal, closeUploadModal}) => {
-//     // const trackImage = new Image(100, 200);
-//     // trackImage.src = 'track.jpg'
-//     // const audio = new Audio(track.audioUrl)
-//     // const duration = parseInt(audio.duration)
-//     // debugger
-//     return (
-//         <li className={`audio${track.id}`}>
-//             <img key={`img-${track.id}`} className="preview" src={track.imageUrl} />
-//             <button className={`delete-btn${track.id}`} onClick={() => deleteTrack(track.id)}>delete</button>
-//             <button className={`update-btn${track.id}`} onClick={() => openUploadModal(track.id)}>modal</button> 
-//             {/* will dispatch a player action add the track to the state and play as well */}
-//             <Music track={track}/>
-//             <p>{duration}</p>
-//         </li>
-//     )
-// } 
+
 
 var TrackItem =
 /*#__PURE__*/
@@ -1450,10 +1434,10 @@ function (_React$Component) {
       var path = this.props.location.pathname || null;
 
       if (path.includes("tracks")) {
-        linkTrack = "dashboard-link targeted";
+        linkTrack = "targeted";
         index = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_profile_tracks__WEBPACK_IMPORTED_MODULE_3__["default"], null);
       } else if (path.includes("playlists")) {
-        linkPlaylist = "dashboard-link targeted";
+        linkPlaylist = "targeted";
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1486,8 +1470,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: linkPlaylist
       }, "Playlists"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "track-list-container"
-      }, index))));
+        className: "track-list-container profile-index"
+      }, index))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "github-links"
+      }));
     }
   }]);
 
@@ -1763,7 +1749,6 @@ function (_React$Component) {
       var id = this.props.currentTrackInfo.id;
       var play = this.props.play;
       var hoverPlay;
-      var hoverTrash = this.state.hover || id === track.id && play ? "hover-i-button" : "empty-btn";
 
       if (id === track.id && play) {
         hoverPlay = "fas fa-pause-circle fa-3x index-play";
@@ -1796,25 +1781,27 @@ function (_React$Component) {
         className: "index-username"
       }, this.props.user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "index-title"
-      }, track.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, track.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-buttons-up-del"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: hoverTrash,
-        key: "delete-btn".concat(track.id),
+        className: "delete-track-index",
         onClick: function onClick() {
           return _this3.props.deleteTrack(track.id);
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-trash fa"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        key: "update-btn".concat(track.id),
-        className: hoverTrash,
+        className: "fas fa-trash audio-trash"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "delete-text"
+      }, "Delete")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "update-track-index",
         onClick: function onClick() {
           return _this3.props.openUploadModal(track.id);
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-pencil-alt"
-      })))));
+        className: "fas fa-pencil-alt audio-trash"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "edit-text"
+      }, "Edit"))))));
     }
   }]);
 
@@ -2434,6 +2421,7 @@ var navBar = function navBar(_ref) {
       return signup();
     }
   }, "Create account"));
+  var profileLink = currentUser ? "/profile/".concat(currentUser.username, "/").concat(currentUser.id, "/tracks") : "/";
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2461,7 +2449,7 @@ var navBar = function navBar(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "home-text"
   }, "Home"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/profile/".concat(currentUser.username, "/").concat(currentUser.id, "/tracks"),
+    to: profileLink,
     style: {
       textDecoration: 'none'
     }

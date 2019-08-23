@@ -14,6 +14,8 @@ const navBar = ({currentUser, logout, signup, login}) => {
             <button className='nav-signup-btn' onClick={() => signup()}>Create account</button>
         </div>
         );
+    const profileLink = currentUser ? `/profile/${currentUser.username}/${currentUser.id}/tracks` : "/"
+    
     return (
         <div className="header">
             <div className="nav-bar">
@@ -29,7 +31,7 @@ const navBar = ({currentUser, logout, signup, login}) => {
                             <p className="home-text">Home</p>
                         </div>
                     </Link>
-                    <Link to={`/profile/${currentUser.username}/${currentUser.id}/tracks`} style={{textDecoration: 'none'}}>
+                    <Link to={profileLink} style={{textDecoration: 'none'}}>
                         <div id="/profile" className="stream-btn">
                         <p className="stream-text">Profile</p>
                         </div>

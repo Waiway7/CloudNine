@@ -2,26 +2,6 @@ import React from 'react';
 import {connect} from "react-redux"
 import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "../../actions/user_actions"
 
-// const TrackItem = ({track, modal, updateTrack, deleteTrack, openUploadModal, closeUploadModal}) => {
-
-//     // const trackImage = new Image(100, 200);
-//     // trackImage.src = 'track.jpg'
-//     // const audio = new Audio(track.audioUrl)
-//     // const duration = parseInt(audio.duration)
-//     // debugger
-//     return (
-//         <li className={`audio${track.id}`}>
-//             <img key={`img-${track.id}`} className="preview" src={track.imageUrl} />
-//             <button className={`delete-btn${track.id}`} onClick={() => deleteTrack(track.id)}>delete</button>
-//             <button className={`update-btn${track.id}`} onClick={() => openUploadModal(track.id)}>modal</button> 
-//             {/* will dispatch a player action add the track to the state and play as well */}
-//             <Music track={track}/>
-//             <p>{duration}</p>
-//         </li>
-//     )
-// } 
-
-
 class TrackItem extends React.Component {
     constructor(props) {
         super(props)
