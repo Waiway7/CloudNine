@@ -20,6 +20,10 @@ class User < ApplicationRecord
     class_name: :Track,
     foreign_key: :uploader_id
 
+    has_many :playlists,
+    class_name: :Playlist,
+    foreign_key: :creater_id
+
     # has_one_attached :image
 
     after_initialize :ensure_session_token

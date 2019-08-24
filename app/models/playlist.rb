@@ -10,5 +10,14 @@
 #
 
 class Playlist < ApplicationRecord 
+    validates :title, presence: true
+    validates :creater_id, presence: true
 
+    has_many :tracks,
+    foreign_key: :track_id,
+    class_name: :PlaylistTracks
+
+    belongs_to :creater,
+    foreign_key: :creater_id,
+    class_name: :User
 end
