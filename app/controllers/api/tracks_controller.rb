@@ -11,7 +11,8 @@ class Api::TracksController < ApplicationController
             render ["User does not exist! Please try again."], status: 404
         end
     end
-    #testing
+    
+
     def show
         @track = Track.find(params[:id])
         render "api/tracks/show"

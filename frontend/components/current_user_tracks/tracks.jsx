@@ -15,8 +15,6 @@ class Tracks extends React.Component {
     componentDidMount(){
         this.props.fetchUserTracks(this.props.currentUser)
     }
-    
-    
 
     render(){
         let tracks;
@@ -65,7 +63,7 @@ const msp = (state) => {
     return {
         currentUser: state.session.id,
         tracks: state.entities.tracks,
-        modal: state.ui.uploadModal
+        modal: state.ui.uploadModal,
     }
 }
 
@@ -75,7 +73,7 @@ const mdp = dispatch => {
         updateTrack: (track, id) => dispatch(updateTrack(track, id)),
         deleteTrack: id => dispatch(deleteTrack(id)),
         openUploadModal: (trackId) => dispatch(openUploadModal(trackId)),
-        closeUploadModal: () => dispatch(closeUploadModal())
+        closeUploadModal: () => dispatch(closeUploadModal()),
     }
 }
 

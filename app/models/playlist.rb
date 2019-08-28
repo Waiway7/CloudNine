@@ -13,11 +13,19 @@ class Playlist < ApplicationRecord
     validates :title, presence: true
     validates :creater_id, presence: true
 
+    has_many :playlist_tracks,
+    foreign_key: :playlist_id,
+    class_name: :PlaylistTrack,
+    dependent: :destroy
+
     has_many :tracks,
-    foreign_key: :track_id,
-    class_name: :PlaylistTracks
+    through: :playlist_tracks,
+    source: :track
 
     belongs_to :creater,
     foreign_key: :creater_id,
     class_name: :User
+    
+    has_one_attached :image
+
 end

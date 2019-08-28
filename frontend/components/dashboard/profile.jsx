@@ -1,7 +1,7 @@
 import React from "react";
-import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import ProfileTracks from './profile_tracks'
+import ProfileTracks from './profile_tracks';
+import ProfilePlaylists from "./profile_playlists";
 
 class UserProfile extends React.Component{
     constructor(props){
@@ -20,6 +20,7 @@ class UserProfile extends React.Component{
         }
         else if (path.includes("playlists")){
              linkPlaylist = "targeted"
+             index = <ProfilePlaylists />
         }
        return( 
        <div className="body">
@@ -51,13 +52,4 @@ class UserProfile extends React.Component{
        )}
 }
 
-const msp = (state, ownProps) => {
-    return {
-        currentUser: state.session.id
-    }
-}
-
-const mdp = (mdp) => {
-    return {}
-}
 export default (UserProfile);
