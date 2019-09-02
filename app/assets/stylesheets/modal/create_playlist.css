@@ -1,0 +1,314 @@
+.playlist-header-form {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px solid #f2f2f2;
+    font-size: 24px;
+    padding-top: 16px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.add-playlist-tracks {
+    position: relative;
+    float: left;
+    display: flex;
+    margin-right: 24px;
+    cursor: pointer;
+}
+
+.add-playlist-tracks:hover {
+    border-bottom: 1px solid #333;
+    margin-bottom: -1px;
+}
+
+.create-playlist-tracks {
+    position: relative;
+    float: left;
+    display: flex;
+    cursor: pointer;
+}
+
+.create-playlist-tracks:hover {
+    border-bottom: 1px solid #333;
+    margin-bottom: -1px;
+}
+
+.container-playlist-form {
+    height: auto;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.target-playlist-modal {
+    color: rgb(50, 162, 227);
+    border-bottom: 1px solid rgb(50, 162, 227);
+    margin-bottom: -1px;
+    cursor: pointer;    
+}
+
+.target-playlist-modal:hover {
+    border-bottom: 1px solid rgb(50, 162, 227);
+    margin-bottom: -1px;
+    cursor: default;
+}
+
+.create-playlist-submit {
+    width: auto;
+    height: auto;
+    padding: 25px;
+  
+}
+
+.title-playlist-format {
+    display: flex;
+    margin-bottom: 6px;
+    line-height: 16px;
+    font-size: 12px;
+}
+
+.asterick-playlist {
+    color: rgb(50, 162, 227);
+}
+
+.create-title-playlist {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.input-title-playlist {
+    width: 96.75%;
+    padding-right: 7px;
+    padding-left: 7px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 14px;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    line-height: 20px;
+    font-weight: 100;
+}
+
+.input-title-playlist:focus {
+    outline: 0;
+    border-color: #999
+}
+
+.submit-create-playlist-btn {
+    background-color: rgb(50, 162, 227);
+    color: #fff;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 11px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    font-size: 14px;    
+    float: right;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.submit-playlist {
+    margin-bottom: 30px;
+    margin-top: 15px;
+    width: auto;
+}
+
+.add-track-img {
+    width: 20px;
+    height: 20px;   
+    margin: 5px;
+}
+
+.compact {
+    width: 100%;
+    border: 1px solid #f2f2f2;
+    display: flex;
+    height: 30px;
+    font-size: 12px;
+}
+
+.playlist-track-added {
+    clear: both;
+    list-style: none;
+    margin-top: 30px;
+    width: 99.5%;
+    text-align: center;
+}
+.added-uploader-name {
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+    color: #999;
+}
+
+.dash {
+    margin: auto;
+    margin-left: 2px;
+    margin-right: 2px;
+    color: #999;
+}
+
+.added-title-track {
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.delete-title-track {
+    margin: auto;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+
+.playlist-img-tracks-container {
+    padding: 25px;
+    margin-bottom: 5px;
+}
+
+.box-one {
+    background-color: #d9d9d9;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    border: 1px solid #d9d9d9;
+    transform: rotate(10deg);
+}
+.box-two {
+    background-color: #f2f2f2;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    border: 1px solid #f2f2f2;
+    transform: rotate(-10deg);
+}
+
+.container-for-playlist {
+    height: auto;
+    width: 65px;
+    position: relative;
+}
+
+.playlist-img-track {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    box-shadow: rgba(0,0,0,.1)0 0 0 1px inset;
+}
+
+.playlist-info-tracks-container {
+    margin-bottom: 60px;
+    margin-top: 10px;
+    display: flex;
+}
+
+.modal-create-playlist {
+    left: 30vw;
+    background: #fff;
+    margin-top: 75px;
+    width: 550px;
+    height: auto;
+    border-radius: 3px;
+    position: relative;
+    top: 0;
+}
+
+.tracks-add-to-playlist {
+    list-style: none;
+    display: block;
+}
+
+.img-tracks-add {
+    width: 50px;
+    height: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-right: 4px;
+}
+
+.add-tracks-container {
+    display: block;
+    width: 100%;
+}
+
+.list-add-tracks {
+    border-top: 1px solid #f2f2f2;
+    display: flex;
+    width: 100%;
+}
+
+.container-tracks-add-to-playlist {
+    display: block;
+    width: 100%
+}
+
+.container-class-tracks-add {
+    padding: 25px;
+    margin-top: 5px;
+}
+
+.separator {
+    width: 100%;
+    height: 5px;
+    background-color: rgba(242,242,242, 0.7);
+}
+
+.container-div-tracks-add {
+    display: flex;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.add-tracks-header-container {
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tracks-container-add-info {
+    display: flex;
+    width: 100%;
+}
+
+.tracks-container-add-info {
+    display: block;
+    width: 100%;
+    margin-top: 7px;
+}
+
+.creater-name-add {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    color: #999;
+}
+
+.add-tracks-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.btn-add-track {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 17px;
+    min-width: 120px;
+    border: 1px solid #e5e5e5;
+    height: 24px;
+    display: inline-block;   
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.text-btn-add {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin-top: 3px;
+}

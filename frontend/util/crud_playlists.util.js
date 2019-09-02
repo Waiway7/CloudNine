@@ -26,9 +26,7 @@ export const createPlaylist = (playlist) => {
     return $.ajax({
         method: "POST",
         url: "/api/playlists",
-        data: playlist,
-        contentType: false,
-        processData: false,
+        data: {playlist},
     })
 }
 

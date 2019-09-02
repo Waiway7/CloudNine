@@ -2,11 +2,12 @@
 #
 # Table name: playlists
 #
-#  id         :bigint           not null, primary key
-#  title      :string           not null
-#  creater_id :integer          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :bigint           not null, primary key
+#  title       :string           not null
+#  creater_id  :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  description :text
 #
 
 class Playlist < ApplicationRecord 
@@ -26,6 +27,6 @@ class Playlist < ApplicationRecord
     foreign_key: :creater_id,
     class_name: :User
     
-    has_one_attached :image
+    # has_one_attached :image
 
 end

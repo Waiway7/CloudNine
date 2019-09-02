@@ -2,37 +2,6 @@ import React from 'react';
 import LoginFormContainer from './login_container';
 import SignupFormContainer from './signup_container';
 
-// export default ({modal, closeModal, switchForm}) => {
-//     if (!modal){
-//         return null;
-//     }
-//     let componentContainer;
-//     let switchModal;
-//     switch (modal){
-//         case 'login':
-//             componentContainer = <LoginFormContainer />
-//             break;
-//         case 'signup':
-//             componentContainer = <SignupFormContainer />
-//             break;
-//         default:
-//             return null;
-//     }
-
-//     return (
-//         <div className="modal-background" onClick={() => closeModal()}>
-//         <div className="close-x-btn" onClick={() => closeModal()}>X</div>
-//             <div className="modal-form" onClick={e => e.stopPropagation()}>
-//                 {componentContainer}
-//                  <div className="okay">
-//                      <button onClick={() => switchForm(switchModal)}>Change me</button>
-//                  </div>
-//             </div>
-//         </div>
-//     )
-
-// }
-
 class Modal extends React.Component{
     constructor(props){
         super(props);

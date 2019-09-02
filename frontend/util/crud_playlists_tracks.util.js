@@ -1,7 +1,8 @@
-export const addPlaylistTrack = () => {
+export const addPlaylistTrack = (playlist_id, track_id) => {
     return $.ajax({
         method: "POST",
-        url: "/api/playlist_tracks"
+        url: "/api/playlist_tracks",
+        data: {playlist_id, track_id}
     })
 }
 

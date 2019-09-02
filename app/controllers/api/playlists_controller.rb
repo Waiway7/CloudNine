@@ -2,7 +2,7 @@ require 'open-uri'
 
 class Api::PlaylistsController < ApplicationController
     def index
-        @playlists = Playlist.all
+        @playlists = Playlist.includes(:tracks).all
         render "api/playlists/index"
     end
 
@@ -12,7 +12,7 @@ class Api::PlaylistsController < ApplicationController
     end
     
     def create
-        @playlist = Playlist.new(playlist_params)
+        @playlist = Playlist.new(create_params)
         if @playlist.save
             render "api/playlists/show"
         else 
@@ -41,8 +41,12 @@ class Api::PlaylistsController < ApplicationController
     end
 
     private
+    
+    def create_params
+        params.require(:playlist).permit(:creater_id, :title)
+    end
 
     def playlist_params
-        params.require(:playlist).permit(:id, :title, :description, :image)
+        params.require(:playlist).permit(:creater_id, :title, :description, :image)
     end
 end

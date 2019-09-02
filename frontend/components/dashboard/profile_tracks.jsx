@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {fetchUserTracks, deleteTrack, updateTrack} from '../../actions/track_actions';
-import {openUploadModal, closeUploadModal} from '../../actions/modal_actions';
+import {openUploadModal, closeUploadModal, closeModal, openPlaylistModal} from '../../actions/modal_actions';
 import TrackItem from './profile_tracks_items'
 import UpdateModal from '../current_user_tracks/modal_update'
+import PlaylistModal from "../modals/playlist_modal";
 
 class Tracks extends React.Component {
     constructor(props){
@@ -27,6 +28,8 @@ class Tracks extends React.Component {
                     deleteTrack={this.props.deleteTrack}
                     openUploadModal={this.props.openUploadModal}
                     closeUploadModal={this.props.closeUploadModal}
+                    playlistModal={this.props.openPlaylistModal}
+                    closeModal={this.props.closeModal}
                     modal={this.props.modal}
                     user={this.props.currentUser}
                 />
@@ -34,6 +37,7 @@ class Tracks extends React.Component {
         }
 
         let modalComponent;
+
         if (this.props.modal) {
             modalComponent = (
                 <UpdateModal 
@@ -42,7 +46,17 @@ class Tracks extends React.Component {
                     closeUploadModal={this.props.closeUploadModal}
                 />
             )
+        } else if (this.props.playlistModal) {
+
+            modalComponent = (
+                <PlaylistModal
+                    trackId={this.props.playlistModal}
+                    closeModal={this.props.closeModal} 
+                    playlistModal={this.props.openPlaylistModal}
+                    />
+            )
         }
+
 
         return (
             <div className="track-index-container">
@@ -59,7 +73,8 @@ const msp = (state) => {
     return {
         currentUser: state.session.id,
         tracks: state.entities.tracks,
-        modal: state.ui.uploadModal
+        modal: state.ui.uploadModal,
+        playlistModal: state.ui.playlistModal
     }
 }
 
@@ -69,7 +84,9 @@ const mdp = dispatch => {
         updateTrack: (track, id) => dispatch(updateTrack(track, id)),
         deleteTrack: id => dispatch(deleteTrack(id)),
         openUploadModal: (trackId) => dispatch(openUploadModal(trackId)),
-        closeUploadModal: () => dispatch(closeUploadModal())
+        openPlaylistModal: (id, playlistType) => dispatch(openPlaylistModal(id, playlistType)),
+        closeUploadModal: () => dispatch(closeUploadModal()),
+        closeModal: () => dispatch(closeModal())
     }
 }
 

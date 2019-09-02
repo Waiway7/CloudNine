@@ -11,11 +11,22 @@ class Api::PlaylistTracksController < ApplicationController
     end
 
     def create 
-        @playlist_track = PlaylistTrack.new(playlist_track_params)
-        if @playlist_track.save 
-            render "api/playlists/show"
+        if (params[:track_id].length == 1)
+            @playlist_track = PlaylistTrack.new(playlist_id: params[:playlist_id], track_id: params[:track_id][0])
+            if @playlist_track.save 
+                render json: "success", status: 200
+            else 
+                render json: @playlist_track.errors.full_messages, status: 422
+            end
         else 
-            render json: @playlist_track.errors.full_messages, status: 422
+            params[:track_id].each.with_index do |track_id, idx|
+                @playlist_track = PlaylistTrack.new(playlist_id: params[:playlist_id], track_id: params[:track_id][idx])
+                if @playlist_track.save
+                    render json: "success", status: 200
+                else
+                    render json: @playlist_track.errors.full_messages, status: 422
+                end
+            end
         end
     end
 

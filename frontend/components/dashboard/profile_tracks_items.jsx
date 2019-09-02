@@ -91,7 +91,12 @@ class TrackItem extends React.Component {
                             className="update-track-index"
                             onClick={() => this.props.openUploadModal(track.id)}>
                                 <i className="fas fa-pencil-alt audio-trash"></i><p className="edit-text">Edit</p>
-                    </button>
+                        </button>
+                        <button 
+                            className="update-track-index"
+                            onClick={() => this.props.playlistModal(track.id, "create")}>
+                                <i className="fas fa-plus audio-trash"></i><p className="edit-text">Add to Playlist</p>
+                        </button>
                 </div>
                 </div>
                     

@@ -90,7 +90,7 @@
 /*!*******************************************!*\
   !*** ./frontend/actions/modal_actions.js ***!
   \*******************************************/
-/*! exports provided: OPEN_MODAL, CLOSE_MODAL, OPEN_UPLOAD_MODAL, CLOSE_UPLOAD_MODAL, openModal, closeModal, openUploadModal, closeUploadModal */
+/*! exports provided: OPEN_MODAL, CLOSE_MODAL, OPEN_UPLOAD_MODAL, CLOSE_UPLOAD_MODAL, OPEN_PLAYLIST_MODAL, openModal, closeModal, openUploadModal, openPlaylistModal, closeUploadModal */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -99,14 +99,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLOSE_MODAL", function() { return CLOSE_MODAL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OPEN_UPLOAD_MODAL", function() { return OPEN_UPLOAD_MODAL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLOSE_UPLOAD_MODAL", function() { return CLOSE_UPLOAD_MODAL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OPEN_PLAYLIST_MODAL", function() { return OPEN_PLAYLIST_MODAL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openModal", function() { return openModal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeModal", function() { return closeModal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openUploadModal", function() { return openUploadModal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openPlaylistModal", function() { return openPlaylistModal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeUploadModal", function() { return closeUploadModal; });
 var OPEN_MODAL = "OPEN_MODAL";
 var CLOSE_MODAL = "CLOSE_MODAL";
 var OPEN_UPLOAD_MODAL = "OPEN_UPLOAD_MODAL";
 var CLOSE_UPLOAD_MODAL = "CLOSE_UPLOAD_MODAL";
+var OPEN_PLAYLIST_MODAL = "OPEN_PLAYLIST_MODAL";
 var openModal = function openModal(modal) {
   return {
     type: OPEN_MODAL,
@@ -122,6 +125,13 @@ var openUploadModal = function openUploadModal(uploadModal) {
   return {
     type: OPEN_UPLOAD_MODAL,
     uploadModal: uploadModal
+  };
+};
+var openPlaylistModal = function openPlaylistModal(id, playlistType) {
+  return {
+    type: OPEN_PLAYLIST_MODAL,
+    id: id,
+    playlistType: playlistType
   };
 };
 var closeUploadModal = function closeUploadModal() {
@@ -239,7 +249,7 @@ var fetchPlaylists = function fetchPlaylists() {
 /*!*****************************************************!*\
   !*** ./frontend/actions/playlist_tracks_actions.js ***!
   \*****************************************************/
-/*! exports provided: DELETE_PLAYLIST_TRACK, RECEIVE_PLAYLISTS_TRACKS, RECEIVE_PLAYLIST_TRACKS, receivePlaylistTRracks, receiveErrors, fetchPlaylistsTracks, fetchPlaylistTracks, addPlaylistTrack, deletePlaylistTrack */
+/*! exports provided: DELETE_PLAYLIST_TRACK, RECEIVE_PLAYLISTS_TRACKS, RECEIVE_PLAYLIST_TRACKS, RECEIVE_ERRORS, receivePlaylistTracks, receiveErrors, fetchPlaylistsTracks, fetchPlaylistTracks, addPlaylistTracks, deletePlaylistTrack */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -247,28 +257,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_PLAYLIST_TRACK", function() { return DELETE_PLAYLIST_TRACK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PLAYLISTS_TRACKS", function() { return RECEIVE_PLAYLISTS_TRACKS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PLAYLIST_TRACKS", function() { return RECEIVE_PLAYLIST_TRACKS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivePlaylistTRracks", function() { return receivePlaylistTRracks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivePlaylistTracks", function() { return receivePlaylistTracks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPlaylistsTracks", function() { return fetchPlaylistsTracks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPlaylistTracks", function() { return fetchPlaylistTracks; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addPlaylistTrack", function() { return addPlaylistTrack; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addPlaylistTracks", function() { return addPlaylistTracks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePlaylistTrack", function() { return deletePlaylistTrack; });
 /* harmony import */ var _util_crud_playlists_tracks_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/crud_playlists_tracks.util */ "./frontend/util/crud_playlists_tracks.util.js");
 
 var DELETE_PLAYLIST_TRACK = "DELETE_PLAYLIST_TRACK";
 var RECEIVE_PLAYLISTS_TRACKS = "RECEIVE_PLAYLISTS_TRACKS";
 var RECEIVE_PLAYLIST_TRACKS = "RECEIVE_PLAYLIST_TRACKS";
-var receivePlaylistTRracks = function receivePlaylistTRracks(playlistsTracks) {
+var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+var receivePlaylistTracks = function receivePlaylistTracks(playlistsTracks) {
   return {
     type: RECEIVE_PLAYLISTS_TRACKS,
     playlistsTracks: playlistsTracks
-  };
-};
-
-var receivePlaylistTracks = function receivePlaylistTracks(playlistTracks) {
-  return {
-    type: RECEIVE_PLAYLIST_TRACKS,
-    playlistTracks: playlistTracks
   };
 };
 
@@ -303,9 +308,9 @@ var fetchPlaylistTracks = function fetchPlaylistTracks(id) {
     });
   };
 };
-var addPlaylistTrack = function addPlaylistTrack() {
+var addPlaylistTracks = function addPlaylistTracks(playlistId, trackIds) {
   return function (dispatch) {
-    return _util_crud_playlists_tracks_util__WEBPACK_IMPORTED_MODULE_0__["addPlaylistTrack"]().then(function (tracks) {
+    return _util_crud_playlists_tracks_util__WEBPACK_IMPORTED_MODULE_0__["addPlaylistTrack"](playlistId, trackIds).then(function (tracks) {
       return dispatch(receivePlaylistTracks(tracks));
     }, function (error) {
       return dispatch(receiveErrors(error.responseJSON));
@@ -1296,7 +1301,7 @@ function (_React$Component) {
         key: "update-btn".concat(track.id),
         className: hoverTrash,
         onClick: function onClick() {
-          return _this3.props.openUploadModal(track.id);
+          return _this3.props.openUploadModal(id, "create");
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-pencil-alt"
@@ -2023,6 +2028,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 /* harmony import */ var _profile_tracks_items__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./profile_tracks_items */ "./frontend/components/dashboard/profile_tracks_items.jsx");
 /* harmony import */ var _current_user_tracks_modal_update__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../current_user_tracks/modal_update */ "./frontend/components/current_user_tracks/modal_update.jsx");
+/* harmony import */ var _modals_playlist_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../modals/playlist_modal */ "./frontend/components/modals/playlist_modal.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2040,6 +2046,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2084,6 +2091,8 @@ function (_React$Component) {
             deleteTrack: _this.props.deleteTrack,
             openUploadModal: _this.props.openUploadModal,
             closeUploadModal: _this.props.closeUploadModal,
+            playlistModal: _this.props.openPlaylistModal,
+            closeModal: _this.props.closeModal,
             modal: _this.props.modal,
             user: _this.props.currentUser
           });
@@ -2097,6 +2106,12 @@ function (_React$Component) {
           track: this.props.tracks[this.props.modal],
           updateTrack: this.props.updateTrack,
           closeUploadModal: this.props.closeUploadModal
+        });
+      } else if (this.props.playlistModal) {
+        modalComponent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modals_playlist_modal__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          trackId: this.props.playlistModal,
+          closeModal: this.props.closeModal,
+          playlistModal: this.props.openPlaylistModal
         });
       }
 
@@ -2117,7 +2132,8 @@ var msp = function msp(state) {
   return {
     currentUser: state.session.id,
     tracks: state.entities.tracks,
-    modal: state.ui.uploadModal
+    modal: state.ui.uploadModal,
+    playlistModal: state.ui.playlistModal
   };
 };
 
@@ -2135,8 +2151,14 @@ var mdp = function mdp(dispatch) {
     openUploadModal: function openUploadModal(trackId) {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openUploadModal"])(trackId));
     },
+    openPlaylistModal: function openPlaylistModal(id, playlistType) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openPlaylistModal"])(id, playlistType));
+    },
     closeUploadModal: function closeUploadModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeUploadModal"])());
+    },
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])());
     }
   };
 };
@@ -2314,7 +2336,16 @@ function (_React$Component) {
         className: "fas fa-pencil-alt audio-trash"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "edit-text"
-      }, "Edit"))))));
+      }, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "update-track-index",
+        onClick: function onClick() {
+          return _this3.props.playlistModal(track.id, "create");
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-plus audio-trash"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "edit-text"
+      }, "Add to Playlist"))))));
     }
   }]);
 
@@ -2438,7 +2469,6 @@ function (_React$Component) {
         errorUsername: errorUsername,
         errorPassword: errorPassword
       });
-      debugger;
       this.props.userForm(this.state);
     } // renderErrors() {
     //     const listErrors = (
@@ -2661,34 +2691,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
- // export default ({modal, closeModal, switchForm}) => {
-//     if (!modal){
-//         return null;
-//     }
-//     let componentContainer;
-//     let switchModal;
-//     switch (modal){
-//         case 'login':
-//             componentContainer = <LoginFormContainer />
-//             break;
-//         case 'signup':
-//             componentContainer = <SignupFormContainer />
-//             break;
-//         default:
-//             return null;
-//     }
-//     return (
-//         <div className="modal-background" onClick={() => closeModal()}>
-//         <div className="close-x-btn" onClick={() => closeModal()}>X</div>
-//             <div className="modal-form" onClick={e => e.stopPropagation()}>
-//                 {componentContainer}
-//                  <div className="okay">
-//                      <button onClick={() => switchForm(switchModal)}>Change me</button>
-//                  </div>
-//             </div>
-//         </div>
-//     )
-// }
+
 
 var Modal =
 /*#__PURE__*/
@@ -3024,6 +3027,564 @@ var msp = function msp(state) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(msp, mdp)(navBar));
+
+/***/ }),
+
+/***/ "./frontend/components/modals/add_playlist-modal.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/modals/add_playlist-modal.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var AddTrackToPlaylists =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(AddTrackToPlaylists, _React$Component);
+
+  function AddTrackToPlaylists(props) {
+    _classCallCheck(this, AddTrackToPlaylists);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(AddTrackToPlaylists).call(this, props));
+  }
+
+  _createClass(AddTrackToPlaylists, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchPlaylists();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+    }
+  }]);
+
+  return AddTrackToPlaylists;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var msp = function msp(state) {
+  return {
+    playlists: state.entities.playlists
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchPlaylists: function fetchPlaylists() {
+      return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["fetchPlaylists"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(AddTrackToPlaylists));
+
+/***/ }),
+
+/***/ "./frontend/components/modals/create_playlist_modal.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/modals/create_playlist_modal.jsx ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
+/* harmony import */ var _actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/playlist_tracks_actions */ "./frontend/actions/playlist_tracks_actions.js");
+/* harmony import */ var _playlist_items_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./playlist_items_modal */ "./frontend/components/modals/playlist_items_modal.js");
+/* harmony import */ var _index_tracks_to_be_add__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index_tracks_to_be_add */ "./frontend/components/modals/index_tracks_to_be_add.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+var CreatePlaylistModal =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(CreatePlaylistModal, _React$Component);
+
+  function CreatePlaylistModal(props) {
+    var _this;
+
+    _classCallCheck(this, CreatePlaylistModal);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CreatePlaylistModal).call(this, props));
+    var dupTracks = Object.assign({}, _this.props.tracks);
+    delete dupTracks[_this.props.trackId];
+    _this.state = {
+      title: "",
+      trackIds: _defineProperty({}, _this.props.trackId, _this.props.tracks[_this.props.trackId]),
+      current_id: _this.props.currentUserId.id,
+      tracks: dupTracks,
+      uploaded: false,
+      playlistId: null
+    };
+    _this.handleDelete = _this.handleDeleteTracksState.bind(_assertThisInitialized(_this));
+    _this.addTracktoPlaylist = _this.addTracktoPlaylist.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(CreatePlaylistModal, [{
+    key: "handleDeleteTracksState",
+    value: function handleDeleteTracksState(e) {
+      var value = e.currentTarget.id;
+      var removeTracks = Object.assign({}, this.state.trackIds);
+      var addTracks = Object.assign({}, this.state.tracks, _defineProperty({}, value, this.state.trackIds[value]));
+      delete removeTracks[value];
+      this.setState({
+        trackIds: removeTracks,
+        tracks: addTracks
+      });
+    }
+  }, {
+    key: "addTracktoPlaylist",
+    value: function addTracktoPlaylist(e) {
+      var value = e.currentTarget.id;
+      var updatedTracks = Object.assign({}, this.state.trackIds, _defineProperty({}, value, this.props.tracks[value]));
+      var dupTracks = Object.assign({}, this.state.tracks);
+      delete dupTracks[value];
+      this.setState({
+        trackIds: updatedTracks,
+        tracks: dupTracks
+      });
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, field, e.target.value));
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+
+      if (this.state.title != "" && Object.keys(this.state.trackIds).length > 0) {
+        var playlist = {
+          title: this.state.title,
+          creater_id: this.state.current_id
+        };
+        this.props.createPlaylist(playlist).then(function (playlist) {
+          _this3.props.addPlaylistTracks(Object.keys(playlist.playlist)[0], Object.keys(_this3.state.trackIds));
+
+          _this3.setState({
+            uploaded: true,
+            playlistId: Object.keys(playlist.playlist)[0]
+          });
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var uploadStatus;
+      var addTracks;
+
+      if (Object.keys(this.state.tracks).length > 0) {
+        addTracks = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container-class-tracks-add"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_index_tracks_to_be_add__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          addTracks: this.state.tracks,
+          addTracktoPlaylist: this.addTracktoPlaylist
+        }));
+      }
+
+      if (this.state.uploaded === false) {
+        uploadStatus = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: ""
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          className: "create-playlist-submit",
+          onSubmit: this.handleSubmit.bind(this)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "create-title-playlist"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "title-playlist-format"
+        }, "Playlist title", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "asterick-playlist"
+        }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          value: this.state.title,
+          onChange: this.update('title'),
+          className: "input-title-playlist"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "submit-playlist"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "submit-create-playlist-btn",
+          type: "submit",
+          value: "Save"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_playlist_items_modal__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          deleteTrack: this.handleDelete,
+          trackIds: this.state.trackIds,
+          tracks: this.props.tracks
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "separator"
+        }), addTracks);
+      } else if (this.state.uploaded === true) {
+        var playlistImg = this.props.tracks[Object.keys(this.state.trackIds)[0]].imageUrl;
+        uploadStatus = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-img-tracks-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-info-tracks-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container-for-playlist"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "box-one"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "box-two"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "playlist-img-track",
+          src: "".concat(playlistImg)
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info-create-playlist"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "creater-name"
+        }, this.props.currentUserId.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "title-playlist-name"
+        }, this.props.playlists[this.state.playlistId].title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_playlist_items_modal__WEBPACK_IMPORTED_MODULE_4__["default"] // deleteTrack={this.handleDelete}
+        , {
+          trackIds: this.state.trackIds,
+          tracks: this.props.tracks
+        }));
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, uploadStatus);
+    }
+  }]);
+
+  return CreatePlaylistModal;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var msp = function msp(state) {
+  return {
+    currentUserId: state.session.id,
+    tracks: state.entities.tracks,
+    playlists: state.entities.playlists
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    createPlaylist: function createPlaylist(playlist) {
+      return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["createPlaylist"])(playlist));
+    },
+    addPlaylistTracks: function addPlaylistTracks(playlistId, trackIds) {
+      return dispatch(Object(_actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_3__["addPlaylistTracks"])(playlistId, trackIds));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(CreatePlaylistModal));
+
+/***/ }),
+
+/***/ "./frontend/components/modals/index_tracks_to_be_add.jsx":
+/*!***************************************************************!*\
+  !*** ./frontend/components/modals/index_tracks_to_be_add.jsx ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _this = undefined;
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var addTracks = _ref.addTracks,
+      addTracktoPlaylist = _ref.addTracktoPlaylist;
+  var addTracksList = Object.keys(addTracks).map(function (id) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      key: "addTracks".concat(id),
+      className: "list-add-tracks"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "container-div-tracks-add"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      className: "img-tracks-add",
+      src: addTracks[id].imageUrl
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "tracks-container-add-info"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "track-add-info-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "creater-name-add"
+    }, "Cloudnine"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "add-tracks-title"
+    }, addTracks[id].title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: id,
+      className: "btn-add-track",
+      onClick: addTracktoPlaylist.bind(_this)
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "text-btn-add"
+    }, "Add to playlist"))));
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "add-tracks-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "add-tracks-header-container"
+  }, "Looking for more tracks? Add some of your own."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container-tracks-add-to-playlist"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "tracks-add-to-playlist"
+  }, addTracksList)));
+});
+
+/***/ }),
+
+/***/ "./frontend/components/modals/playlist_items_modal.js":
+/*!************************************************************!*\
+  !*** ./frontend/components/modals/playlist_items_modal.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _this = undefined;
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var deleteTrack = _ref.deleteTrack,
+      addTrack = _ref.addTrack,
+      trackIds = _ref.trackIds,
+      tracks = _ref.tracks;
+  var addedTracks;
+
+  if (Object.keys(trackIds).length === 0 && trackIds.constructor === Object) {
+    addedTracks;
+  } else {
+    var trackArr = Object.keys(trackIds);
+
+    if (trackArr.length < 4 && typeof deleteTrack === "function") {
+      for (var i = trackArr.length; i < 4; i++) {
+        trackArr.push(0);
+      }
+    }
+
+    addedTracks = trackArr.map(function (id, idx) {
+      var track = tracks[id];
+      var deleteTrackX;
+
+      if (typeof deleteTrack === "function") {
+        deleteTrackX = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          id: id,
+          className: "fas fa-times delete-title-track",
+          onClick: deleteTrack.bind(_this)
+        });
+      }
+
+      if (id === 0) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "empty-".concat(idx)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "compact"
+        }));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "trackPlaylist-".concat(id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "compact"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "addedImgTrack"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "add-track-img",
+          src: track.imageUrl
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "added-uploader-name"
+        }, "CloudNine"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "dash"
+        }, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "added-title-track"
+        }, track.title), deleteTrackX));
+      }
+    });
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "playlist-track-added"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "list-of-added"
+  }, addedTracks));
+});
+
+/***/ }),
+
+/***/ "./frontend/components/modals/playlist_modal.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/modals/playlist_modal.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _create_playlist_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create_playlist_modal */ "./frontend/components/modals/create_playlist_modal.jsx");
+/* harmony import */ var _add_playlist_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./add_playlist-modal */ "./frontend/components/modals/add_playlist-modal.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var PlaylistModal =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(PlaylistModal, _React$Component);
+
+  function PlaylistModal(props) {
+    var _this;
+
+    _classCallCheck(this, PlaylistModal);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PlaylistModal).call(this, props));
+    _this.closeModal = _this.props.closeModal.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(PlaylistModal, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      // const preview = this.state.imagePreview ? <img className="empty-profile" src={this.state.imagePreview} /> :
+      //     <img className="empty-profile" src={this.state.image} />
+      var modalType;
+      var createModal = "";
+      var addModal = "";
+      var track = this.props.trackId[0];
+      var type = this.props.trackId[1];
+
+      if (type === "create") {
+        modalType = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_playlist_modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          trackId: this.props.trackId[0]
+        });
+        createModal = "target-playlist-modal";
+      } else if (type === "add") {
+        modalType = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_add_playlist_modal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          trackId: this.props.trackId[0]
+        });
+        addModal = "target-playlist-modal";
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "modal-background",
+        onClick: function onClick() {
+          return _this2.props.closeModal();
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "close-x-btn",
+        onClick: function onClick() {
+          return _this2.props.closeModal();
+        }
+      }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "modal-create-playlist",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container-playlist-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "playlist-header-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "add-playlist-tracks ".concat(addModal),
+        onClick: function onClick() {
+          return _this2.props.playlistModal(track, "add");
+        }
+      }, "Add to playlist"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "create-playlist-tracks ".concat(createModal),
+        onClick: function onClick() {
+          return _this2.props.playlistModal(track, "create");
+        }
+      }, "Create a playlist"))), modalType));
+    }
+  }]);
+
+  return PlaylistModal;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (PlaylistModal);
 
 /***/ }),
 
@@ -4195,6 +4756,39 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./frontend/reducers/ui/playlist_modal_reducer.js":
+/*!********************************************************!*\
+  !*** ./frontend/reducers/ui/playlist_modal_reducer.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
+
+var playlistModalReducer = function playlistModalReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_PLAYLIST_MODAL"]:
+      return [action.id, action.playlistType];
+
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_MODAL"]:
+      return null;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (playlistModalReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/ui/ui_reducer.js":
 /*!********************************************!*\
   !*** ./frontend/reducers/ui/ui_reducer.js ***!
@@ -4207,7 +4801,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/ui/modal_reducer.js");
 /* harmony import */ var _upload_modal_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./upload_modal_reducer */ "./frontend/reducers/ui/upload_modal_reducer.js");
-/* harmony import */ var _player__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./player */ "./frontend/reducers/ui/player.js");
+/* harmony import */ var _playlist_modal_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./playlist_modal_reducer */ "./frontend/reducers/ui/playlist_modal_reducer.js");
+/* harmony import */ var _player__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./player */ "./frontend/reducers/ui/player.js");
+
 
 
 
@@ -4215,7 +4811,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   uploadModal: _upload_modal_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  player: _player__WEBPACK_IMPORTED_MODULE_3__["default"]
+  playlistModal: _playlist_modal_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  player: _player__WEBPACK_IMPORTED_MODULE_4__["default"]
 }));
 
 /***/ }),
@@ -4320,9 +4917,9 @@ var createPlaylist = function createPlaylist(playlist) {
   return $.ajax({
     method: "POST",
     url: "/api/playlists",
-    data: playlist,
-    contentType: false,
-    processData: false
+    data: {
+      playlist: playlist
+    }
   });
 };
 var fetchPlaylists = function fetchPlaylists() {
@@ -4347,10 +4944,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePlaylistTrack", function() { return deletePlaylistTrack; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPlaylistTracks", function() { return fetchPlaylistTracks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPlaylistsTracks", function() { return fetchPlaylistsTracks; });
-var addPlaylistTrack = function addPlaylistTrack() {
+var addPlaylistTrack = function addPlaylistTrack(playlist_id, track_id) {
   return $.ajax({
     method: "POST",
-    url: "/api/playlist_tracks"
+    url: "/api/playlist_tracks",
+    data: {
+      playlist_id: playlist_id,
+      track_id: track_id
+    }
   });
 };
 var deletePlaylistTrack = function deletePlaylistTrack(id) {

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: playlist_track
+# Table name: playlist_tracks
 #
 #  id          :bigint           not null, primary key
 #  playlist_id :integer          not null

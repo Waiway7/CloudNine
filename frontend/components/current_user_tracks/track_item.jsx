@@ -112,7 +112,7 @@ class TrackItem extends React.Component {
                         <button 
                             key={`update-btn${track.id}`} 
                             className={hoverTrash}
-                            onClick={() => this.props.openUploadModal(track.id)}>
+                            onClick={() => this.props.openUploadModal(id, "create")}>
                                 <i className="fas fa-pencil-alt"></i>
                         </button>
                     </div>
