@@ -6,10 +6,11 @@ export const addPlaylistTrack = (playlist_id, track_id) => {
     })
 }
 
-export const deletePlaylistTrack = (id) => {
+export const deletePlaylistTrack = (trackId, playlistId) => {
     return $.ajax({
         method: "DELETE",
-        url: `/api/playlist_tracks/${id}`
+        url: `/api/playlist_tracks/`,
+        data: {trackId, playlistId}
     })
 }
 

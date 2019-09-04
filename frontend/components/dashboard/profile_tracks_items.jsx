@@ -93,8 +93,8 @@ class TrackItem extends React.Component {
                                 <i className="fas fa-pencil-alt audio-trash"></i><p className="edit-text">Edit</p>
                         </button>
                         <button 
-                            className="update-track-index"
-                            onClick={() => this.props.playlistModal(track.id, "create")}>
+                            className="edit-track-index"
+                            onClick={() => this.props.playlistModal(track.id, "add")}>
                                 <i className="fas fa-plus audio-trash"></i><p className="edit-text">Add to Playlist</p>
                         </button>
                 </div>

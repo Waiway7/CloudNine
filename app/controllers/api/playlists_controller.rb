@@ -7,7 +7,7 @@ class Api::PlaylistsController < ApplicationController
     end
 
     def show
-        @playlist = Playlist.find_by(id: params[:id])
+        @playlist = Playlist.with_attached_image.find_by(id: params[:id])
         render "api/playlists/show"
     end
     

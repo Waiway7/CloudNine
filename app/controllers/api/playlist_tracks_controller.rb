@@ -1,7 +1,7 @@
 class Api::PlaylistTracksController < ApplicationController
 
     def index
-        @playlists = Playlist.all
+        @playlists = Playlist.all   
         render "api/playlist_tracks/index"
     end
 
@@ -14,7 +14,8 @@ class Api::PlaylistTracksController < ApplicationController
         if (params[:track_id].length == 1)
             @playlist_track = PlaylistTrack.new(playlist_id: params[:playlist_id], track_id: params[:track_id][0])
             if @playlist_track.save 
-                render json: "success", status: 200
+                @playlist = @playlist_track.playlist
+                render "api/playlists/show"
             else 
                 render json: @playlist_track.errors.full_messages, status: 422
             end
@@ -22,21 +23,24 @@ class Api::PlaylistTracksController < ApplicationController
             params[:track_id].each.with_index do |track_id, idx|
                 @playlist_track = PlaylistTrack.new(playlist_id: params[:playlist_id], track_id: params[:track_id][idx])
                 if @playlist_track.save
-                    render json: "success", status: 200
                 else
-                    render json: @playlist_track.errors.full_messages, status: 422
+                    return render json: @playlist_track.errors.full_messages, status: 422
                 end
             end
+            @playlist = @playlist_track.playlist
+            render "api/playlists/show"
         end
     end
 
     def destroy
-        @playlist_track = Track.find_by(
-                params[:playlist_track][:playlist_id],
-                params[:playlist_track][:track_id]
-                )
+        
+        @playlist_track = PlaylistTrack.find_by(
+                playlist_id: params[:playlistId],
+                track_id: params[:trackId]
+        )
         @playlist_track.destroy
-        render "api/playlists/show"
+        @playlist = @playlist_track.playlist
+        render json: @playlist_track
     end
 
     private

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {createPlaylist} from "../../actions/playlist_actions";
+import {createPlaylist, fetchPlaylists} from "../../actions/playlist_actions";
 import {addPlaylistTracks} from "../../actions/playlist_tracks_actions";
 import PlaylistItemTracks from "./playlist_items_modal";
 import AddItemTracks from './index_tracks_to_be_add';
@@ -48,6 +48,7 @@ class CreatePlaylistModal extends React.Component{
             const playlist = {title: this.state.title, creater_id: this.state.current_id}
             this.props.createPlaylist(playlist).then((playlist) => {
                 this.props.addPlaylistTracks(Object.keys(playlist.playlist)[0], Object.keys(this.state.trackIds))
+                this.props.fetchPlaylists();
                 this.setState({uploaded: true, playlistId: Object.keys(playlist.playlist)[0]})
                 })
         }
@@ -127,6 +128,7 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
     return {
+        fetchPlaylists: () => dispatch(fetchPlaylists()),
         createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
         addPlaylistTracks: (playlistId, trackIds) => dispatch(addPlaylistTracks(playlistId, trackIds))
     }

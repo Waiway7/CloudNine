@@ -31,6 +31,10 @@ class Playlists extends React.Component {
                     user={this.props.currentUser}
                 />
             )})
+        } else {
+            playlistList = <div className="container-no-playlists">
+                <div className="text-no-playlists">You haven't created any playlists.</div>
+            </div>
         }
 
         let modalComponent;
@@ -47,7 +51,7 @@ class Playlists extends React.Component {
         return (
             <div className="track-index-container">
                 <div className="container-tracks">
-                    <ul className="index-list-tracks">{playlistList}</ul>
+                    {playlistList}
                 </div>
                 {modalComponent}
             </div>

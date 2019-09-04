@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux"
 import CreatePlaylistModal from "./create_playlist_modal"
-import AddTrackToPlaylists from "./add_playlist-modal"
+import AddTrackToPlaylists from "./add_playlist_modal"
 
 class PlaylistModal extends React.Component{
     constructor(props){

@@ -64,7 +64,8 @@
 }
 
 .index-preview{
-    width: 160px;
+    min-width: 160px;
+    max-width: 160px;
     height: 160px;
     
 }
@@ -131,20 +132,22 @@
 .index-buttons-up-del {
     position: absolute;
     margin-top: 117px;
-    margin-left: 15px;
+    width: 75%;
     display: flex;
+    margin-left: 15px;
 }
 
 .delete-track-index {
     text-align: center;
     display: flex;
-    margin: 0 auto;
     overflow: hidden;
     padding: 5px;
     border-radius: 3px;
     margin-right: 20px;
     width: 75px;
     cursor: pointer;
+    margin-right: 15px;
+
 }
 
 .audio-trash {
@@ -159,13 +162,25 @@
 }
 
 
+.edit-track-index {
+    text-align: center;
+    display: flex;
+    overflow: hidden;
+    padding: 5px;
+    width: 120px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
 .update-track-index {
     text-align: center;
     display: flex;
-    margin: 0 auto;
     overflow: hidden;
     padding: 5px;
-    width: 75px;
+    width: 65px;
     border-radius: 3px;
     cursor: pointer;
+    margin-right: 15px;
+
 }
