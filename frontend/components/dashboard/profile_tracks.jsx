@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {fetchUserTracks, deleteTrack, updateTrack} from '../../actions/track_actions';
+import {fetchPlaylists} from '../../actions/playlist_actions'
 import {openUploadModal, closeUploadModal, closeModal, openPlaylistModal} from '../../actions/modal_actions';
 import TrackItem from './profile_tracks_items'
 import UpdateModal from '../current_user_tracks/modal_update'
@@ -12,6 +13,7 @@ class Tracks extends React.Component {
     }
 
     componentDidMount(){
+        this.props.fetchPlaylists()
         this.props.fetchUserTracks(this.props.currentUser)
     }
 
@@ -74,12 +76,14 @@ const msp = (state) => {
         currentUser: state.session.id,
         tracks: state.entities.tracks,
         modal: state.ui.uploadModal,
-        playlistModal: state.ui.playlistModal
+        playlistModal: state.ui.playlistModal,
+        playlists: state.entities.playlists
     }
 }
 
 const mdp = dispatch => {
     return {
+        fetchPlaylists: () => dispatch(fetchPlaylists()),
         fetchUserTracks: user => dispatch(fetchUserTracks(user)),
         updateTrack: (track, id) => dispatch(updateTrack(track, id)),
         deleteTrack: id => dispatch(deleteTrack(id)),

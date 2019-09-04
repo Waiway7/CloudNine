@@ -2,7 +2,7 @@ require 'open-uri'
 
 class Api::PlaylistsController < ApplicationController
     def index
-        @playlists = Playlist.includes(:tracks).all
+        @playlists = Playlist.all
         render "api/playlists/index"
     end
 

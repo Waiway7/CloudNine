@@ -58,6 +58,7 @@ class TrackItem extends React.Component {
         const {id} = this.props.currentTrackInfo;
         const {play} = this.props
         let hoverPlay;
+        let modalPlaylistType = "add"
         
         if (id === track.id && play) {
             hoverPlay = "fas fa-pause-circle fa-3x index-play" 
@@ -67,6 +68,10 @@ class TrackItem extends React.Component {
         }
         else if (this.state.hover && id != track.id || !play) {
             hoverPlay =  "fas fa-play-circle fa-3x index-play"
+        }
+
+        if (Object.keys(this.props.playlists).length === 0) {
+            modalPlaylistType = "create"
         }
 
         return (
@@ -94,7 +99,9 @@ class TrackItem extends React.Component {
                         </button>
                         <button 
                             className="edit-track-index"
-                            onClick={() => this.props.playlistModal(track.id, "add")}>
+                            onClick={() => 
+                                this.props.playlistModal(track.id, modalPlaylistType)
+                                }>
                                 <i className="fas fa-plus audio-trash"></i><p className="edit-text">Add to Playlist</p>
                         </button>
                 </div>
@@ -116,7 +123,8 @@ const msp = (state) => {
         trackList: state.entities.tracks,
         play: state.ui.player,
         audio: state.entities.currentTrack.audio,
-        currentTrackInfo
+        currentTrackInfo,
+        playlists: state.entities.playlists
     }
 }
 

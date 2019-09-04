@@ -99,7 +99,7 @@ class TrackItem extends React.Component {
                         <i className={hoverPlay} id={track.id} onClick={this.handlePlay.bind(this)}></i>
                     </div>
                     <div className="track-info">
-                        <span className="user-name">{this.props.user.username}</span>
+                        <span className="user-name">{this.props.currentUser.username}</span>
                         <span className="song-title">{track.title}</span>
                     </div>
                     <div className="buttons-up-del">
@@ -133,7 +133,8 @@ const msp = (state) => {
         trackList: state.entities.tracks,
         play: state.ui.player,
         audio: state.entities.currentTrack.audio,
-        currentTrackInfo
+        currentTrackInfo,
+        currentUser: state.session.id,
     }
 }
 

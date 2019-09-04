@@ -21,16 +21,11 @@ class Tracks extends React.Component {
         let trackList;
         if (this.props.tracks) {
             tracks = Object.keys(this.props.tracks).map(id => this.props.tracks[id])
-            trackList = tracks.map(track => {return (
+            trackList = tracks.map(track => {
+                return (
                 <TrackItem 
                     key={`track-id${track.id}`} 
                     track={track}
-                    updateTrack={this.props.updateTrack}
-                    deleteTrack={this.props.deleteTrack}
-                    openUploadModal={this.props.openUploadModal}
-                    closeUploadModal={this.props.closeUploadModal}
-                    modal={this.props.modal}
-                    user={this.props.currentUser}
                 />
             )})
         }

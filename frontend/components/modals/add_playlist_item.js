@@ -1,7 +1,6 @@
 import React from "react";
 
 export default ({playlists, tracks, trackId, removeTrack, addTrack}) => {
-    const track = tracks[trackId]
     const playlistsList = Object.keys(playlists).map(
         (id, idx) => {
             const playlist = playlists[id]
