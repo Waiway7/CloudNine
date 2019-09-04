@@ -4596,6 +4596,7 @@ var playlistsTracksReducer = function playlistsTracksReducer() {
 
   switch (action.type) {
     case _actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PLAYLISTS_TRACKS"]:
+      debugger;
       return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, action.playlistsTracks);
 
     default:
