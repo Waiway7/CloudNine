@@ -13,36 +13,19 @@ class Tracks extends React.Component {
     }
 
     componentDidMount(){
-        
         this.props.fetchUserTracks(this.props.currentUser)
     }
-    
-    // componentDidUpdate(prevProps){
-    //     if (prevProps.tracks.length != this.props.tracks.length){
-    //         this.props.fetchUserTracks(this.props.currentUser)
-    //       }
-    // }
-
-    // toggleNav(){
-    //     className
-    // }
-    
 
     render(){
         let tracks;
         let trackList;
         if (this.props.tracks) {
             tracks = Object.keys(this.props.tracks).map(id => this.props.tracks[id])
-            trackList = tracks.map(track => {return (
+            trackList = tracks.map(track => {
+                return (
                 <TrackItem 
                     key={`track-id${track.id}`} 
                     track={track}
-                    updateTrack={this.props.updateTrack}
-                    deleteTrack={this.props.deleteTrack}
-                    openUploadModal={this.props.openUploadModal}
-                    closeUploadModal={this.props.closeUploadModal}
-                    modal={this.props.modal}
-                    user={this.props.currentUser}
                 />
             )})
         }
@@ -75,7 +58,7 @@ const msp = (state) => {
     return {
         currentUser: state.session.id,
         tracks: state.entities.tracks,
-        modal: state.ui.uploadModal
+        modal: state.ui.uploadModal,
     }
 }
 
@@ -85,7 +68,7 @@ const mdp = dispatch => {
         updateTrack: (track, id) => dispatch(updateTrack(track, id)),
         deleteTrack: id => dispatch(deleteTrack(id)),
         openUploadModal: (trackId) => dispatch(openUploadModal(trackId)),
-        closeUploadModal: () => dispatch(closeUploadModal())
+        closeUploadModal: () => dispatch(closeUploadModal()),
     }
 }
 

@@ -1,28 +1,6 @@
 import React from 'react';
-import UploadModal from "./modal_update"
-import Music from "./play_test";
 import {connect} from "react-redux"
 import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "../../actions/user_actions"
-
-// const TrackItem = ({track, modal, updateTrack, deleteTrack, openUploadModal, closeUploadModal}) => {
-
-//     // const trackImage = new Image(100, 200);
-//     // trackImage.src = 'track.jpg'
-//     // const audio = new Audio(track.audioUrl)
-//     // const duration = parseInt(audio.duration)
-//     // debugger
-//     return (
-//         <li className={`audio${track.id}`}>
-//             <img key={`img-${track.id}`} className="preview" src={track.imageUrl} />
-//             <button className={`delete-btn${track.id}`} onClick={() => deleteTrack(track.id)}>delete</button>
-//             <button className={`update-btn${track.id}`} onClick={() => openUploadModal(track.id)}>modal</button> 
-//             {/* will dispatch a player action add the track to the state and play as well */}
-//             <Music track={track}/>
-//             <p>{duration}</p>
-//         </li>
-//     )
-// } 
-
 
 class TrackItem extends React.Component {
     constructor(props) {
@@ -57,8 +35,8 @@ class TrackItem extends React.Component {
         this.setState({hover: false})
     }
 
-    handleClick(e){
-    }
+    // handleClick(e){
+    // }
 
     handlePlay(e){
         const value = e.currentTarget.id;
@@ -121,7 +99,7 @@ class TrackItem extends React.Component {
                         <i className={hoverPlay} id={track.id} onClick={this.handlePlay.bind(this)}></i>
                     </div>
                     <div className="track-info">
-                        <span className="user-name">{this.props.user.username}</span>
+                        <span className="user-name">{this.props.currentUser.username}</span>
                         <span className="song-title">{track.title}</span>
                     </div>
                     <div className="buttons-up-del">
@@ -134,7 +112,7 @@ class TrackItem extends React.Component {
                         <button 
                             key={`update-btn${track.id}`} 
                             className={hoverTrash}
-                            onClick={() => this.props.openUploadModal(track.id)}>
+                            onClick={() => this.props.openUploadModal(id, "create")}>
                                 <i className="fas fa-pencil-alt"></i>
                         </button>
                     </div>
@@ -155,7 +133,8 @@ const msp = (state) => {
         trackList: state.entities.tracks,
         play: state.ui.player,
         audio: state.entities.currentTrack.audio,
-        currentTrackInfo
+        currentTrackInfo,
+        currentUser: state.session.id,
     }
 }
 

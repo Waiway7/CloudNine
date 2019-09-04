@@ -1,12 +1,14 @@
 .dashboard-header {
-    width: 100vw;
+    position: relative;
+    display: block;
+    width: 100%;
     background-repeat: no-repeat;
     height: 260px;
     margin: 0 auto;
     background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 .header-content-container{   
-    width: 95vw;
+    width: 95%;
     height: 200px;
     margin: 0 auto;
 }

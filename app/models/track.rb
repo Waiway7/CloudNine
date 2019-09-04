@@ -19,6 +19,16 @@ class Track < ApplicationRecord
     foreign_key: :uploader_id,
     class_name: :User
 
+    has_many :playlist_tracks,
+    foreign_key: :track_id,
+    class_name: :PlaylistTrack,
+    dependent: :destroy
+
+
+    has_many :playlists,
+    through: :playlist_tracks,
+    source: :playlist
+
     has_one_attached :audio
     has_one_attached :image
 

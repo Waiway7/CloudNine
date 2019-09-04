@@ -24,7 +24,6 @@ class Form extends React.Component{
             else if (error.includes("Password")) {errorPassword = error}
         })
         this.setState({errorEmail,errorUsername, errorPassword})
-        debugger
         this.props.userForm(this.state);
     }
 
