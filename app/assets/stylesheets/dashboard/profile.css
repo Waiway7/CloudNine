@@ -39,9 +39,6 @@
     font-size: 18pt;
     height: 20px;
     vertical-align: middle;
-    text-align: center;
-    overflow-x: scroll;
-    white-space: nowrap;
 }
 
 .body-container-for-dashboard {
