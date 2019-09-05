@@ -15,6 +15,13 @@
     color: #333;
 }
 
+.profile-links-container-index {
+    height: auto;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+
 .dashboard-link:hover {
     border-bottom: 1px solid black;
 }
@@ -30,7 +37,6 @@
 
 .track-index-container {
     position: relative;
-    margin-top: 20px;
     min-width: 60%;
 }
 
@@ -67,7 +73,7 @@
     min-width: 160px;
     max-width: 160px;
     height: 160px;
-    
+    border: 1px solid #999;
 }
 
 .index-track-item-container {
@@ -184,3 +190,42 @@
     margin-right: 15px;
 
 }
+
+.track-list-container-index {
+    padding-right: 30px;
+    padding-left: 30px;
+    display: flex;
+    min-height: 100vh;
+    
+}
+
+.github-links {
+    padding-top: 20px;
+    width: 30%;
+    
+}
+
+.github {
+    font-size: 26px;
+    text-decoration: none;
+    margin-right: 15px;
+    color: #48b8e6;
+}
+
+.sticky-links {
+    margin-left: 50px;
+   display: block;
+}
+
+.container-list-links {
+    display: flex;
+   margin-top: 9px;
+   margin-left: 5px;
+}
+
+
+
+
+
+
+

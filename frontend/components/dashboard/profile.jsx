@@ -27,26 +27,25 @@ class UserProfile extends React.Component{
            <div className="dashboard-header">
                <div className="header-content-container">
                     <img src="https://cloudnine-upload-dev.s3.amazonaws.com/starecat.jpg" className="profile-pic"></img>
-                <div className="right-content-info">
+                    <div className="right-content-info">
                     <div className="header-content-username">{params.currentUsername}</div>
+                    </div>
                 </div>
+           </div>
+           <div className="profile-links-container-index">
                 <div className="profile-links">
-                    <Link to={`/profile/${params.currentUsername}/${params.currentUserId}/tracks`} style={{textDecoration: 'none'}} >
-                        <div className={linkTrack}>Tracks</div>
-                    </Link>
-                    <Link to={`/profile/${params.currentUsername}/${params.currentUserId}/playlists`} style={{textDecoration: 'none'}} >
-                        <div className={linkPlaylist}>Playlists</div>
-                    </Link>
+                        <Link to={`/profile/${params.currentUsername}/${params.currentUserId}/tracks`} style={{textDecoration: 'none'}} >
+                            <div className={linkTrack}>Tracks</div>
+                        </Link>
+                        <Link to={`/profile/${params.currentUsername}/${params.currentUserId}/playlists`} style={{textDecoration: 'none'}} >
+                            <div className={linkPlaylist}>Playlists</div>
+                        </Link>
                 </div>
-                
+            </div>
+            <div className="track-list-container-index">
                 <div className="track-list-container profile-index">
                     {index}
                 </div>
-
-               </div>
-           </div>
-           <div className="github-links">
-                    
             </div>
         </div>
        )}

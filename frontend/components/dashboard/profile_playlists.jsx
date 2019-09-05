@@ -16,14 +16,14 @@ class Playlists extends React.Component {
     }
 
     componentDidMount(){
-        this.props.fetchPlaylists();
-        this.props.fetchPlaylistsTracks();
-        this.setState({loaded: true})
+        this.props.fetchPlaylistsTracks().then(() => this.props.fetchPlaylists().then( () => 
+            this.setState({loaded: true}))
+        );
     }
 
     render(){
         let playlistList;
-        if (Object.keys(this.props.playlistTracks).length > 0) {
+        if (Object.keys(this.props.playlists).length > 0 && this.state.loaded === true) {
             const tracks = this.props.playlistTracks
             const playlists = this.props.playlists
             const playlist = Object.keys(this.props.playlists).map(id => {
@@ -34,7 +34,8 @@ class Playlists extends React.Component {
                     tracks={tracks[id]}
                 />)})
             playlistList = <ul className="index-list-tracks">{playlist}</ul>
-        } else if (Object.keys(this.props.playlists).length === 0){
+        } 
+        else if (Object.keys(this.props.playlists).length === 0){
             playlistList = <div className="container-no-playlists">
                 <i className="far fa-list-alt fa-10x playlist-icon"></i>
                 <div className="text-no-playlists">You haven't created any playlists.</div>
