@@ -101,7 +101,7 @@ class Splash extends React.Component{
         } )
        
         return (
-            <div className="body">
+            <div className="login-body">
                 <div className="container-splash-front">
                     <Banner />
                     <ul className="editor-top">
