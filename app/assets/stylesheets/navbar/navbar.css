@@ -259,6 +259,12 @@
     letter-spacing: -0.1em;
 }
 
+.header-nav-bar-main {
+    position: fixed;
+    z-index: 1;
+    height: 46px;
+}
+
 
 
 

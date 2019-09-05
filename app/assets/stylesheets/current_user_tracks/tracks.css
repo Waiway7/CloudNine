@@ -9,6 +9,7 @@
     background-color: #fff;
     overflow: hidden;
     padding-bottom: 70px;
+    padding-top: 46px;
 }
 
 .preview {
@@ -94,7 +95,7 @@
     padding-right: 30px;
     padding-left: 30px;
     display: block;
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 .track-item {
@@ -236,7 +237,7 @@
 }
 
 .track-list-container {
-    min-height: 100vh;
+    min-height: auto;
 }
 
 

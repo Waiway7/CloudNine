@@ -657,7 +657,9 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "app"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+    className: "header-nav-bar-main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/:subpath",
     component: _main_nav_bar_nav_bar__WEBPACK_IMPORTED_MODULE_6__["default"]
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_session_modal_container__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
@@ -1667,7 +1669,9 @@ function (_React$Component) {
         className: "right-content-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header-content-username"
-      }, params.currentUsername)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, params.currentUsername)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "body-container-for-dashboard"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-links"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/profile/".concat(params.currentUsername, "/").concat(params.currentUserId, "/tracks"),
@@ -1685,9 +1689,9 @@ function (_React$Component) {
         className: linkPlaylist
       }, "Playlists"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "track-list-container profile-index"
-      }, index))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, index), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "github-links"
-      }));
+      })));
     }
   }]);
 

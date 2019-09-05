@@ -13,7 +13,7 @@ import UserProfile from './dashboard/profile'
 const App = () => {    
     return (
         <div className="app">
-            <header>
+            <header className="header-nav-bar-main">
                 <Route path='/:subpath' component={MainNavBar} />
             </header>
            

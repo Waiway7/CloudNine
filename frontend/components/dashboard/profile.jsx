@@ -30,7 +30,10 @@ class UserProfile extends React.Component{
                 <div className="right-content-info">
                     <div className="header-content-username">{params.currentUsername}</div>
                 </div>
-                <div className="profile-links">
+               </div>
+           </div>
+           <div className="body-container-for-dashboard">
+           <div className="profile-links">
                     <Link to={`/profile/${params.currentUsername}/${params.currentUserId}/tracks`} style={{textDecoration: 'none'}} >
                         <div className={linkTrack}>Tracks</div>
                     </Link>
@@ -41,12 +44,10 @@ class UserProfile extends React.Component{
                 
                 <div className="track-list-container profile-index">
                     {index}
-                </div>
-
-               </div>
-           </div>
+            </div>
            <div className="github-links">
                     
+            </div>
             </div>
         </div>
        )}

@@ -43,3 +43,11 @@
     overflow-x: scroll;
     white-space: nowrap;
 }
+
+.body-container-for-dashboard {
+    padding-left: 30px;
+    padding-right: 30px;
+    min-height: auto;
+    max-height: 100%;
+    overflow: hidden;
+}
