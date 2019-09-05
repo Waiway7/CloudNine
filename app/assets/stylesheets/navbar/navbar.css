@@ -254,16 +254,6 @@
     letter-spacing: -0.1em;
 }
 
-<<<<<<< HEAD
-.header-nav-bar-main {
-    position: fixed;
-    z-index: 1;
-    height: 46px;
-}
-
-
-
-=======
 .home-btn-target, .stream-btn-target {
     bottom: 16px;
     position: relative;
@@ -277,7 +267,6 @@
      margin: 0px auto;
      background-color: black;
 }
->>>>>>> showcase
 
 
 

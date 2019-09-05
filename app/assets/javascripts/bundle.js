@@ -1668,11 +1668,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header-content-username"
       }, params.currentUsername)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-<<<<<<< HEAD
-        className: "body-container-for-dashboard"
-=======
         className: "profile-links-container-index"
->>>>>>> showcase
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-links"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1693,13 +1689,7 @@ function (_React$Component) {
         className: "track-list-container-index"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "track-list-container profile-index"
-<<<<<<< HEAD
-      }, index), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "github-links"
-      })));
-=======
       }, index)));
->>>>>>> showcase
     }
   }]);
 
@@ -3022,7 +3012,7 @@ var navBar = function navBar(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     textDecoration: "none",
     target: "_blank",
-    href: "https://github.com/Waiway7",
+    href: "https://github.com/Waiway7/CloudNine",
     className: "target-link"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fab fa-github github"
@@ -48355,7 +48345,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
