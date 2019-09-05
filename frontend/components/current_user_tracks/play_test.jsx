@@ -80,14 +80,14 @@ class Music extends React.Component {
           play = 
 
               <button className="status-btn" onClick={this.togglePlay}>
-                  <i className="fas fa-play"></i>
+                  <i className="fas fa-play test-status"></i>
               </button>
 
         }  
         else ( 
           play = 
               <button className="status-btn" onClick={this.togglePause}>
-                  <i className="fas fa-pause"></i>
+                  <i className="fas fa-pause test-status"></i>
               </button>
         )
         let content;

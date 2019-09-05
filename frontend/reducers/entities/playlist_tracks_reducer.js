@@ -5,6 +5,10 @@ const playlistsTracksReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_PLAYLISTS_TRACKS:
             return merge({}, action.playlistsTracks);
+        case DELETE_PLAYLIST_TRACK:
+            let newState = merge({}, state);
+            delete newState[action.playlistTrack.track_id];
+            return newState
         default:
             return state;
     }

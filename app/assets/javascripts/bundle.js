@@ -674,8 +674,6 @@ var App = function App() {
     exact: true,
     path: "/you/library",
     component: _current_user_tracks_tracks__WEBPACK_IMPORTED_MODULE_8__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/discover"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/profile/:currentUsername/:currentUserId/tracks",
@@ -1041,13 +1039,13 @@ function (_React$Component) {
           className: "status-btn",
           onClick: this.togglePlay
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fas fa-play"
+          className: "fas fa-play test-status"
         }));
       } else play = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "status-btn",
         onClick: this.togglePause
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-pause"
+        className: "fas fa-pause test-status"
       }));
 
       var content;
@@ -1670,7 +1668,11 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header-content-username"
       }, params.currentUsername)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+<<<<<<< HEAD
         className: "body-container-for-dashboard"
+=======
+        className: "profile-links-container-index"
+>>>>>>> showcase
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-links"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1687,11 +1689,17 @@ function (_React$Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: linkPlaylist
-      }, "Playlists"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Playlists")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "track-list-container-index"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "track-list-container profile-index"
+<<<<<<< HEAD
       }, index), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "github-links"
       })));
+=======
+      }, index)));
+>>>>>>> showcase
     }
   }]);
 
@@ -1765,10 +1773,14 @@ function (_React$Component) {
   _createClass(Playlists, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchPlaylists();
-      this.props.fetchPlaylistsTracks();
-      this.setState({
-        loaded: true
+      var _this2 = this;
+
+      this.props.fetchPlaylistsTracks().then(function () {
+        return _this2.props.fetchPlaylists().then(function () {
+          return _this2.setState({
+            loaded: true
+          });
+        });
       });
     }
   }, {
@@ -1776,7 +1788,7 @@ function (_React$Component) {
     value: function render() {
       var playlistList;
 
-      if (Object.keys(this.props.playlistTracks).length > 0) {
+      if (Object.keys(this.props.playlists).length > 0 && this.state.loaded === true) {
         var tracks = this.props.playlistTracks;
         var playlists = this.props.playlists;
         var playlist = Object.keys(this.props.playlists).map(function (id) {
@@ -2945,43 +2957,40 @@ var navBar = function navBar(_ref) {
     }
   }, "Create account"));
   var profileLink = currentUser ? "/profile/".concat(currentUser.username, "/").concat(currentUser.id, "/tracks") : "/";
+  var playlist = currentUser ? "/profile/".concat(currentUser.username, "/").concat(currentUser.id, "/playlists") : "/";
+  var targetPlaylist = location.href.includes("playlists") ? "stream-btn-target" : "stream-btn";
+  var targetTracks = location.href.includes("profile") && location.href.includes("tracks") ? "home-btn-target" : "home-btn";
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "nav-bar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "header-logo-left"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/discover",
-    style: {
-      textDecoration: 'none'
-    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "background-logo"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "soundcloud-logo",
     src: "https://a-v2.sndcdn.com/assets/images/header/cloud-e365a47.png"
-  }), "CLOUDNINE")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/discover",
-    style: {
-      textDecoration: 'none'
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    id: "/discover",
-    className: "home-btn"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "home-text"
-  }, "Home"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }), "CLOUDNINE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: profileLink,
     style: {
       textDecoration: 'none'
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    id: "/profile",
-    className: "stream-btn"
+    className: targetTracks
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "home-text"
+  }, "Profile"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: playlist,
+    style: {
+      textDecoration: 'none'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "",
+    className: targetPlaylist
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "stream-text"
-  }, "Profile"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, "Playlists"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/you/library",
     style: {
       textDecoration: 'none'
@@ -3006,11 +3015,45 @@ var navBar = function navBar(_ref) {
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "upload"
-  }, "Upload")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "nav-dropdown"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "dot"
-  }, "..."))));
+  }, "Upload")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "container-list-links"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "links-to-projects"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    textDecoration: "none",
+    target: "_blank",
+    href: "https://github.com/Waiway7",
+    className: "target-link"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github github"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "links-to-projects"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    textDecoration: "none",
+    target: "_blank",
+    href: "https://angel.co/wai-c-chan",
+    className: "target-link"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-angellist github"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "links-to-projects"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    textDecoration: "none",
+    target: "_blank",
+    href: "https://linkedin.com/in/wai-chun-chan-718035117/",
+    className: "target-link"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-linkedin github"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "links-to-projects"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    textDecoration: "none",
+    target: "_blank",
+    href: "https://waiway7.github.io/AudioJS/",
+    className: "target-link"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-headphones github   "
+  }))))));
 };
 
 var mdp = function mdp(dispatch) {
@@ -4628,6 +4671,11 @@ var playlistsTracksReducer = function playlistsTracksReducer() {
     case _actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PLAYLISTS_TRACKS"]:
       return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, action.playlistsTracks);
 
+    case _actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_PLAYLIST_TRACK"]:
+      var newState = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state);
+      delete newState[action.playlistTrack.track_id];
+      return newState;
+
     default:
       return state;
   }
@@ -5232,7 +5280,7 @@ var Auth = function Auth(_ref) {
     exact: exact,
     render: function render(props) {
       return loggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-        to: "/discover"
+        to: "/you/library"
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props);
     }
   });

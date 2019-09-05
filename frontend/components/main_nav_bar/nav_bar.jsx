@@ -15,25 +15,33 @@ const navBar = ({currentUser, logout, signup, login}) => {
         </div>
         );
     const profileLink = currentUser ? `/profile/${currentUser.username}/${currentUser.id}/tracks` : "/"
-    
+    const playlist = currentUser ? `/profile/${currentUser.username}/${currentUser.id}/playlists` : "/"
+    const targetPlaylist = location.href.includes("playlists") ? "stream-btn-target" : "stream-btn";
+    const targetTracks = location.href.includes("profile") && location.href.includes("tracks") ? "home-btn-target" : "home-btn"
+
     return (
         <div className="header">
             <div className="nav-bar">
                 <div className="header-logo-left">
-                    <Link to="/discover" style={{ textDecoration: 'none' }}>
+                    {/* <Link to="/discover" style={{ textDecoration: 'none' }}> */}
                         <div className="background-logo">
                             <img className="soundcloud-logo" src="https://a-v2.sndcdn.com/assets/images/header/cloud-e365a47.png"/>
                             CLOUDNINE
                         </div>
-                    </Link>
-                    <Link to="/discover" style={{textDecoration: 'none'}}>
+                    {/* </Link> */}
+                    {/* <Link to="/discover" style={{textDecoration: 'none'}}>
                         <div id="/discover" className="home-btn">
                             <p className="home-text">Home</p>
                         </div>
-                    </Link>
+                    </Link> */}
                     <Link to={profileLink} style={{textDecoration: 'none'}}>
-                        <div id="/profile" className="stream-btn">
-                        <p className="stream-text">Profile</p>
+                        <div className={targetTracks}>
+                        <p className="home-text">Profile</p>
+                        </div>
+                    </Link>
+                    <Link to={playlist} style={{textDecoration: 'none'}}>
+                        <div id="" className={targetPlaylist}>
+                        <p className="stream-text">Playlists</p>
                         </div>
                     </Link>
                     <Link to="/you/library" style={{textDecoration: 'none'}}>
@@ -51,8 +59,21 @@ const navBar = ({currentUser, logout, signup, login}) => {
                 <Link to='/upload' style={{textDecoration: 'none'}}>
                         <div className="upload">Upload</div>
                 </Link>
-                <button className="nav-dropdown"><p className="dot">...</p></button>
-            </div>
+                <ul className="container-list-links">
+                    <li className="links-to-projects">
+                        <a textDecoration="none" target="_blank" href="https://github.com/Waiway7/CloudNine" className="target-link"><i className="fab fa-github github"></i></a>
+                    </li>
+                    <li className="links-to-projects">
+                        <a textDecoration="none" target="_blank" href="https://angel.co/wai-c-chan" className="target-link"><i className="fab fa-angellist github"></i></a>
+                    </li>
+                    <li className="links-to-projects">
+                        <a textDecoration="none" target="_blank" href="https://linkedin.com/in/wai-chun-chan-718035117/" className="target-link"><i className="fab fa-linkedin github"></i></a>
+                    </li>
+                    <li className="links-to-projects">
+                        <a textDecoration="none" target="_blank" href="https://waiway7.github.io/AudioJS/" className="target-link"><i className="fas fa-headphones github   "></i></a>
+                    </li>
+                </ul>                                        
+                </div>
         </div>
     )   
 }

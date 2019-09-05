@@ -14,6 +14,8 @@
     font-weight: 100;
     font-family: Arial, Helvetica, sans-serif;
     background: #333;
+    position: fixed;
+    z-index: 1;
 }
 
 
@@ -65,13 +67,6 @@
     color: white;
 }
 
-.home-btn:target {
-    color: white;
-}
-
-.stream-btn:target {
-    color: white;
-}
 
 .library-btn:target {
     color: white;
@@ -259,6 +254,7 @@
     letter-spacing: -0.1em;
 }
 
+<<<<<<< HEAD
 .header-nav-bar-main {
     position: fixed;
     z-index: 1;
@@ -267,6 +263,21 @@
 
 
 
+=======
+.home-btn-target, .stream-btn-target {
+    bottom: 16px;
+    position: relative;
+     width: 104px;
+     height: 46px;
+     border-right: 1px solid #111;
+     box-sizing: border-box;
+     text-align: center;
+     display: inline-block;
+     color: white;
+     margin: 0px auto;
+     background-color: black;
+}
+>>>>>>> showcase
 
 
 
