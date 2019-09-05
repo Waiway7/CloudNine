@@ -61,7 +61,7 @@ const navBar = ({currentUser, logout, signup, login}) => {
                 </Link>
                 <ul className="container-list-links">
                     <li className="links-to-projects">
-                        <a textDecoration="none" target="_blank" href="https://github.com/Waiway7" className="target-link"><i className="fab fa-github github"></i></a>
+                        <a textDecoration="none" target="_blank" href="https://github.com/Waiway7/CloudNine" className="target-link"><i className="fab fa-github github"></i></a>
                     </li>
                     <li className="links-to-projects">
                         <a textDecoration="none" target="_blank" href="https://angel.co/wai-c-chan" className="target-link"><i className="fab fa-angellist github"></i></a>
