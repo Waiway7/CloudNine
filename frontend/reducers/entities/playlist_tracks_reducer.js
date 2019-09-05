@@ -4,7 +4,6 @@ const playlistsTracksReducer = (state = {}, action) => {
     Object.freeze(state)
     switch (action.type) {
         case RECEIVE_PLAYLISTS_TRACKS:
-            debugger
             return merge({}, action.playlistsTracks);
         default:
             return state;

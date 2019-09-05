@@ -2,6 +2,7 @@ import * as PlaylistTrackApiUtil from "../util/crud_playlists_tracks.util"
 export const DELETE_PLAYLIST_TRACK = "DELETE_PLAYLIST_TRACK";
 export const RECEIVE_PLAYLISTS_TRACKS = "RECEIVE_PLAYLISTS_TRACKS";
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const ADD_PLAYLIST_TRACK = "ADD_PLAYLIST_TRACK"
 
 
 export const receivePlaylistTracks = (playlistsTracks) => ({
@@ -17,6 +18,12 @@ const removePlaylistTrack = (playlistTrack) => ({
 export const receiveErrors = errors => ({
     type: RECEIVE_ERRORS,
     errors
+})
+
+
+export const updatedPlaylistTracks = (playlistTrack) => ({
+    type: ADD_PLAYLIST_TRACK,
+    playlistTrack
 })
 
 export const fetchPlaylistsTracks = () => {
@@ -40,7 +47,7 @@ export const fetchPlaylistTracks = (id) => {
 export const addPlaylistTracks = (playlistId, trackIds) => {
     return dispatch => {
         return PlaylistTrackApiUtil.addPlaylistTrack(playlistId, trackIds)
-            .then(tracks => dispatch(receivePlaylistTracks(tracks)), error => {
+            .then(playlistTrack => dispatch(updatedPlaylistTracks(playlistTrack)), error => {
                 return dispatch(receiveErrors(error.responseJSON))
             })
     }

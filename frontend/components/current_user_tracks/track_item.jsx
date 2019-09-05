@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux"
-import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "../../actions/user_actions"
+import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "../../actions/user_actions";
+import {deleteTrack} from "../../actions/track_actions";
+import {openUploadModal, closeUploadModal} from "../../actions/modal_actions"
 
 class TrackItem extends React.Component {
     constructor(props) {
@@ -143,7 +145,10 @@ const mdp = (dispatch) => {
         receiveLibrary: (library) => dispatch(receiveLibrary(library)),
         receivePause: () => dispatch(receivePause()),
         receivePlay: () => dispatch(receivePlay()),
-        receiveCurrentAudio: (audio, info) => dispatch(receiveCurrentAudio(audio, info)) 
+        receiveCurrentAudio: (audio, info) => dispatch(receiveCurrentAudio(audio, info)) ,
+        deleteTrack: id => dispatch(deleteTrack(id)),
+        openUploadModal: (trackId) => dispatch(openUploadModal(trackId)),
+        closeUploadModal: () => dispatch(closeUploadModal()),
     }
 }
 

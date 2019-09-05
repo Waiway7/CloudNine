@@ -249,7 +249,7 @@ var fetchPlaylists = function fetchPlaylists() {
 /*!*****************************************************!*\
   !*** ./frontend/actions/playlist_tracks_actions.js ***!
   \*****************************************************/
-/*! exports provided: DELETE_PLAYLIST_TRACK, RECEIVE_PLAYLISTS_TRACKS, RECEIVE_ERRORS, receivePlaylistTracks, receiveErrors, fetchPlaylistsTracks, fetchPlaylistTracks, addPlaylistTracks, deletePlaylistTrack */
+/*! exports provided: DELETE_PLAYLIST_TRACK, RECEIVE_PLAYLISTS_TRACKS, RECEIVE_ERRORS, ADD_PLAYLIST_TRACK, receivePlaylistTracks, receiveErrors, updatedPlaylistTracks, fetchPlaylistsTracks, fetchPlaylistTracks, addPlaylistTracks, deletePlaylistTrack */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -257,8 +257,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_PLAYLIST_TRACK", function() { return DELETE_PLAYLIST_TRACK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PLAYLISTS_TRACKS", function() { return RECEIVE_PLAYLISTS_TRACKS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_PLAYLIST_TRACK", function() { return ADD_PLAYLIST_TRACK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivePlaylistTracks", function() { return receivePlaylistTracks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updatedPlaylistTracks", function() { return updatedPlaylistTracks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPlaylistsTracks", function() { return fetchPlaylistsTracks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPlaylistTracks", function() { return fetchPlaylistTracks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addPlaylistTracks", function() { return addPlaylistTracks; });
@@ -268,6 +270,7 @@ __webpack_require__.r(__webpack_exports__);
 var DELETE_PLAYLIST_TRACK = "DELETE_PLAYLIST_TRACK";
 var RECEIVE_PLAYLISTS_TRACKS = "RECEIVE_PLAYLISTS_TRACKS";
 var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+var ADD_PLAYLIST_TRACK = "ADD_PLAYLIST_TRACK";
 var receivePlaylistTracks = function receivePlaylistTracks(playlistsTracks) {
   return {
     type: RECEIVE_PLAYLISTS_TRACKS,
@@ -286,6 +289,12 @@ var receiveErrors = function receiveErrors(errors) {
   return {
     type: RECEIVE_ERRORS,
     errors: errors
+  };
+};
+var updatedPlaylistTracks = function updatedPlaylistTracks(playlistTrack) {
+  return {
+    type: ADD_PLAYLIST_TRACK,
+    playlistTrack: playlistTrack
   };
 };
 var fetchPlaylistsTracks = function fetchPlaylistsTracks() {
@@ -308,8 +317,8 @@ var fetchPlaylistTracks = function fetchPlaylistTracks(id) {
 };
 var addPlaylistTracks = function addPlaylistTracks(playlistId, trackIds) {
   return function (dispatch) {
-    return _util_crud_playlists_tracks_util__WEBPACK_IMPORTED_MODULE_0__["addPlaylistTrack"](playlistId, trackIds).then(function (tracks) {
-      return dispatch(receivePlaylistTracks(tracks));
+    return _util_crud_playlists_tracks_util__WEBPACK_IMPORTED_MODULE_0__["addPlaylistTrack"](playlistId, trackIds).then(function (playlistTrack) {
+      return dispatch(updatedPlaylistTracks(playlistTrack));
     }, function (error) {
       return dispatch(receiveErrors(error.responseJSON));
     });
@@ -1131,6 +1140,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var _actions_track_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/track_actions */ "./frontend/actions/track_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1148,6 +1159,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -1338,6 +1351,15 @@ var mdp = function mdp(dispatch) {
     },
     receiveCurrentAudio: function receiveCurrentAudio(audio, info) {
       return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["receiveCurrentAudio"])(audio, info));
+    },
+    deleteTrack: function deleteTrack(id) {
+      return dispatch(Object(_actions_track_actions__WEBPACK_IMPORTED_MODULE_3__["deleteTrack"])(id));
+    },
+    openUploadModal: function openUploadModal(trackId) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openUploadModal"])(trackId));
+    },
+    closeUploadModal: function closeUploadModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeUploadModal"])());
     }
   };
 };
@@ -4550,8 +4572,12 @@ var playlistsReducer = function playlistsReducer() {
 
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PLAYLIST"]:
       return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, state, action.playlist);
-    // case RECEIVE_PLAYLISTS_TRACKS:
-    //     return merge({}, state, action.playlistsTracks)
+
+    case _actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_1__["ADD_PLAYLIST_TRACK"]:
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, state, action.playlistTrack);
+
+    case _actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PLAYLISTS_TRACKS"]:
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, state, action.playlistsTracks);
 
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_PLAYLIST"]:
       var newState = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, state);
@@ -4596,7 +4622,6 @@ var playlistsTracksReducer = function playlistsTracksReducer() {
 
   switch (action.type) {
     case _actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PLAYLISTS_TRACKS"]:
-      debugger;
       return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, action.playlistsTracks);
 
     default:
