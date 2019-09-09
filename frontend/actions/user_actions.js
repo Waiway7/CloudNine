@@ -6,6 +6,7 @@ export const RECEIVE_PAUSE = 'RECEIVE_PAUSE';
 export const RECEIVE_LIBRARY = 'RECEIVE_LIBRARY';
 export const RECEIVE_NEXT_TRACK = 'RECEIVE_NEXT_TRACK'
 export const RECEIVE_CURRENT_AUDIO = "RECEIVE_CURRENT_AUDIO"
+export const REMOVE_AUDIO ="REMOVE_AUDIO"
 
 export const receivePlay = () => {
     return {
@@ -37,5 +38,11 @@ export const receiveCurrentAudio = (track, trackInfo) => {
         type: RECEIVE_CURRENT_AUDIO,
         track,
         trackInfo
+    }
+}
+
+export const removeCurrentAudio = () => {
+    return {
+        type: REMOVE_AUDIO
     }
 }

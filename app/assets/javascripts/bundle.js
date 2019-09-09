@@ -519,7 +519,7 @@ var fetchUserTracks = function fetchUserTracks(user) {
 /*!******************************************!*\
   !*** ./frontend/actions/user_actions.js ***!
   \******************************************/
-/*! exports provided: RECEIVE_PLAY, RECEIVE_PAUSE, RECEIVE_LIBRARY, RECEIVE_NEXT_TRACK, RECEIVE_CURRENT_AUDIO, receivePlay, receiveNextTrack, receivePause, receiveLibrary, receiveCurrentAudio */
+/*! exports provided: RECEIVE_PLAY, RECEIVE_PAUSE, RECEIVE_LIBRARY, RECEIVE_NEXT_TRACK, RECEIVE_CURRENT_AUDIO, REMOVE_AUDIO, receivePlay, receiveNextTrack, receivePause, receiveLibrary, receiveCurrentAudio, removeCurrentAudio */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -529,11 +529,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_LIBRARY", function() { return RECEIVE_LIBRARY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_NEXT_TRACK", function() { return RECEIVE_NEXT_TRACK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_AUDIO", function() { return RECEIVE_CURRENT_AUDIO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_AUDIO", function() { return REMOVE_AUDIO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivePlay", function() { return receivePlay; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveNextTrack", function() { return receiveNextTrack; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivePause", function() { return receivePause; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveLibrary", function() { return receiveLibrary; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentAudio", function() { return receiveCurrentAudio; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCurrentAudio", function() { return removeCurrentAudio; });
 //User's allowed actions
 // ui/player : library 
 var RECEIVE_PLAY = 'RECEIVE_PLAY';
@@ -541,6 +543,7 @@ var RECEIVE_PAUSE = 'RECEIVE_PAUSE';
 var RECEIVE_LIBRARY = 'RECEIVE_LIBRARY';
 var RECEIVE_NEXT_TRACK = 'RECEIVE_NEXT_TRACK';
 var RECEIVE_CURRENT_AUDIO = "RECEIVE_CURRENT_AUDIO";
+var REMOVE_AUDIO = "REMOVE_AUDIO";
 var receivePlay = function receivePlay() {
   return {
     type: RECEIVE_PLAY
@@ -568,6 +571,11 @@ var receiveCurrentAudio = function receiveCurrentAudio(track, trackInfo) {
     type: RECEIVE_CURRENT_AUDIO,
     track: track,
     trackInfo: trackInfo
+  };
+};
+var removeCurrentAudio = function removeCurrentAudio() {
+  return {
+    type: REMOVE_AUDIO
   };
 };
 
@@ -744,7 +752,7 @@ function (_React$Component) {
       uploaderId: _this.props.track.uploader_id
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.closeModal = _this.props.closeUploadModal.bind(_assertThisInitialized(_this));
+    _this.closeModal = _this.props.closeModal.bind(_assertThisInitialized(_this));
     _this.handleCancel = _this.handleCancel.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -780,7 +788,7 @@ function (_React$Component) {
   }, {
     key: "handleCancel",
     value: function handleCancel() {
-      this.closeModal(); // this.props.closeUploadModal()
+      this.closeModal();
     }
   }, {
     key: "update",
@@ -809,7 +817,7 @@ function (_React$Component) {
       }
 
       this.props.updateTrack(formData, this.props.track.id).then(function () {
-        return _this4.handleCancel;
+        return _this4.handleCancel();
       });
     }
   }, {
@@ -954,9 +962,13 @@ function (_React$Component) {
     _classCallCheck(this, Music);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Music).call(this, props));
-    _this.state = {};
+    _this.state = {
+      tracks: []
+    };
     _this.togglePlay = _this.togglePlay.bind(_assertThisInitialized(_this));
     _this.togglePause = _this.togglePause.bind(_assertThisInitialized(_this));
+    _this.toggleForward = _this.toggleForward.bind(_assertThisInitialized(_this));
+    _this.toggleBackward = _this.toggleBackward.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -979,38 +991,93 @@ function (_React$Component) {
       this.props.track.pause();
     }
   }, {
+    key: "toggleForward",
+    value: function toggleForward() {
+      var tracks = this.props.library[Object.keys(this.props.library)[0]];
+      var tracksIdx = Object.keys(tracks);
+      var idx = tracksIdx.indexOf(this.props.info.id.toString()) + 1;
+
+      if (Object.keys(tracks).length > 1 && idx < tracksIdx.length) {
+        var track = tracks[tracksIdx[idx]];
+        this.props.receiveCurrentTrack(new Audio(track.audioUrl), track);
+      }
+
+      this.props.receivePlay();
+      this.props.track.play();
+    }
+  }, {
+    key: "toggleBackward",
+    value: function toggleBackward() {
+      var tracks = this.props.library[Object.keys(this.props.library)[0]];
+      var tracksIdx = Object.keys(tracks);
+      var idx = tracksIdx.indexOf(this.props.info.id.toString()) - 1;
+      idx = idx >= 0 ? idx : 0;
+
+      if (this.state.currentTime <= 5 && idx > 0) {
+        var audio = tracks[tracksIdx[idx]];
+        this.props.receiveCurrentTrack(new Audio(audio.audioUrl), audio);
+      } else {
+        this.props.track.currentTime = 0;
+      }
+
+      this.props.receivePlay();
+      this.props.track.play();
+    }
+  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       var _this2 = this;
 
-      if (prevProps.track.src != this.props.track.src) {
-        // if (this.props.track.src){
-        //     this.props.track.pause()
-        // }
-        // this.player.src = this.props.track.audioUrl;
-        // this.player.play();
-        // this.props.receivePlay();
+      if (prevProps.track.src !== this.props.track.src) {
+        if (prevProps.track.src) {
+          prevProps.track.pause();
+        }
+
         this.props.track.play();
+        this.props.receivePlay();
         this.props.track.addEventListener("timeupdate", function (e) {
           _this2.setState({
             currentTime: e.target.currentTime,
-            duration: e.target.duration
+            duration: e.target.duration,
+            fakeDura: e.target.duration
+          }, function () {
+            if (_this2.state.currentTime !== undefined && _this2.state.currentTime === _this2.state.duration) {
+              if (Object.keys(_this2.props.library)[0] !== "index") {
+                var playlist = _this2.props.playlists[Object.keys(_this2.props.library)[0]].track_ids;
+
+                var idx = playlist.indexOf(_this2.props.info.id + 1);
+
+                if (playlist[idx]) {
+                  var track = _this2.props.library[Object.keys(_this2.props.library)[0]][playlist[idx]];
+
+                  _this2.props.receiveCurrentTrack(new Audio(track.audioUrl), track);
+                } else {
+                  _this2.props.receivePause();
+                }
+              } else {
+                _this2.props.receivePause();
+              }
+            }
           });
         });
-      }
-    } // componentDidMount(){
-    //     if (this.props.track.id){
-    //     this.state.player.addEventListener("timeupdate", e => {
-    //         this.setState({
-    //             currentTime: e.target.currentTime,
-    //             duration: e.target.duration
-    //     })})}
-    // }
-    // componentWillUnmount() {
-    //     if (this.props.track.audioUrl){
-    //     this.player.removeEventListener("timeupdate", () => {})};
-    // }
+      } // if (this.state.currentTime !== undefined && this.state.currentTime === this.state.duration) {
+      //     if (Object.keys(this.props.library)[0] !== "index"){
+      //         const playlist = this.props.playlists[Object.keys(this.props.library)[0]].track_ids
+      //         const idx = playlist.indexOf(this.props.info.id + 1)
+      //         if (playlist[idx]) {
+      //             const track = this.props.library[Object.keys(this.props.library)[0]][playlist[idx]]
+      //             this.props.receiveCurrentTrack(new Audio(track.audioUrl), track);
+      //         } 
+      //         else {
+      //             this.props.receivePause();
+      //         }
+      //     } 
+      //     else {
+      //         this.props.receivePause();
+      //     }
+      // }
 
+    }
   }, {
     key: "getTime",
     value: function getTime(time) {
@@ -1073,9 +1140,11 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "button-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fas fa-step-backward"
+          className: "fas fa-step-backward",
+          onClick: this.toggleBackward
         }), play, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fas fa-step-forward"
+          className: "fas fa-step-forward",
+          onClick: this.toggleForward
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "progress-bar-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1102,8 +1171,8 @@ var msp = function msp(state) {
   var track = state.entities.currentTrack.audio || {};
   var info = state.entities.currentTrack.info || {};
   return {
-    trackList: state.entities.tracks,
     library: state.entities.tracklist,
+    playlists: state.entities.playlists,
     play: state.ui.player,
     user: state.session,
     track: track,
@@ -1118,12 +1187,26 @@ var mdp = function mdp(dispatch) {
     },
     receivePause: function receivePause() {
       return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["receivePause"])());
+    },
+    receiveCurrentTrack: function receiveCurrentTrack(track, info) {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["receiveCurrentAudio"])(track, info));
     } // receiveLibrary: (track) => dispatch(receiveLibrary(track))
 
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(Music));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(Music)); // componentDidMount(){
+//     if (this.props.track.id){
+//     this.state.player.addEventListener("timeupdate", e => {
+//         this.setState({
+//             currentTime: e.target.currentTime,
+//             duration: e.target.duration
+//     })})}
+// }
+// componentWillUnmount() {
+//     if (this.props.track.audioUrl){
+//     this.player.removeEventListener("timeupdate", () => {})};
+// }
 
 /***/ }),
 
@@ -1241,7 +1324,9 @@ function (_React$Component) {
         }
 
         this.props.receivePlay();
-        this.props.receiveLibrary(this.props.trackList);
+        this.props.receiveLibrary({
+          index: this.props.trackList
+        });
         this.props.receiveCurrentAudio(new Audio(audio.audioUrl), audio);
       } // this.props.song.play()
       // this.props.receivePlay();
@@ -1312,7 +1397,7 @@ function (_React$Component) {
         key: "update-btn".concat(track.id),
         className: hoverTrash,
         onClick: function onClick() {
-          return _this3.props.openUploadModal(id, "create");
+          return _this3.props.openUploadModal(track.id);
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-pencil-alt"
@@ -1455,7 +1540,7 @@ function (_React$Component) {
         modalComponent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_update__WEBPACK_IMPORTED_MODULE_5__["default"], {
           track: this.props.tracks[this.props.modal],
           updateTrack: this.props.updateTrack,
-          closeUploadModal: this.props.closeUploadModal
+          closeModal: this.props.closeUploadModal
         });
       }
 
@@ -1873,6 +1958,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1881,9 +1968,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1905,9 +1992,10 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PlaylistItem).call(this, props));
     _this.state = {
-      hover: false // this.audio = new Audio(this.props.track.audioUrl)
-
+      hover: false
     };
+    _this.handlePlay = _this.handlePlay.bind(_assertThisInitialized(_this)); // this.audio = new Audio(this.props.track.audioUrl)
+
     return _this;
   }
 
@@ -1924,6 +2012,28 @@ function (_React$Component) {
       this.setState({
         hover: false
       });
+    }
+  }, {
+    key: "handlePlay",
+    value: function handlePlay(e) {
+      e.preventDefault();
+      var value = e.currentTarget.id;
+
+      var library = _defineProperty({}, value, this.props.playlistTracks[value]);
+
+      if (Object.keys(this.props.trackList)[0] !== Object.keys(library)[0]) {
+        this.props.receivePlay();
+        this.props.receiveLibrary(library);
+        var track = library[value][Object.keys(library[value])[0]];
+        var audio = new Audio(track.audioUrl);
+        this.props.receiveCurrentAudio(audio, track);
+      } else if (this.props.play === true) {
+        this.props.receivePause();
+        this.props.audio.pause();
+      } else {
+        this.props.receivePlay();
+        this.props.audio.play();
+      }
     }
   }, {
     key: "render",
@@ -1964,7 +2074,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "play-btn-playlist-dashboard"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: hoverPlay
+        id: this.props.playlist.id,
+        className: hoverPlay,
+        onClick: this.handlePlay
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "text-content-playlist-index"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1978,17 +2090,20 @@ function (_React$Component) {
   return PlaylistItem;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-var msp = function msp(state) {
+var msp = function msp(state, ownProps) {
   var currentTrackInfo = state.entities.currentTrack.info || {};
   return {
     play: state.ui.player,
     audio: state.entities.currentTrack.audio,
-    currentTrackInfo: currentTrackInfo
+    currentTrackInfo: currentTrackInfo,
+    playlists: state.entities.playlists,
+    playlistTracks: state.entities.playlistTracks,
+    trackList: state.entities.tracklist
   };
 };
 
 var mdp = function mdp(dispatch) {
-  return {
+  return _defineProperty({
     receiveLibrary: function receiveLibrary(library) {
       return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["receiveLibrary"])(library));
     },
@@ -2001,7 +2116,9 @@ var mdp = function mdp(dispatch) {
     receiveCurrentAudio: function receiveCurrentAudio(audio, info) {
       return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["receiveCurrentAudio"])(audio, info));
     }
-  };
+  }, "receiveLibrary", function receiveLibrary(library) {
+    return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["receiveLibrary"])(library));
+  });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(PlaylistItem));
@@ -3170,7 +3287,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
 /* harmony import */ var _actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/playlist_tracks_actions */ "./frontend/actions/playlist_tracks_actions.js");
-/* harmony import */ var _add_playlist_item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./add_playlist_item */ "./frontend/components/modals/add_playlist_item.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var _add_playlist_item__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./add_playlist_item */ "./frontend/components/modals/add_playlist_item.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3188,6 +3306,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -3219,7 +3338,11 @@ function (_React$Component) {
   }, {
     key: "deleteTrackToPlaylist",
     value: function deleteTrackToPlaylist(e) {
-      var value = e.currentTarget.id;
+      var value = e.currentTarget.id; // if (this.props.playlists[value].id && Object.keys(this.props.currentTrack).length > 0) {
+      //     this.props.currentTrack.pause();
+      //     this.props.removeCurrentAudio()
+      // }
+
       this.props.deletePlaylistTrack(this.props.trackId, value);
     }
   }, {
@@ -3234,7 +3357,7 @@ function (_React$Component) {
       var addTrackModal;
 
       if (Object.keys(this.props.playlists).length !== undefined) {
-        addTrackModal = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_add_playlist_item__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        addTrackModal = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_add_playlist_item__WEBPACK_IMPORTED_MODULE_5__["default"], {
           tracks: this.props.tracks,
           trackId: this.props.trackId,
           playlists: this.props.playlists,
@@ -3255,7 +3378,8 @@ function (_React$Component) {
 var msp = function msp(state) {
   return {
     playlists: state.entities.playlists,
-    tracks: state.entities.tracks
+    tracks: state.entities.tracks,
+    currentTrack: state.entities.currentTrack
   };
 };
 
@@ -3269,6 +3393,9 @@ var mdp = function mdp(dispatch) {
     },
     addPlaylistTracks: function addPlaylistTracks(playlistId, trackId) {
       return dispatch(Object(_actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_3__["addPlaylistTracks"])(playlistId, trackId));
+    },
+    removeCurrentAudio: function removeCurrentAudio() {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__["removeCurrentAudio"])());
     }
   };
 };
@@ -4153,7 +4280,7 @@ function (_React$Component) {
         }, trackInfo.artist));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "body"
+        className: "login-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-splash-front"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_banner__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -4690,13 +4817,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 
   switch (action.type) {
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_LIBRARY"]:
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, action.library);
+      return action.library;
 
     default:
       return state;
@@ -48345,7 +48472,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

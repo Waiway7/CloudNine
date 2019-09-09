@@ -1,4 +1,4 @@
-import {RECEIVE_CURRENT_AUDIO} from '../../actions/user_actions';
+import {RECEIVE_CURRENT_AUDIO, REMOVE_AUDIO} from '../../actions/user_actions';
 import {merge} from 'lodash'
 
 export default (state = {}, action) => {

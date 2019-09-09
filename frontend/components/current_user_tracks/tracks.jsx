@@ -36,7 +36,7 @@ class Tracks extends React.Component {
                 <UpdateModal 
                     track={this.props.tracks[this.props.modal]} 
                     updateTrack={this.props.updateTrack}
-                    closeUploadModal={this.props.closeUploadModal}
+                    closeModal={this.props.closeUploadModal}
                 />
             )
         }

@@ -38,7 +38,8 @@
     display: flex;
     width: 48px;
     height: 48px;
-    margin-right: 5px;  
+    margin-right: 5px; 
+    cursor: pointer; 
 }
 
 .container-playlist-track-info-index {

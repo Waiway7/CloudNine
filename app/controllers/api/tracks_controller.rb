@@ -33,10 +33,12 @@ class Api::TracksController < ApplicationController
 
     def update
         @track = Track.find(params[:id])
-        if !image_param[:image].include?('/rails/active_storage')
+        
+        if !(image_param[:image].instance_of? String)
             @track.image.purge
             @track.image.attach(image_param[:image])
         end
+        
         if @track.update(update_params)
             render "api/tracks/show"
         else

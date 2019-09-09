@@ -57,7 +57,7 @@ class TrackItem extends React.Component {
                 this.props.audio.pause();
             }
             this.props.receivePlay();
-            this.props.receiveLibrary(this.props.trackList);
+            this.props.receiveLibrary({index: this.props.trackList});
             this.props.receiveCurrentAudio(new Audio(audio.audioUrl), audio);
     }
         // this.props.song.play()
@@ -88,7 +88,6 @@ class TrackItem extends React.Component {
         else if (this.state.hover && id != track.id || !play) {
             hoverPlay =  "fas fa-play-circle fa-2x"
         }
-
         return (
             <li key={`audio${track.id}`} className={"track-item"}>
                 <div className={`${bottomBorder} ${hover}` } 
@@ -114,7 +113,7 @@ class TrackItem extends React.Component {
                         <button 
                             key={`update-btn${track.id}`} 
                             className={hoverTrash}
-                            onClick={() => this.props.openUploadModal(id, "create")}>
+                            onClick={() => this.props.openUploadModal(track.id)}>
                                 <i className="fas fa-pencil-alt"></i>
                         </button>
                     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {fetchPlaylists} from "../../actions/playlist_actions";
 import {deletePlaylistTrack, addPlaylistTracks} from "../../actions/playlist_tracks_actions"
+import {removeCurrentAudio} from "../../actions/user_actions"
 import AddPlaylistItem from "./add_playlist_item"
 
 class AddTrackToPlaylists extends React.Component {
@@ -17,12 +18,16 @@ class AddTrackToPlaylists extends React.Component {
 
     deleteTrackToPlaylist(e){
         const value = e.currentTarget.id;
+        // if (this.props.playlists[value].id && Object.keys(this.props.currentTrack).length > 0) {
+        //     this.props.currentTrack.pause();
+        //     this.props.removeCurrentAudio()
+        // }
         this.props.deletePlaylistTrack(this.props.trackId, value)
     }
 
     addTracktoPlaylist(e){
         const value = e.currentTarget.id;
-        this.props.addPlaylistTracks(value, [this.props.trackId])
+        this.props.addPlaylistTracks(value, [this.props.trackId]);
     }
 
     render() {
@@ -47,7 +52,8 @@ class AddTrackToPlaylists extends React.Component {
 const msp = (state) => {
     return {
         playlists: state.entities.playlists,
-        tracks: state.entities.tracks
+        tracks: state.entities.tracks,
+        currentTrack: state.entities.currentTrack
     }
 }
 
@@ -55,7 +61,8 @@ const mdp = (dispatch) => {
     return {
         fetchPlaylists: () => dispatch(fetchPlaylists()),
         deletePlaylistTrack: (trackId, playlistId) => dispatch(deletePlaylistTrack(trackId, playlistId)),
-        addPlaylistTracks: (playlistId, trackId) => dispatch(addPlaylistTracks(playlistId, trackId))
+        addPlaylistTracks: (playlistId, trackId) => dispatch(addPlaylistTracks(playlistId, trackId)),
+        removeCurrentAudio: () => dispatch(removeCurrentAudio())
     }
 }
 

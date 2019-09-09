@@ -8,6 +8,7 @@ class PlaylistItem extends React.Component {
         this.state = {
             hover: false,
         }
+        this.handlePlay = this.handlePlay.bind(this)
         // this.audio = new Audio(this.props.track.audioUrl)
     }
 
@@ -17,6 +18,25 @@ class PlaylistItem extends React.Component {
 
     offHover(){
         this.setState({hover: false})
+    }
+
+    handlePlay(e){
+        e.preventDefault();
+        const value = e.currentTarget.id;
+        const library = {[value]: this.props.playlistTracks[value]};   
+        if (Object.keys(this.props.trackList)[0] !== Object.keys(library)[0]){    
+            this.props.receivePlay();
+            this.props.receiveLibrary(library);
+            const track = library[value][Object.keys(library[value])[0]];
+            const audio = new Audio(track.audioUrl);
+            this.props.receiveCurrentAudio(audio, track);
+        } else if (this.props.play === true){
+            this.props.receivePause();
+            this.props.audio.pause();
+        } else {
+            this.props.receivePlay();
+            this.props.audio.play();
+        }
     }
 
     render() {
@@ -47,7 +67,7 @@ class PlaylistItem extends React.Component {
                 {imgPlaylist}
                 <div className="container-playlist-track-info-index">
                     <div className="play-btn-playlist-dashboard">
-                        <i className={hoverPlay}></i>
+                        <i id={this.props.playlist.id} className={hoverPlay} onClick={this.handlePlay}></i>
                     </div>
                     <div className="text-content-playlist-index">
                         <div className="username-playlist-dashboard">CloudNine</div>
@@ -60,12 +80,15 @@ class PlaylistItem extends React.Component {
 }
 
 
-const msp = (state) => {
-    const currentTrackInfo = state.entities.currentTrack.info || {}
+const msp = (state, ownProps) => {
+    const currentTrackInfo = state.entities.currentTrack.info || {};
     return {
         play: state.ui.player,
         audio: state.entities.currentTrack.audio,
-        currentTrackInfo
+        currentTrackInfo,
+        playlists: state.entities.playlists,
+        playlistTracks: state.entities.playlistTracks,
+        trackList: state.entities.tracklist
     }
 }
 
@@ -74,7 +97,8 @@ const mdp = (dispatch) => {
         receiveLibrary: (library) => dispatch(receiveLibrary(library)),
         receivePause: () => dispatch(receivePause()),
         receivePlay: () => dispatch(receivePlay()),
-        receiveCurrentAudio: (audio, info) => dispatch(receiveCurrentAudio(audio, info)) 
+        receiveCurrentAudio: (audio, info) => dispatch(receiveCurrentAudio(audio, info)),
+        receiveLibrary: (library) => dispatch(receiveLibrary(library))
     }
 }
 

@@ -16,10 +16,9 @@ export const closeModal = () => ({
 });
 
 export const openUploadModal = uploadModal => {
-    
     return{
             type: OPEN_UPLOAD_MODAL,
-    uploadModal
+            uploadModal
 }};
 
 export const openPlaylistModal = (id, playlistType) => {

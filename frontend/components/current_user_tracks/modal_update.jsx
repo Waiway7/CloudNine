@@ -13,7 +13,7 @@ class UpdateModal extends React.Component{
             uploaderId: this.props.track.uploader_id,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.closeModal = this.props.closeUploadModal.bind(this)
+        this.closeModal = this.props.closeModal.bind(this)
         this.handleCancel = this.handleCancel.bind(this)
     }
 
@@ -41,7 +41,6 @@ class UpdateModal extends React.Component{
 
     handleCancel(){
         this.closeModal();
-        // this.props.closeUploadModal()
     }
     
     update(field) {
@@ -59,7 +58,7 @@ class UpdateModal extends React.Component{
         if (this.state.image) {
             formData.append('track[image]', this.state.image)
         }
-        this.props.updateTrack(formData, this.props.track.id).then(() => this.handleCancel)
+        this.props.updateTrack(formData, this.props.track.id).then(() => this.handleCancel())
     }
 
     render () {
