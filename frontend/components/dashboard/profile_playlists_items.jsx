@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from "react-redux"
 import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "../../actions/user_actions"
+import PlaylistTracks from "./profile_playlist_tracks_items";
+import {openPlaylistModal} from "../../actions/modal_actions"
+
 
 class PlaylistItem extends React.Component {
     constructor(props) {
@@ -9,7 +12,7 @@ class PlaylistItem extends React.Component {
             hover: false,
         }
         this.handlePlay = this.handlePlay.bind(this)
-        // this.audio = new Audio(this.props.track.audioUrl)
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     onHover(){
@@ -21,7 +24,6 @@ class PlaylistItem extends React.Component {
     }
 
     handlePlay(e){
-        e.preventDefault();
         const value = e.currentTarget.id;
         const library = {[value]: this.props.playlistTracks[value]};   
         if (Object.keys(this.props.trackList)[0] !== Object.keys(library)[0]){    
@@ -39,21 +41,31 @@ class PlaylistItem extends React.Component {
         }
     }
 
+    handleDelete(){
+        this.props.openDeleteModal(this.props.playlist.id, "deletePlaylist")
+    }
+
     render() {
         // const {id} = this.props.currentTrackInfo;
         const {play} = this.props
-        let hoverPlay;
+        let status;
         let imgPlaylist;
-        // if (id === track.id && play) {
-        //     hoverPlay = "fas fa-pause-circle fa-3x index-play" 
-        // }
-        if (!this.state.hover) {
-            hoverPlay = "fas fa-play-circle fa-3x playlist-dashboard-play"
+        let tracksFromPlaylist;
+        let soundWave;
+        let tracksPlaylistList;
+        if (Object.keys(this.props.trackList)[0] === this.props.playlist.id.toString() && play === true){
+            status = <i id={this.props.playlist.id} 
+                        className="fas fa-pause-circle fa-3x index-play"  
+                        onClick={this.handlePlay}>
+                    </i>
         }
-        else if (this.state.hover) {
-            hoverPlay =  "fas fa-play-circle fa-3x playlist-dashboard-play"
+        else {
+            status = <i id={this.props.playlist.id} 
+                        className="fas fa-play-circle fa-3x playlist-dashboard-play" 
+                        onClick={this.handlePlay}>
+                    </i>
         }
-
+        
         if (this.props.playlist.imageUrl !== undefined) {
             imgPlaylist = <img className="playlist-index-img" src={this.props.playlist.imageUrl}/>
         } else if (this.props.tracks){
@@ -62,19 +74,49 @@ class PlaylistItem extends React.Component {
             imgPlaylist = <div className="playlist-index-img"></div>
         }
 
+        if (this.props.playlist.track_ids.length === 0) {
+            status = <i id={this.props.playlist.id} 
+                        className="fas fa-play-circle fa-3x playlist-dashboard-play no-tracks">
+                    </i>
+            soundWave = <div className="soundwave-no-tracks">This playlist has no tracks yet</div>
+            tracksPlaylistList = <div className="no-tracks-border-bar"></div>
+        }
+
         return (
             <div className="playlist-index-dashboard-container">
                 {imgPlaylist}
                 <div className="container-playlist-track-info-index">
-                    <div className="play-btn-playlist-dashboard">
-                        <i id={this.props.playlist.id} className={hoverPlay} onClick={this.handlePlay}></i>
+                    <div className="playlist-track-index-dash-container">
+                        <div className="play-btn-playlist-dashboard">
+                            {status}
+                        </div>
+                        <div className="text-content-playlist-index">
+                            <div className="username-playlist-dashboard">CloudNine</div>
+                            <div className="playlist-title-dashboard">{this.props.playlist.title}</div>
+                        </div>
                     </div>
-                    <div className="text-content-playlist-index">
-                        <div className="username-playlist-dashboard">CloudNine</div>
-                        <div className="playlist-title-dashboard">{this.props.playlist.title}</div>
+                    {tracksFromPlaylist}
+                    <div className="container-sound-wave-playlist">
+                        {soundWave}
+                    </div>
+                    {tracksPlaylistList}
+                    <div className="btns-playlist-items-options">
+                        <div className="playlist-container-btn">
+                            <div className="center-btns">
+                                <i className="fas fa-pencil-alt playlist-edit-btn"></i>
+                                <div className="text-container-edit-playlist-btn">Edit</div>
+                            </div>
+                        </div>
+                        <div className="playlist-container-btn">
+                            <div className="center-btns" onClick={this.handleDelete}>
+                                <i className="fas fa-trash playlist-trash"></i>
+                                <div className="text-container-trash-playlist-btn">Delete Playlist</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         )
     }
 }
@@ -98,7 +140,8 @@ const mdp = (dispatch) => {
         receivePause: () => dispatch(receivePause()),
         receivePlay: () => dispatch(receivePlay()),
         receiveCurrentAudio: (audio, info) => dispatch(receiveCurrentAudio(audio, info)),
-        receiveLibrary: (library) => dispatch(receiveLibrary(library))
+        receiveLibrary: (library) => dispatch(receiveLibrary(library)),
+        openDeleteModal: (id, playlistType) => dispatch(openPlaylistModal(id, playlistType)),
     }
 }
 

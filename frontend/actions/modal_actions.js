@@ -6,6 +6,8 @@ export const CLOSE_UPLOAD_MODAL = "CLOSE_UPLOAD_MODAL";
 
 export const OPEN_PLAYLIST_MODAL = "OPEN_PLAYLIST_MODAL"
 
+export const DELETE_MODAL = "DELETE_MODAL"
+
 export const openModal = modal => ({
     type: OPEN_MODAL,
     modal
@@ -30,4 +32,9 @@ export const openPlaylistModal = (id, playlistType) => {
 
 export const closeUploadModal = () => ({
     type: CLOSE_UPLOAD_MODAL,
+})
+
+export const deleteModal = () => ({
+    type: DELETE_MODAL,
+    modal
 })

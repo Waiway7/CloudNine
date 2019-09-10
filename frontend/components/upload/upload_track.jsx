@@ -18,6 +18,10 @@ class UploadTrack extends React.Component {
         this.handleAudioFile = this.handleAudioFile.bind(this);
     }
 
+    componentDidMount(){
+        window.scrollTo(0, 0)
+    }
+
     update(field) {
         return (e) => this.setState({[field]: e.target.value})
     }

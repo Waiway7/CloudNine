@@ -4,7 +4,7 @@ import { fetchPlaylists, updatePlaylist, deletePlaylist} from '../../actions/pla
 import {openUploadModal, closeUploadModal} from '../../actions/modal_actions';
 import {fetchPlaylistsTracks} from "../../actions/playlist_tracks_actions"
 import PlaylistItem from './profile_playlists_items'
-import UpdateModal from '../current_user_tracks/modal_update'
+import DeletePlaylistModal from '../modals/delete_modal'
 
 class Playlists extends React.Component {
     constructor(props){
@@ -12,14 +12,19 @@ class Playlists extends React.Component {
         this.state = {
             loaded: null
         }
-
+        
     }
 
     componentDidMount(){
         this.props.fetchPlaylistsTracks().then(() => this.props.fetchPlaylists().then( () => 
             this.setState({loaded: true}))
         );
+        window.scrollTo(0, 0)
     }
+
+    // handleDelete(){
+    //     this.props.deletePlaylist(this.props.playlist.id);
+    // }
 
     render(){
         let playlistList;
@@ -43,11 +48,10 @@ class Playlists extends React.Component {
         }
 
         let modalComponent;
-        if (this.props.modal) {
+        if (this.props.modal && this.props.modal[1] === "deletePlaylist") {
             modalComponent = (
-                <UpdateModal 
-                    playlist={this.props.playlists[this.props.modal]} 
-                    updateTrack={this.props.updateTrack}
+                <DeletePlaylistModal 
+                    playlist={this.props.playlists[this.props.modal[0]]} 
                     closeUploadModal={this.props.closeUploadModal}
                 />
             )
@@ -69,7 +73,7 @@ const msp = (state) => {
         playlistTracks: state.entities.playlistTracks,
         currentUser: state.session.id,
         playlists: state.entities.playlists,
-        modal: state.ui.uploadModal,
+        modal: state.ui.playlistModal,
     }
 }
 
@@ -79,7 +83,6 @@ const mdp = dispatch => {
         fetchPlaylists: () => dispatch(fetchPlaylists()),
         updatePlaylist: (playlist, id) => dispatch(updatePlaylist(playlist, id)),
         deletePlaylist: id => dispatch(deletePlaylist(id)),
-        openUploadModal: (playlistId) => dispatch(openUploadModal(playlistId)),
         closeUploadModal: () => dispatch(closeUploadModal())
     }
 }

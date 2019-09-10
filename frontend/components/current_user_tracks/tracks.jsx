@@ -14,6 +14,7 @@ class Tracks extends React.Component {
 
     componentDidMount(){
         this.props.fetchUserTracks(this.props.currentUser)
+        window.scrollTo(0, 0)
     }
 
     render(){

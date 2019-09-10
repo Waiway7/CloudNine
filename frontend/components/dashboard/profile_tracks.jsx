@@ -15,6 +15,7 @@ class Tracks extends React.Component {
     componentDidMount(){
         this.props.fetchPlaylists()
         this.props.fetchUserTracks(this.props.currentUser)
+        window.scrollTo(0, 0)
     }
 
     render(){
@@ -45,7 +46,7 @@ class Tracks extends React.Component {
                 <UpdateModal 
                     track={this.props.tracks[this.props.modal]} 
                     updateTrack={this.props.updateTrack}
-                    closeUploadModal={this.props.closeUploadModal}
+                    closeModal={this.props.closeUploadModal}
                 />
             )
         } else if (this.props.playlistModal) {

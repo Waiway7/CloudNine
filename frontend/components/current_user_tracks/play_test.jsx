@@ -46,8 +46,8 @@ class Music extends React.Component {
         const tracks = this.props.library[Object.keys(this.props.library)[0]]
         const tracksIdx = Object.keys(tracks);
         let idx = tracksIdx.indexOf(this.props.info.id.toString()) - 1
-        idx = idx >= 0 ? idx : 0;
-        if (this.state.currentTime <= 5 && idx > 0){
+        debugger
+        if (this.state.currentTime <= 5 && idx >= 0){
             const audio = tracks[tracksIdx[idx]]
             this.props.receiveCurrentTrack(new Audio(audio.audioUrl), audio)
         } else {

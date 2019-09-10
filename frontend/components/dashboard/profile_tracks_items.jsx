@@ -48,7 +48,7 @@ class TrackItem extends React.Component {
                 this.props.audio.pause();
             }
             this.props.receivePlay();
-            this.props.receiveLibrary(this.props.trackList);
+            this.props.receiveLibrary({"index": this.props.trackList});
             this.props.receiveCurrentAudio(new Audio(audio.audioUrl), audio);
     }
     }
