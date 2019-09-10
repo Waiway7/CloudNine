@@ -81,6 +81,12 @@ class PlaylistItem extends React.Component {
             soundWave = <div className="soundwave-no-tracks">This playlist has no tracks yet</div>
             tracksPlaylistList = <div className="no-tracks-border-bar"></div>
         }
+        else {
+            soundWave = <div className="soundwave-no-tracks">In Progress</div>
+            tracksPlaylistList = <PlaylistTracks 
+                                    tracks={this.props.playlistTracks[this.props.playlist.id]}
+                                 />
+        }
 
         return (
             <div className="playlist-index-dashboard-container">

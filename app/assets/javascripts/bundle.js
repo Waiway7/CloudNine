@@ -1793,28 +1793,30 @@ function (_React$Component) {
 /*!*************************************************************************!*\
   !*** ./frontend/components/dashboard/profile_playlist_tracks_items.jsx ***!
   \*************************************************************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -1824,13 +1826,107 @@ function (_React$Component) {
   _inherits(PlaylistTracks, _React$Component);
 
   function PlaylistTracks(props) {
+    var _this;
+
     _classCallCheck(this, PlaylistTracks);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(PlaylistTracks).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PlaylistTracks).call(this, props));
+    _this.state = {
+      hover: false,
+      view: false,
+      id: ""
+    };
+    _this.onView = _this.onView.bind(_assertThisInitialized(_this));
+    _this.offView = _this.offView.bind(_assertThisInitialized(_this));
+    _this.selectAudio = _this.selectAudio.bind(_assertThisInitialized(_this));
+    return _this;
   }
+
+  _createClass(PlaylistTracks, [{
+    key: "onView",
+    value: function onView() {
+      this.setState({
+        view: true
+      });
+    }
+  }, {
+    key: "offView",
+    value: function offView() {
+      this.setState({
+        view: false
+      });
+    }
+  }, {
+    key: "selectAudio",
+    value: function selectAudio(e) {
+      var value = e.currentTarget.id;
+      this.setState({
+        id: value
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var expand;
+      var viewable;
+
+      if (Object.keys(this.props.tracks).length > 5 && this.state.view === false) {
+        expand = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "show-all",
+          onClick: this.onView
+        }, "View ".concat(Object.keys(this.props.tracks).length, " tracks"));
+        viewable = "list-track-playlist-container view-tracks";
+      } else if (Object.keys(this.props.tracks).length > 5 && this.state.view === true) {
+        expand = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "show-all",
+          onClick: this.offView
+        }, "View fewer tracks");
+        viewable = "list-track-playlist-container hide-tracks";
+      } else if (Object.keys(this.props.tracks).length <= 5) {
+        viewable = "list-track-playlist-container";
+      }
+
+      var playlistTracks = Object.keys(this.props.tracks).map(function (id, idx) {
+        var track = _this2.props.tracks[id];
+        var selectedTrack = id === _this2.state.id ? "selected-track-from-playlist" : "";
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "track-".concat(id),
+          id: track.id,
+          className: "".concat(viewable, " ").concat(selectedTrack),
+          onClick: _this2.selectAudio
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "center-list-track-playlist-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container-for-img-track-list"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "img-track-playlist-index",
+          src: track.imageUrl
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "text-list-track-playlist-container ".concat(selectedTrack)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-track-order ".concat(selectedTrack)
+        }, idx + 1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "title-track-playlist-list ".concat(selectedTrack)
+        }, track.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "dash-sep ".concat(selectedTrack)
+        }, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "creater-track-playlist-list ".concat(selectedTrack)
+        }, "cloudnine"))));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "track-playlist-ul-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "entire-playlist-tracks"
+      }, playlistTracks), expand);
+    }
+  }]);
 
   return PlaylistTracks;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (PlaylistTracks);
 
 /***/ }),
 
@@ -2143,6 +2239,13 @@ function (_React$Component) {
         }, "This playlist has no tracks yet");
         tracksPlaylistList = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "no-tracks-border-bar"
+        });
+      } else {
+        soundWave = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "soundwave-no-tracks"
+        }, "In Progress");
+        tracksPlaylistList = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_profile_playlist_tracks_items__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          tracks: this.props.playlistTracks[this.props.playlist.id]
         });
       }
 
