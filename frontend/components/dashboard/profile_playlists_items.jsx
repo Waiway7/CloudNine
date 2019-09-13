@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux"
 import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "../../actions/user_actions"
-import PlaylistTracks from "./profile_playlist_tracks_items";
+import PlaylistTracks from "./profile_playlist_tracks";
 import {openPlaylistModal} from "../../actions/modal_actions"
 
 
@@ -85,6 +85,7 @@ class PlaylistItem extends React.Component {
             soundWave = <div className="soundwave-no-tracks">In Progress</div>
             tracksPlaylistList = <PlaylistTracks 
                                     tracks={this.props.playlistTracks[this.props.playlist.id]}
+                                    playlist={this.props.playlist}
                                  />
         }
 

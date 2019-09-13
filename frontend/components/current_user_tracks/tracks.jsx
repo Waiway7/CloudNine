@@ -20,6 +20,7 @@ class Tracks extends React.Component {
     render(){
         let tracks;
         let trackList;
+        let addPadding;
         if (this.props.tracks) {
             tracks = Object.keys(this.props.tracks).map(id => this.props.tracks[id])
             trackList = tracks.map(track => {
@@ -41,6 +42,7 @@ class Tracks extends React.Component {
                 />
             )
         }
+        
         return (
             <div className="body">
                 <UserNav pathname={this.props.location.pathname}/>

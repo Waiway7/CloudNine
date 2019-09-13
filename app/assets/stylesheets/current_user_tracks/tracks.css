@@ -7,9 +7,13 @@
     margin: 0 auto;
     max-width: 1180px;
     background-color: #fff;
-    overflow: hidden;
-    padding-bottom: 50px;
+    /* overflow:hidden; */
+    padding-bottom: 100px;
     padding-top: 46px;
+}
+
+.addPadding {
+    padding-bottom: 100px;
 }
 
 .preview {

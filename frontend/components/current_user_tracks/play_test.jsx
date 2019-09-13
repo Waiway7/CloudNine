@@ -58,7 +58,9 @@ class Music extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-        if (prevProps.track.src !== this.props.track.src){
+        if (prevProps.info.id !== this.props.info.id || 
+            (prevProps.info.id === this.props.info.id && 
+            Object.keys(prevProps.library)[0] !== Object.keys(this.props.library)[0])){
             if (prevProps.track.src){
                 prevProps.track.pause();
             }
@@ -88,24 +90,6 @@ class Music extends React.Component {
                     
                 }
             })})} 
-        // if (this.state.currentTime !== undefined && this.state.currentTime === this.state.duration) {
-        //     if (Object.keys(this.props.library)[0] !== "index"){
-        //         const playlist = this.props.playlists[Object.keys(this.props.library)[0]].track_ids
-        //         const idx = playlist.indexOf(this.props.info.id + 1)
-        //         if (playlist[idx]) {
-        //             const track = this.props.library[Object.keys(this.props.library)[0]][playlist[idx]]
-        //             this.props.receiveCurrentTrack(new Audio(track.audioUrl), track);
-        //         } 
-        //         else {
-        //             this.props.receivePause();
-        //         }
-        //     } 
-        //     else {
-        //         this.props.receivePause();
-        //     }
-            
-        // }
- 
     }
 
     getTime(time){
@@ -210,3 +194,21 @@ export default connect(msp, mdp)(Music);
     //     if (this.props.track.audioUrl){
     //     this.player.removeEventListener("timeupdate", () => {})};
     // }
+
+ // if (this.state.currentTime !== undefined && this.state.currentTime === this.state.duration) {
+        //     if (Object.keys(this.props.library)[0] !== "index"){
+        //         const playlist = this.props.playlists[Object.keys(this.props.library)[0]].track_ids
+        //         const idx = playlist.indexOf(this.props.info.id + 1)
+        //         if (playlist[idx]) {
+        //             const track = this.props.library[Object.keys(this.props.library)[0]][playlist[idx]]
+        //             this.props.receiveCurrentTrack(new Audio(track.audioUrl), track);
+        //         } 
+        //         else {
+        //             this.props.receivePause();
+        //         }
+        //     } 
+        //     else {
+        //         this.props.receivePause();
+        //     }
+            
+        // }

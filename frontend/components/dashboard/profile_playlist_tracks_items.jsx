@@ -1,57 +1,59 @@
 import React from "react"
+import {connect} from "react-redux"
+import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "../../actions/user_actions"
+import {openPlaylistModal} from "../../actions/modal_actions"
 
-class PlaylistTracks extends React.Component {
+class PlaylistTracksItems extends React.Component {
     constructor(props){
         super(props)
-        this.state = {
-            hover: false,
-            view: false,
-            id: ""
-        }
-        this.onView = this.onView.bind(this);
-        this.offView = this.offView.bind(this);
         this.selectAudio = this.selectAudio.bind(this);
     }
 
-    onView(){
-        this.setState({view: true})
-    }
-
-    offView(){
-        this.setState({view: false})
-    }
 
     selectAudio(e){
-        const value = e.currentTarget.id;
-        this.setState({id: value});
+        const id = e.currentTarget.id;
+        const playlistId = this.props.playlist.id
+        const library = {[playlistId]: this.props.playlistTracks[playlistId]};   
+        if (Object.keys(this.props.trackList)[0] !== Object.keys(library)[0]){ 
+            this.props.receivePlay();
+            this.props.receiveLibrary(library);
+            const track = library[playlistId][id]; 
+            const audio = new Audio(track.audioUrl);
+            this.props.receiveCurrentAudio(audio, track);
+        } 
+        else if (this.props.play === true 
+        && Number(Object.keys(this.props.trackList)[0]) === playlistId
+        && Number(id) === this.props.currentTrackInfo.id){
+            this.props.receivePause();
+            this.props.audio.pause();
+        } 
+        else if (Number(id) !== this.props.currentTrackInfo.id) {
+            this.props.audio.pause();
+            this.props.receivePlay();
+            const track = library[playlistId][id]; 
+            const audio = new Audio(track.audioUrl);
+            this.props.receiveCurrentAudio(audio, track);
+            this.props.audio.play();
+        } else {
+            this.props.receivePlay();
+            this.props.audio.play();
+        }
     }
 
     render() {
-        let expand;
-        let viewable;
-        if (Object.keys(this.props.tracks).length > 5 && this.state.view === false){
-            expand = <div className="show-all" onClick={this.onView}>
-                        {`View ${Object.keys(this.props.tracks).length} tracks`}
-                    </div>
-            viewable = "list-track-playlist-container view-tracks"
-        } else if (Object.keys(this.props.tracks).length > 5 && this.state.view === true) {
-            expand = <div className="show-all" onClick={this.offView}>
-                        View fewer tracks
-                     </div>
-            viewable = "list-track-playlist-container hide-tracks"
-        } else if (Object.keys(this.props.tracks).length <= 5) {
-            viewable = "list-track-playlist-container"
+       
+        let selectedTrack = ""
+        const {playlist} = this.props
+        const {track} = this.props
+        const {idx} = this.props
+        if (playlist.id === Number(Object.keys(this.props.trackList)[0])
+            && this.props.currentTrackInfo.id === track.id
+            && this.props.play === true) {
+            selectedTrack = "selected-track-from-playlist";
         }
-        const playlistTracks = Object.keys(this.props.tracks).map ((id, idx) => {
-            const track = this.props.tracks[id];
-            const selectedTrack = id === this.state.id ? "selected-track-from-playlist" : "";
-            return (
-                <li key={`track-${id}`} 
-                    id={track.id}
-                    className={`${viewable} ${selectedTrack}`}
-                    onClick={this.selectAudio}
-                    >
-                    <div className="center-list-track-playlist-container">
+        return (
+            <div id={track.id} className={`list-track-playlist-container ${selectedTrack}`} onClick={this.selectAudio}>
+                <div className="center-list-track-playlist-container">
                     <div className="container-for-img-track-list">
                         <img className="img-track-playlist-index" src={track.imageUrl}/>
                     </div>
@@ -61,24 +63,33 @@ class PlaylistTracks extends React.Component {
                         <div className={`dash-sep ${selectedTrack}`}>-</div>
                         <div className={`creater-track-playlist-list ${selectedTrack}`}>cloudnine</div>
                     </div>
-                    </div>
-                </li>
-    
-            )
-        })
-        
-        return (
-            <div className="track-playlist-ul-container">
-                <ul className="entire-playlist-tracks">
-                    {playlistTracks}
-                </ul>
-                {expand}
+                </div>
             </div>
         )
     }
 }
 
-export default PlaylistTracks 
+const msp = (state, ownProps) => {
+    const currentTrackInfo = state.entities.currentTrack.info || {};
+    const trackList = state.entities.tracklist || {};
+    return {
+        play: state.ui.player,
+        audio: state.entities.currentTrack.audio,
+        currentTrackInfo,
+        playlists: state.entities.playlists,
+        playlistTracks: state.entities.playlistTracks,
+        trackList
+    }
+}
 
+const mdp = (dispatch) => {
+    return {
+        receiveLibrary: (library) => dispatch(receiveLibrary(library)),
+        receivePause: () => dispatch(receivePause()),
+        receivePlay: () => dispatch(receivePlay()),
+        receiveCurrentAudio: (audio, info) => dispatch(receiveCurrentAudio(audio, info)),
+        openDeleteModal: (id, playlistType) => dispatch(openPlaylistModal(id, playlistType)),
+    }
+}
 
-
+export default connect(msp, mdp)(PlaylistTracksItems);

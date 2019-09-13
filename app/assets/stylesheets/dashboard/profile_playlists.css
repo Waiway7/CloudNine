@@ -190,7 +190,7 @@
     background-color: #f2f2f2;
 }
 
-.view-tracks:nth-child(n + 5) {
+.view-tracks:nth-child(n + 6) {
     display: none;
 }
 

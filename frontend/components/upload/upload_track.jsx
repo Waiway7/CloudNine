@@ -52,7 +52,11 @@ class UploadTrack extends React.Component {
         
         const audiotype = e.currentTarget.files[0].type.search("audio");
         if (audiotype === 0){
-            this.setState({audio: e.currentTarget.files[0]});
+            this.setState({audio: e.currentTarget.files[0]}, () => {
+                window.scrollTo({
+                    top: 450,
+                    behavior: 'smooth',
+                  })})
         }
     }
 
