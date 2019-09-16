@@ -2,7 +2,8 @@ require 'open-uri'
 
 class Api::PlaylistsController < ApplicationController
     def index
-        @playlists = Playlist.all
+        @playlists = Playlist.all.where(creater_id: params[:user_id])
+        @creater_id = params[:user_id]
         render "api/playlists/index"
     end
 
@@ -23,9 +24,13 @@ class Api::PlaylistsController < ApplicationController
     def update
         @playlist = Playlist.find(params[:id])
         # @playlist_tracks = PlaylistTracks.where(playlist_id: params[:id], track_id: params[:track][:id]);
-        if !image_param[:image].include?('/rails/active_storage')
+        # if !params[:playlist][:image].include?('/rails/active_storage')
+        #     @playlist.image.purge
+        #     @playlist.image.attach(params[:playlist][:image])
+        # end
+        if !(params[:playlist][:image].instance_of? String)
             @playlist.image.purge
-            @playlist.image.attach(image_param[:image])
+            @playlist.image.attach(params[:playlist][:image])
         end
         if @playlist.update(playlist_params)
             render "api/playlists/show"
@@ -47,6 +52,6 @@ class Api::PlaylistsController < ApplicationController
     end
 
     def playlist_params
-        params.require(:playlist).permit(:creater_id, :title, :description, :image)
+        params.require(:playlist).permit(:title, :description)
     end
 end

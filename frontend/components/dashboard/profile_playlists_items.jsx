@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux"
 import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "../../actions/user_actions"
+import PlaylistTracks from "./profile_playlist_tracks";
+import {openPlaylistModal} from "../../actions/modal_actions"
 
 class PlaylistItem extends React.Component {
     constructor(props) {
@@ -8,7 +10,9 @@ class PlaylistItem extends React.Component {
         this.state = {
             hover: false,
         }
-        // this.audio = new Audio(this.props.track.audioUrl)
+        this.handlePlay = this.handlePlay.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
+        this.updatePlaylist = this.updatePlaylist.bind(this)
     }
 
     onHover(){
@@ -19,21 +23,54 @@ class PlaylistItem extends React.Component {
         this.setState({hover: false})
     }
 
+    handlePlay(e){
+        const value = e.currentTarget.id;
+        const library = {[value]: this.props.playlistTracks[value]};   
+        if (Object.keys(this.props.trackList)[0] !== Object.keys(library)[0]){    
+            this.props.receivePlay();
+            this.props.receiveLibrary(library);
+            const track = library[value][Object.keys(library[value])[0]];
+            const audio = new Audio(track.audioUrl);
+            this.props.receiveCurrentAudio(audio, track);
+        } else if (this.props.play === true){
+            this.props.receivePause();
+            this.props.audio.pause();
+        } else {
+            this.props.receivePlay();
+            this.props.audio.play();
+        }
+    }
+
+    handleDelete(){
+        this.props.openModal(this.props.playlist.id, "deletePlaylist")
+    }
+
+    updatePlaylist(){
+        this.props.openModal(this.props.playlist.id, 'updatePlaylist')
+    }
+
     render() {
         // const {id} = this.props.currentTrackInfo;
         const {play} = this.props
-        let hoverPlay;
+        let status;
         let imgPlaylist;
-        // if (id === track.id && play) {
-        //     hoverPlay = "fas fa-pause-circle fa-3x index-play" 
-        // }
-        if (!this.state.hover) {
-            hoverPlay = "fas fa-play-circle fa-3x playlist-dashboard-play"
+        let tracksFromPlaylist;
+        let soundWave;
+        let tracksPlaylistList;
+        const createrUsername = this.props.users[this.props.playlist.creater_id].username
+        if (Object.keys(this.props.trackList)[0] === this.props.playlist.id.toString() && play === true){
+            status = <i id={this.props.playlist.id} 
+                        className="fas fa-pause-circle fa-3x index-play"  
+                        onClick={this.handlePlay}>
+                    </i>
         }
-        else if (this.state.hover) {
-            hoverPlay =  "fas fa-play-circle fa-3x playlist-dashboard-play"
+        else {
+            status = <i id={this.props.playlist.id} 
+                        className="fas fa-play-circle fa-3x playlist-dashboard-play" 
+                        onClick={this.handlePlay}>
+                    </i>
         }
-
+        
         if (this.props.playlist.imageUrl !== undefined) {
             imgPlaylist = <img className="playlist-index-img" src={this.props.playlist.imageUrl}/>
         } else if (this.props.tracks){
@@ -42,30 +79,71 @@ class PlaylistItem extends React.Component {
             imgPlaylist = <div className="playlist-index-img"></div>
         }
 
+        if (this.props.playlist.track_ids.length === 0) {
+            status = <i id={this.props.playlist.id} 
+                        className="fas fa-play-circle fa-3x playlist-dashboard-play no-tracks">
+                    </i>
+            soundWave = <div className="soundwave-no-tracks">This playlist has no tracks yet</div>
+            tracksPlaylistList = <div className="no-tracks-border-bar"></div>
+        }
+        else {
+            soundWave = <div className="soundwave-no-tracks">In Progress</div>
+            tracksPlaylistList = <PlaylistTracks 
+                                    tracks={this.props.playlistTracks[this.props.playlist.id]}
+                                    playlist={this.props.playlist}
+                                    users={this.props.users}
+                                 />
+        }
+
         return (
             <div className="playlist-index-dashboard-container">
                 {imgPlaylist}
                 <div className="container-playlist-track-info-index">
-                    <div className="play-btn-playlist-dashboard">
-                        <i className={hoverPlay}></i>
+                    <div className="playlist-track-index-dash-container">
+                        <div className="play-btn-playlist-dashboard">
+                            {status}
+                        </div>
+                        <div className="text-content-playlist-index">
+                            <div className="username-playlist-dashboard">{createrUsername}</div>
+                            <div className="playlist-title-dashboard">{this.props.playlist.title}</div>
+                        </div>
                     </div>
-                    <div className="text-content-playlist-index">
-                        <div className="username-playlist-dashboard">CloudNine</div>
-                        <div className="playlist-title-dashboard">{this.props.playlist.title}</div>
+                    {tracksFromPlaylist}
+                    <div className="container-sound-wave-playlist">
+                        {soundWave}
+                    </div>
+                    {tracksPlaylistList}
+                    <div className="btns-playlist-items-options">
+                        <div className="playlist-container-btn">
+                            <div className="center-btns" onClick={this.updatePlaylist}>
+                                <i className="fas fa-pencil-alt playlist-edit-btn"></i>
+                                <div className="text-container-edit-playlist-btn">Edit</div>
+                            </div>
+                        </div>
+                        <div className="playlist-container-btn">
+                            <div className="center-btns" onClick={this.handleDelete}>
+                                <i className="fas fa-trash playlist-trash"></i>
+                                <div className="text-container-trash-playlist-btn">Delete Playlist</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         )
     }
 }
 
 
-const msp = (state) => {
-    const currentTrackInfo = state.entities.currentTrack.info || {}
+const msp = (state, ownProps) => {
+    const currentTrackInfo = state.entities.currentTrack.info || {};
     return {
         play: state.ui.player,
         audio: state.entities.currentTrack.audio,
-        currentTrackInfo
+        currentTrackInfo,
+        playlists: state.entities.playlists,
+        playlistTracks: state.entities.playlistTracks,
+        trackList: state.entities.tracklist,
     }
 }
 
@@ -74,7 +152,9 @@ const mdp = (dispatch) => {
         receiveLibrary: (library) => dispatch(receiveLibrary(library)),
         receivePause: () => dispatch(receivePause()),
         receivePlay: () => dispatch(receivePlay()),
-        receiveCurrentAudio: (audio, info) => dispatch(receiveCurrentAudio(audio, info)) 
+        receiveCurrentAudio: (audio, info) => dispatch(receiveCurrentAudio(audio, info)),
+        receiveLibrary: (library) => dispatch(receiveLibrary(library)),
+        openModal: (id, playlistType) => dispatch(openPlaylistModal(id, playlistType)),
     }
 }
 

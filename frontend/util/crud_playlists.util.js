@@ -30,9 +30,9 @@ export const createPlaylist = (playlist) => {
     })
 }
 
-export const fetchPlaylists = () => {
+export const fetchPlaylists = (userId) => {
     return $.ajax({
         method: "GET",
-        url: '/api/playlists'
+        url: `/api/users/${userId}/playlists`
     })
 }

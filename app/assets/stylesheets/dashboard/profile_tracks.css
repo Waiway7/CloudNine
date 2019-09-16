@@ -58,6 +58,7 @@
     list-style: none;
     position: relative;
     width: 100%;
+    padding-right: 20px;
 }
 
 
@@ -195,8 +196,6 @@
     padding-right: 30px;
     padding-left: 30px;
     display: flex;
-    min-height: 100vh;
-    
 }
 
 .github-links {
@@ -221,6 +220,10 @@
     display: flex;
    margin-top: 9px;
    margin-left: 5px;
+}
+
+.container-sound-wave-playlist {
+
 }
 
 

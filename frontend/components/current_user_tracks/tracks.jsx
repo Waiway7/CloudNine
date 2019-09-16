@@ -14,11 +14,13 @@ class Tracks extends React.Component {
 
     componentDidMount(){
         this.props.fetchUserTracks(this.props.currentUser)
+        window.scrollTo(0, 0)
     }
 
     render(){
         let tracks;
         let trackList;
+        let addPadding;
         if (this.props.tracks) {
             tracks = Object.keys(this.props.tracks).map(id => this.props.tracks[id])
             trackList = tracks.map(track => {
@@ -36,10 +38,11 @@ class Tracks extends React.Component {
                 <UpdateModal 
                     track={this.props.tracks[this.props.modal]} 
                     updateTrack={this.props.updateTrack}
-                    closeUploadModal={this.props.closeUploadModal}
+                    closeModal={this.props.closeUploadModal}
                 />
             )
         }
+        
         return (
             <div className="body">
                 <UserNav pathname={this.props.location.pathname}/>

@@ -20,7 +20,7 @@ export default ({addTracks, addTracktoPlaylist}) => {
     return (
         <div className="add-tracks-container">
             <h2 className="add-tracks-header-container">
-                Looking for more tracks? Add some of your own.
+                Looking for more tracks? Add some now.
             </h2>
             <div className="container-tracks-add-to-playlist">
                 <ul className="tracks-add-to-playlist">

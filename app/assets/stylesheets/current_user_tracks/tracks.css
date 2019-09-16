@@ -7,9 +7,13 @@
     margin: 0 auto;
     max-width: 1180px;
     background-color: #fff;
-    overflow: hidden;
-    padding-bottom: 50px;
+    /* overflow:hidden; */
+    padding-bottom: 100px;
     padding-top: 46px;
+}
+
+.addPadding {
+    padding-bottom: 100px;
 }
 
 .preview {
@@ -102,6 +106,7 @@
     border-top: 1px solid #f2f2f2;
     display: list-item;
     list-style: none;
+    height: 80px;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;    
 }

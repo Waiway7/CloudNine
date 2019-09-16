@@ -1,8 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
 import {fetchPlaylists} from "../../actions/playlist_actions";
-import {deletePlaylistTrack, addPlaylistTracks} from "../../actions/playlist_tracks_actions"
+import {deletePlaylistTrack, addPlaylistTracks, fetchPlaylistsTracks} from "../../actions/playlist_tracks_actions"
+import {removeCurrentAudio} from "../../actions/user_actions"
 import AddPlaylistItem from "./add_playlist_item"
+
 
 class AddTrackToPlaylists extends React.Component {
     constructor(props){
@@ -12,24 +14,32 @@ class AddTrackToPlaylists extends React.Component {
     }
 
     componentDidMount(){
-        this.props.fetchPlaylists()
+        this.props.fetchPlaylists(this.props.currentUser.id)
+            .then((playlists) => { 
+                this.props.fetchPlaylistsTracks(Object.keys(playlists.playlists)[0])
+            })
     }
 
     deleteTrackToPlaylist(e){
         const value = e.currentTarget.id;
+        // if (this.props.playlists[value].id && Object.keys(this.props.currentTrack).length > 0) {
+        //     this.props.currentTrack.pause();
+        //     this.props.removeCurrentAudio()
+        // }
         this.props.deletePlaylistTrack(this.props.trackId, value)
     }
 
     addTracktoPlaylist(e){
         const value = e.currentTarget.id;
-        this.props.addPlaylistTracks(value, [this.props.trackId])
+        this.props.addPlaylistTracks(value, [this.props.trackId]);
     }
 
     render() {
         let addTrackModal;
-        if (Object.keys(this.props.playlists).length !== undefined) {
+        if (Object.keys(this.props.playlists).length > 0 && Object.keys(this.props.playlistTracks).length > 0) {
+
             addTrackModal = <AddPlaylistItem 
-                tracks={this.props.tracks}
+                playlistTracks={this.props.playlistTracks}
                 trackId={this.props.trackId}
                 playlists={this.props.playlists}
                 removeTrack={this.deleteTrackFromPlaylist}
@@ -46,16 +56,21 @@ class AddTrackToPlaylists extends React.Component {
 
 const msp = (state) => {
     return {
+        playlistTracks: state.entities.playlistTracks,
         playlists: state.entities.playlists,
-        tracks: state.entities.tracks
+        tracks: state.entities.tracks,
+        currentTrack: state.entities.currentTrack,
+        currentUser: state.session.id
     }
 }
 
 const mdp = (dispatch) => {
     return {
-        fetchPlaylists: () => dispatch(fetchPlaylists()),
+        fetchPlaylistsTracks: (userId) => dispatch(fetchPlaylistsTracks(userId)),
+        fetchPlaylists: (userId) => dispatch(fetchPlaylists(userId)),
         deletePlaylistTrack: (trackId, playlistId) => dispatch(deletePlaylistTrack(trackId, playlistId)),
-        addPlaylistTracks: (playlistId, trackId) => dispatch(addPlaylistTracks(playlistId, trackId))
+        addPlaylistTracks: (playlistId, trackId) => dispatch(addPlaylistTracks(playlistId, trackId)),
+        removeCurrentAudio: () => dispatch(removeCurrentAudio())
     }
 }
 

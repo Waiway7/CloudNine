@@ -14,17 +14,17 @@ export const deletePlaylistTrack = (trackId, playlistId) => {
     })
 }
 
-export const fetchPlaylistTracks = (id) => {
+export const fetchPlaylistTracks = (id, userId) => {
     return $.ajax({
         method: "GET",
-        url: `/api/playlist_tracks/${id}`
+        url: `/api/users/${userId}/playlist_tracks/${id}`
     })
 }
 
-export const fetchPlaylistsTracks = () => {
+export const fetchPlaylistsTracks = (userId) => {
     return $.ajax({
         method: "GET",
-        url: `/api/playlist_tracks/`
+        url: `/api/users/${userId}/playlist_tracks/`
     })
 }
 

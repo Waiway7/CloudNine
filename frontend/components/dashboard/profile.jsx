@@ -16,11 +16,17 @@ class UserProfile extends React.Component{
         const path = this.props.location.pathname || null
         if (path.includes("tracks")) {
             linkTrack = "targeted"
-            index = <ProfileTracks />
+            index = <ProfileTracks 
+                        username={params.username}
+                        userId={params.userId}
+                    />
         }
         else if (path.includes("playlists")){
              linkPlaylist = "targeted"
-             index = <ProfilePlaylists />
+             index = <ProfilePlaylists 
+                        username={params.username}
+                        userId={params.userId}
+                    />
         }
        return( 
        <div className="body">
@@ -28,16 +34,16 @@ class UserProfile extends React.Component{
                <div className="header-content-container">
                     <img src="https://cloudnine-upload-dev.s3.amazonaws.com/starecat.jpg" className="profile-pic"></img>
                     <div className="right-content-info">
-                    <div className="header-content-username">{params.currentUsername}</div>
+                    <div className="header-content-username">{params.username}</div>
                     </div>
                 </div>
            </div>
            <div className="profile-links-container-index">
                 <div className="profile-links">
-                        <Link to={`/profile/${params.currentUsername}/${params.currentUserId}/tracks`} style={{textDecoration: 'none'}} >
+                        <Link to={`/profile/${params.username}/${params.userId}/tracks`} style={{textDecoration: 'none'}} >
                             <div className={linkTrack}>Tracks</div>
                         </Link>
-                        <Link to={`/profile/${params.currentUsername}/${params.currentUserId}/playlists`} style={{textDecoration: 'none'}} >
+                        <Link to={`/profile/${params.username}/${params.userId}/playlists`} style={{textDecoration: 'none'}} >
                             <div className={linkPlaylist}>Playlists</div>
                         </Link>
                 </div>

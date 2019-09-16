@@ -1,5 +1,4 @@
     @tracks.each do |track|
-
         json.set! track.id do 
             json.extract! track, :id, :title, :description, :uploader_id, :created_at
             json.audioUrl url_for(track.audio)

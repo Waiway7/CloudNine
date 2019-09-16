@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from "react-redux"
 import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "../../actions/user_actions"
 
+
 class TrackItem extends React.Component {
     constructor(props) {
         super(props)
@@ -48,7 +49,7 @@ class TrackItem extends React.Component {
                 this.props.audio.pause();
             }
             this.props.receivePlay();
-            this.props.receiveLibrary(this.props.trackList);
+            this.props.receiveLibrary({"index": this.props.trackList});
             this.props.receiveCurrentAudio(new Audio(audio.audioUrl), audio);
     }
     }
@@ -83,7 +84,7 @@ class TrackItem extends React.Component {
                             <i className={hoverPlay} id={track.id} onClick={this.handlePlay.bind(this)}></i>
                         </div>
                         <div className="index-track-item-info">
-                            <span className="index-username">{this.props.user.username}</span>
+                            <span className="index-username">{this.props.uploader}</span>
                             <span className="index-title">{track.title}</span>
                     </div>
                     <div className="index-buttons-up-del">
@@ -99,8 +100,8 @@ class TrackItem extends React.Component {
                         </button>
                         <button 
                             className="edit-track-index"
-                            onClick={() => 
-                                this.props.playlistModal(track.id, modalPlaylistType)
+                            onClick={() => {
+                                this.props.playlistModal(track.id, modalPlaylistType)}
                                 }>
                                 <i className="fas fa-plus audio-trash"></i><p className="edit-text">Add to Playlist</p>
                         </button>
@@ -124,7 +125,7 @@ const msp = (state) => {
         play: state.ui.player,
         audio: state.entities.currentTrack.audio,
         currentTrackInfo,
-        playlists: state.entities.playlists
+        playlists: state.entities.playlists,
     }
 }
 

@@ -1,14 +1,17 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {receiveLibrary, receivePlay, receivePause} from "../../actions/user_actions";
+import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "../../actions/user_actions";
 
 class Music extends React.Component {
     constructor(props){
         super(props)
         this.state = {
+            tracks: []
         }
         this.togglePlay = this.togglePlay.bind(this);
         this.togglePause = this.togglePause.bind(this);
+        this.toggleForward = this.toggleForward.bind(this);
+        this.toggleBackward = this.toggleBackward.bind(this);
     }
 
 
@@ -23,43 +26,80 @@ class Music extends React.Component {
     }
 
     togglePause() {
-
         this.props.receivePause()
         this.props.track.pause()
+    }
 
+    toggleForward() {
+        const tracks = this.props.library[Object.keys(this.props.library)[0]]
+        const tracksIdx = Object.keys(tracks);
+        const idx = tracksIdx.indexOf(this.props.info.id.toString()) + 1
+        if (Object.keys(tracks).length > 1 && idx < tracksIdx.length){
+            const track = tracks[tracksIdx[idx]]
+            this.props.receiveCurrentTrack(new Audio(track.audioUrl), track)
+        }
+        this.props.receivePlay();
+        this.props.track.play();
+    }
+
+    toggleBackward() {
+        const tracks = this.props.library[Object.keys(this.props.library)[0]]
+        const tracksIdx = Object.keys(tracks);
+        let idx = tracksIdx.indexOf(this.props.info.id.toString()) - 1
+        if (this.state.currentTime <= 5 && idx >= 0){
+            const audio = tracks[tracksIdx[idx]]
+            this.props.receiveCurrentTrack(new Audio(audio.audioUrl), audio)
+        } else {
+            this.props.track.currentTime = 0
+        }
+        this.props.receivePlay();
+        this.props.track.play();
     }
 
     componentDidUpdate(prevProps){
-        if (prevProps.track.src != this.props.track.src){
-            // if (this.props.track.src){
-            //     this.props.track.pause()
-            // }
-            // this.player.src = this.props.track.audioUrl;
-            // this.player.play();
-            // this.props.receivePlay();
+        if (prevProps.info.id !== this.props.info.id || 
+            (prevProps.info.id === this.props.info.id && 
+            Object.keys(prevProps.library)[0] !== Object.keys(this.props.library)[0])){
+            if (prevProps.track.src){
+                prevProps.track.pause();
+            }
             this.props.track.play()
+            this.props.receivePlay()
             this.props.track.addEventListener("timeupdate", e => {
                 this.setState({
                     currentTime: e.target.currentTime,
-                    duration: e.target.duration
-            })})}
-      
-        
+                    duration: e.target.duration,
+                    fakeDura: e.target.duration
+            }, () => {
+                if (this.state.currentTime !== undefined && this.state.currentTime === this.state.duration) {
+                    if (Object.keys(this.props.library)[0] !== "index"){
+                        const playlist = this.props.playlists[Object.keys(this.props.library)[0]].track_ids
+                        const idx = playlist.indexOf(this.props.info.id + 1)
+                        if (playlist[idx]) {
+                            const track = this.props.library[Object.keys(this.props.library)[0]][playlist[idx]]
+                            this.props.receiveCurrentTrack(new Audio(track.audioUrl), track);
+                        } 
+                        else {
+                            this.props.receivePause();
+                        }
+                    } 
+                    else if (Object.keys(this.props.library)[0] === "index"){
+                        const userLib = Object.keys(this.props.library["index"])
+                        const idx = userLib.indexOf((this.props.info.id + 1).toString())
+                        if (userLib[idx]) {
+                            const track = this.props.library[Object.keys(this.props.library)[0]][userLib[idx]]
+                            this.props.receiveCurrentTrack(new Audio(track.audioUrl), track);
+                        } 
+                        else {
+                            this.props.receivePause();
+                        }
+                    }
+                    else {
+                        this.props.receivePause();
+                    }
+                }
+            })})} 
     }
-
-    // componentDidMount(){
-    //     if (this.props.track.id){
-    //     this.state.player.addEventListener("timeupdate", e => {
-    //         this.setState({
-    //             currentTime: e.target.currentTime,
-    //             duration: e.target.duration
-    //     })})}
-    // }
-
-    // componentWillUnmount() {
-    //     if (this.props.track.audioUrl){
-    //     this.player.removeEventListener("timeupdate", () => {})};
-    // }
 
     getTime(time){
         if (!isNaN(time)) 
@@ -107,9 +147,9 @@ class Music extends React.Component {
         <footer>
         <div className="player-container">
             <div className="button-container">
-                <i className="fas fa-step-backward"></i>
+                <i className="fas fa-step-backward" onClick={this.toggleBackward}></i>
                 {play}
-                <i className="fas fa-step-forward"></i>
+                <i className="fas fa-step-forward" onClick={this.toggleForward}></i>
             </div>
             <div className="progress-bar-container">
                 <div className="current-time">{currentTime}</div>
@@ -129,8 +169,8 @@ const msp = (state) => {
     const track = state.entities.currentTrack.audio || {};
     const info = state.entities.currentTrack.info || {};
     return {
-        trackList: state.entities.tracks,
         library: state.entities.tracklist,
+        playlists: state.entities.playlists,
         play: state.ui.player,
         user: state.session,
         track,
@@ -142,8 +182,42 @@ const mdp = (dispatch) => {
     return {
         receivePlay: () => dispatch(receivePlay()),
         receivePause: () => dispatch(receivePause()),
+        receiveCurrentTrack: (track, info) => dispatch(receiveCurrentAudio(track, info))
         // receiveLibrary: (track) => dispatch(receiveLibrary(track))
     }
 }
 
-export default connect(msp, mdp)(Music)
+export default connect(msp, mdp)(Music);
+
+
+ // componentDidMount(){
+    //     if (this.props.track.id){
+    //     this.state.player.addEventListener("timeupdate", e => {
+    //         this.setState({
+    //             currentTime: e.target.currentTime,
+    //             duration: e.target.duration
+    //     })})}
+    // }
+
+    // componentWillUnmount() {
+    //     if (this.props.track.audioUrl){
+    //     this.player.removeEventListener("timeupdate", () => {})};
+    // }
+
+ // if (this.state.currentTime !== undefined && this.state.currentTime === this.state.duration) {
+        //     if (Object.keys(this.props.library)[0] !== "index"){
+        //         const playlist = this.props.playlists[Object.keys(this.props.library)[0]].track_ids
+        //         const idx = playlist.indexOf(this.props.info.id + 1)
+        //         if (playlist[idx]) {
+        //             const track = this.props.library[Object.keys(this.props.library)[0]][playlist[idx]]
+        //             this.props.receiveCurrentTrack(new Audio(track.audioUrl), track);
+        //         } 
+        //         else {
+        //             this.props.receivePause();
+        //         }
+        //     } 
+        //     else {
+        //         this.props.receivePause();
+        //     }
+            
+        // }

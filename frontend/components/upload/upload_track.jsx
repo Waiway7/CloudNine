@@ -18,6 +18,10 @@ class UploadTrack extends React.Component {
         this.handleAudioFile = this.handleAudioFile.bind(this);
     }
 
+    componentDidMount(){
+        window.scrollTo(0, 0)
+    }
+
     update(field) {
         return (e) => this.setState({[field]: e.target.value})
     }
@@ -48,7 +52,11 @@ class UploadTrack extends React.Component {
         
         const audiotype = e.currentTarget.files[0].type.search("audio");
         if (audiotype === 0){
-            this.setState({audio: e.currentTarget.files[0]});
+            this.setState({audio: e.currentTarget.files[0]}, () => {
+                window.scrollTo({
+                    top: 400,
+                    behavior: 'smooth',
+                  })})
         }
     }
 

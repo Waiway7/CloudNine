@@ -7,6 +7,8 @@ export const DELETE_PLAYLIST = "DELETE_PLAYLIST";
 export const RECEIVE_PLAYLISTS = "RECEIVE_PLAYLISTS";
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
+export const RECEIVE_USER_PLAYLIST = "RECEIVE_USER_PLAYLIST"
+
 
 export const receiveErrors = errors => ({
     type: RECEIVE_ERRORS,
@@ -64,9 +66,9 @@ export const deletePlaylist = (id) => {
     }
 }
 
-export const fetchPlaylists = () => {
+export const fetchPlaylists = (userId) => {
     return dispatch => {
-        return PlaylistApiUtil.fetchPlaylists()
+        return PlaylistApiUtil.fetchPlaylists(userId)
             .then(playlists => dispatch(receivePlaylists(playlists)), error => {
                 return dispatch(receiveErrors(error.responseJSON))
             })

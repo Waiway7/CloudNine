@@ -1,8 +1,13 @@
 class Api::UsersController < ApplicationController
+
+    def index
+        @users = User.all
+        render "api/users/index"
+    end
+
     def show
-        # @user = User.find(params[:id])
-        # if @user 
-        #     render "api/users/show_tracks"
+        @user = User.find(params[:id])
+        render "api/users/show"
         # else 
         #     render ["User does not exist! Please try again."], status: 404
         # end

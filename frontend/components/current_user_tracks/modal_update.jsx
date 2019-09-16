@@ -13,8 +13,7 @@ class UpdateModal extends React.Component{
             uploaderId: this.props.track.uploader_id,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.closeModal = this.props.closeUploadModal.bind(this)
-        this.handleCancel = this.handleCancel.bind(this)
+        this.closeModal = this.props.closeModal.bind(this)
     }
 
     handleImageFile(e) {
@@ -28,20 +27,6 @@ class UpdateModal extends React.Component{
         if (imagetype != -1){
             fileReader.readAsDataURL(imageFile);
         }
-        // this.setState({image: e.currentTarget.files[0]})
-        // this.handleCancel = this.handleCancel.bind(this)
-    }
-
-    // handleImageFile(e) {
-    //     const imagetype = e.currentTarget.files[0].type.search("image")
-    //     if (imagetype === 0){
-    //         this.setState({image: e.currentTarget.files[0]})
-    //     } 
-    // }
-
-    handleCancel(){
-        this.closeModal();
-        // this.props.closeUploadModal()
     }
     
     update(field) {
@@ -59,7 +44,7 @@ class UpdateModal extends React.Component{
         if (this.state.image) {
             formData.append('track[image]', this.state.image)
         }
-        this.props.updateTrack(formData, this.props.track.id).then(() => this.handleCancel)
+        this.props.updateTrack(formData, this.props.track.id).then(() => this.closeModal())
     }
 
     render () {

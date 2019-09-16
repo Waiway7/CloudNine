@@ -1,6 +1,6 @@
 import React from "react";
 
-export default ({playlists, tracks, trackId, removeTrack, addTrack}) => {
+export default ({playlists, playlistTracks, trackId, removeTrack, addTrack}) => {
     const playlistsList = Object.keys(playlists).map(
         (id, idx) => {
             const playlist = playlists[id]
@@ -25,7 +25,7 @@ export default ({playlists, tracks, trackId, removeTrack, addTrack}) => {
             else if (playlist.track_ids.length === 0){
                 imgPlaylist = <div className="filler-img-playlist"></div>
             } else {
-                imgPlaylist = <img className="filler-img-playlist" src={tracks[playlist.track_ids[0]].imageUrl}/>
+                imgPlaylist = <img className="filler-img-playlist" src={playlistTracks[id][playlist.track_ids[0]].imageUrl}/>
             }
            
             return (
