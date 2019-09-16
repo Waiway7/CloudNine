@@ -11,19 +11,12 @@ class TrackItem extends React.Component {
             hover: false,
         }
         this.audio = new Audio(this.props.track.audioUrl)
-        // this.audio.addEventListener('loadedmetadata', () => 
-        // this.setState({duration: this.audio.duration}))
     }
 
     componentDidMount(){
         this.audio.addEventListener('loadedmetadata', () => 
         this.setState({duration: this.audio.duration}))
     }
-
-    // componentWillUnmount(){
-    //     this.audio.removeEventListener('loadedmetadata', () => 
-    //         this.setState({duration: this.audio.duration}))
-    // }
 
     getTime(time){
         return Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2)
@@ -43,11 +36,12 @@ class TrackItem extends React.Component {
     handlePlay(e){
         const value = e.currentTarget.id;
         const audio = this.props.trackList[value];
-        // this.props.receivePause();debugge
-        if (this.props.currentTrackInfo.id === Number(value) && !this.props.play) {
+        if (this.props.currentTrackInfo.id === Number(value) 
+           && !this.props.play && Object.keys(this.props.library)[0] === "index") {
             this.props.receivePlay();
             this.props.audio.play();
-        } else  if (this.props.play && this.props.currentTrackInfo.id === Number(value)){
+        } else if (this.props.play && this.props.currentTrackInfo.id === Number(value) 
+            && Object.keys(this.props.library)[0] === "index"){
             this.props.receivePause();
             this.props.audio.pause();
         }
@@ -59,13 +53,7 @@ class TrackItem extends React.Component {
             this.props.receivePlay();
             this.props.receiveLibrary({index: this.props.trackList});
             this.props.receiveCurrentAudio(new Audio(audio.audioUrl), audio);
-    }
-        // this.props.song.play()
-        
-        // this.props.receivePlay();
-        // if (value === this.state.play) {
-        //     this.setState({play: null})
-        // } 
+        } 
     }
 
     render() {
@@ -73,19 +61,23 @@ class TrackItem extends React.Component {
         const {track} = this.props; 
         const {id} = this.props.currentTrackInfo;
         const {play} = this.props
-        const hover = this.state.hover || (id === track.id && play)  ? "hover-track" : "track-item-container";
-        const bottomBorder = this.state.hover || (id === track.id && play)? "play-track-item" : "track-item-container";
+        let hover = this.state.hover ? "hover-track" : "track-item-container";
+        let bottomBorder = this.state.hover ? "play-track-item" : "track-item-container";
         let hoverPlay;
-        const hoverCircle = this.state.hover || (id === track.id && play) ? "fas fa-circle fa-2x" : "";
-        const hoverTrash = this.state.hover || (id === track.id && play)  ? "hover-i-button" : "empty-btn";
-        
-        if (id === track.id && play) {
+        let hoverCircle = this.state.hover ? "fas fa-circle fa-2x" : "";
+        let hoverTrash = this.state.hover  ? "hover-i-button" : "empty-btn";
+
+        if (id === track.id && play && Object.keys(this.props.library)[0] === "index") {
             hoverPlay = "fas fa-pause-circle fa-2x" 
+            hoverCircle = "fas fa-circle fa-2x" 
+            hover = "hover-track"
+            bottomBorder = "play-track-item"
+            hoverTrash = "hover-i-button"
         }
         else if (!this.state.hover) {
             hoverPlay = ""
         }
-        else if (this.state.hover && id != track.id || !play) {
+        else if (this.state.hover && id !== track.id || Object.keys(this.props.library)[0] !== "index" || !play) {
             hoverPlay =  "fas fa-play-circle fa-2x"
         }
         return (
@@ -132,6 +124,7 @@ const msp = (state) => {
     const currentTrackInfo = state.entities.currentTrack.info || {}
     return {
         trackList: state.entities.tracks,
+        library: state.entities.tracklist,
         play: state.ui.player,
         audio: state.entities.currentTrack.audio,
         currentTrackInfo,

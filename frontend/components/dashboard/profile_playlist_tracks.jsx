@@ -39,12 +39,14 @@ class PlaylistTracks extends React.Component {
        
         const playlistTracks = Object.keys(this.props.tracks).map ((id, idx) => {
             const track = this.props.tracks[id];
+            const users = this.props.users;
             return (
                 <li key={`track-${id}`} className={viewable}>
                     <PlaylistTrackItems 
                         viewable={viewable}
                         idx={idx}
                         track={track}
+                        uploader={users[track.uploader_id].username}
                         playlist={this.props.playlist}
                     />
                 </li>

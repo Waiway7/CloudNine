@@ -24,8 +24,8 @@ const App = () => {
                 <ProtectedRoute exact path='/upload' component={UploadTrack}/>
                 <ProtectedRoute exact path='/you/library' component={YouTracks}/>
                 {/* <Route path="/discover"/> */}
-                <ProtectedRoute exact path='/profile/:currentUsername/:currentUserId/tracks' component={UserProfile}/>
-                <ProtectedRoute exact path='/profile/:currentUsername/:currentUserId/playlists' component={UserProfile}/>
+                <ProtectedRoute exact path='/profile/:username/:userId/tracks' component={UserProfile}/>
+                <ProtectedRoute exact path='/profile/:username/:userId/playlists' component={UserProfile}/>
             </Switch>
 
             <MusicPlayer />

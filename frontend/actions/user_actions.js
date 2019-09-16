@@ -1,5 +1,4 @@
-//User's allowed actions
-// ui/player : library 
+import * as ApiUserUtil from '../util/users.util'
 
 export const RECEIVE_PLAY = 'RECEIVE_PLAY';
 export const RECEIVE_PAUSE = 'RECEIVE_PAUSE';
@@ -46,3 +45,40 @@ export const removeCurrentAudio = () => {
         type: REMOVE_AUDIO
     }
 }
+
+export const RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS";
+export const RECEIVE_USER = "RECEIVE_USER";
+
+export const receiveAllUsers = (users) => {
+    return {
+        type: RECEIVE_ALL_USERS,
+        users
+    }
+}
+
+export const receiveUser = (user) => {
+    return {
+        type: RECEIVE_USER,
+        user
+    }
+}
+
+export const fetchAllUsers = () => {
+    return dispatch => {
+        return ApiUserUtil.fetchAllUsers()
+        .then( users => { 
+                return dispatch(receiveAllUsers(users))
+            }
+        )
+    }
+}  
+
+export const fetchUser = (id) => {
+    return dispatch => {
+        return ApiUserUtil.fetchUser(id)
+        .then( user => { 
+                return dispatch(receiveUser(user))
+            }
+        )
+    }
+}   

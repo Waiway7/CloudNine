@@ -1,7 +1,7 @@
 class Api::PlaylistTracksController < ApplicationController
 
     def index
-        @playlists = Playlist.all   
+        @playlists = Playlist.all.where(creater_id: params[:user_id])
         render "api/playlist_tracks/index"
     end
 

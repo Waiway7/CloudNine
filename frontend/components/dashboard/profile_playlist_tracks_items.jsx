@@ -61,7 +61,7 @@ class PlaylistTracksItems extends React.Component {
                         <div className={`playlist-track-order ${selectedTrack}`}>{idx + 1}</div>
                         <div className={`title-track-playlist-list ${selectedTrack}`}>{track.title}</div>
                         <div className={`dash-sep ${selectedTrack}`}>-</div>
-                        <div className={`creater-track-playlist-list ${selectedTrack}`}>cloudnine</div>
+                        <div className={`creater-track-playlist-list ${selectedTrack}`}>{this.props.uploader}</div>
                     </div>
                 </div>
             </div>

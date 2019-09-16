@@ -33,7 +33,6 @@ class Api::TracksController < ApplicationController
 
     def update
         @track = Track.find(params[:id])
-        
         if !(image_param[:image].instance_of? String)
             @track.image.purge
             @track.image.attach(image_param[:image])

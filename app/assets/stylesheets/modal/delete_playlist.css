@@ -1,11 +1,11 @@
 .delete-playlist-modal-container {
     position: absolute;
-    top: 17%;
-    left: 50%;
     width: 350px;
     background-color: white;
-    transform: translate(-50%, -50%);
     height: auto;   
+    margin-top: 76px;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
 
 .container-delete-form-modal {

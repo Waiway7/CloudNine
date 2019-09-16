@@ -46,7 +46,6 @@ class Music extends React.Component {
         const tracks = this.props.library[Object.keys(this.props.library)[0]]
         const tracksIdx = Object.keys(tracks);
         let idx = tracksIdx.indexOf(this.props.info.id.toString()) - 1
-        debugger
         if (this.state.currentTime <= 5 && idx >= 0){
             const audio = tracks[tracksIdx[idx]]
             this.props.receiveCurrentTrack(new Audio(audio.audioUrl), audio)
@@ -84,10 +83,20 @@ class Music extends React.Component {
                             this.props.receivePause();
                         }
                     } 
+                    else if (Object.keys(this.props.library)[0] === "index"){
+                        const userLib = Object.keys(this.props.library["index"])
+                        const idx = userLib.indexOf((this.props.info.id + 1).toString())
+                        if (userLib[idx]) {
+                            const track = this.props.library[Object.keys(this.props.library)[0]][userLib[idx]]
+                            this.props.receiveCurrentTrack(new Audio(track.audioUrl), track);
+                        } 
+                        else {
+                            this.props.receivePause();
+                        }
+                    }
                     else {
                         this.props.receivePause();
                     }
-                    
                 }
             })})} 
     }

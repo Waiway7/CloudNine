@@ -4,7 +4,6 @@ import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "..
 import PlaylistTracks from "./profile_playlist_tracks";
 import {openPlaylistModal} from "../../actions/modal_actions"
 
-
 class PlaylistItem extends React.Component {
     constructor(props) {
         super(props)
@@ -13,6 +12,7 @@ class PlaylistItem extends React.Component {
         }
         this.handlePlay = this.handlePlay.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
+        this.updatePlaylist = this.updatePlaylist.bind(this)
     }
 
     onHover(){
@@ -42,7 +42,11 @@ class PlaylistItem extends React.Component {
     }
 
     handleDelete(){
-        this.props.openDeleteModal(this.props.playlist.id, "deletePlaylist")
+        this.props.openModal(this.props.playlist.id, "deletePlaylist")
+    }
+
+    updatePlaylist(){
+        this.props.openModal(this.props.playlist.id, 'updatePlaylist')
     }
 
     render() {
@@ -53,6 +57,7 @@ class PlaylistItem extends React.Component {
         let tracksFromPlaylist;
         let soundWave;
         let tracksPlaylistList;
+        const createrUsername = this.props.users[this.props.playlist.creater_id].username
         if (Object.keys(this.props.trackList)[0] === this.props.playlist.id.toString() && play === true){
             status = <i id={this.props.playlist.id} 
                         className="fas fa-pause-circle fa-3x index-play"  
@@ -86,6 +91,7 @@ class PlaylistItem extends React.Component {
             tracksPlaylistList = <PlaylistTracks 
                                     tracks={this.props.playlistTracks[this.props.playlist.id]}
                                     playlist={this.props.playlist}
+                                    users={this.props.users}
                                  />
         }
 
@@ -98,7 +104,7 @@ class PlaylistItem extends React.Component {
                             {status}
                         </div>
                         <div className="text-content-playlist-index">
-                            <div className="username-playlist-dashboard">CloudNine</div>
+                            <div className="username-playlist-dashboard">{createrUsername}</div>
                             <div className="playlist-title-dashboard">{this.props.playlist.title}</div>
                         </div>
                     </div>
@@ -109,7 +115,7 @@ class PlaylistItem extends React.Component {
                     {tracksPlaylistList}
                     <div className="btns-playlist-items-options">
                         <div className="playlist-container-btn">
-                            <div className="center-btns">
+                            <div className="center-btns" onClick={this.updatePlaylist}>
                                 <i className="fas fa-pencil-alt playlist-edit-btn"></i>
                                 <div className="text-container-edit-playlist-btn">Edit</div>
                             </div>
@@ -137,7 +143,7 @@ const msp = (state, ownProps) => {
         currentTrackInfo,
         playlists: state.entities.playlists,
         playlistTracks: state.entities.playlistTracks,
-        trackList: state.entities.tracklist
+        trackList: state.entities.tracklist,
     }
 }
 
@@ -148,7 +154,7 @@ const mdp = (dispatch) => {
         receivePlay: () => dispatch(receivePlay()),
         receiveCurrentAudio: (audio, info) => dispatch(receiveCurrentAudio(audio, info)),
         receiveLibrary: (library) => dispatch(receiveLibrary(library)),
-        openDeleteModal: (id, playlistType) => dispatch(openPlaylistModal(id, playlistType)),
+        openModal: (id, playlistType) => dispatch(openPlaylistModal(id, playlistType)),
     }
 }
 

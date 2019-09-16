@@ -54,7 +54,7 @@ class UploadTrack extends React.Component {
         if (audiotype === 0){
             this.setState({audio: e.currentTarget.files[0]}, () => {
                 window.scrollTo({
-                    top: 450,
+                    top: 400,
                     behavior: 'smooth',
                   })})
         }

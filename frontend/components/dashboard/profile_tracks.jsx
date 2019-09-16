@@ -6,25 +6,35 @@ import {openUploadModal, closeUploadModal, closeModal, openPlaylistModal} from '
 import TrackItem from './profile_tracks_items'
 import UpdateModal from '../current_user_tracks/modal_update'
 import PlaylistModal from "../modals/playlist_modal";
+import {fetchAllUsers} from "../../actions/user_actions";
+
+
 
 class Tracks extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+        }
     }
 
     componentDidMount(){
-        this.props.fetchPlaylists()
-        this.props.fetchUserTracks(this.props.currentUser)
+        this.props.fetchAllUsers();
+        this.props.fetchUserTracks({"id":this.props.userId});
+        this.props.fetchPlaylists(this.props.currentUser.id);
         window.scrollTo(0, 0)
     }
 
     render(){
         let tracks;
         let trackList;
-        if (this.props.tracks) {
+        if (Object.keys(this.props.tracks).length > 0 && Object.keys(this.props.users).length > 0) {
+            const users = this.props.users
             tracks = Object.keys(this.props.tracks).map(id => this.props.tracks[id])
-            trackList = tracks.map(track => {return (
+            trackList = tracks.map(track => {
+                const uploader = track.uploader_id
+                return (
                 <TrackItem 
+                    uploader={users[uploader].username}
                     key={`track-id${track.id}`} 
                     track={track}
                     updateTrack={this.props.updateTrack}
@@ -44,15 +54,16 @@ class Tracks extends React.Component {
         if (this.props.modal) {
             modalComponent = (
                 <UpdateModal 
+                    uploader={this.props.users}
                     track={this.props.tracks[this.props.modal]} 
                     updateTrack={this.props.updateTrack}
                     closeModal={this.props.closeUploadModal}
                 />
             )
         } else if (this.props.playlistModal) {
-
             modalComponent = (
                 <PlaylistModal
+                    uploader={this.props.users}
                     trackId={this.props.playlistModal}
                     closeModal={this.props.closeModal} 
                     playlistModal={this.props.openPlaylistModal}
@@ -78,20 +89,22 @@ const msp = (state) => {
         tracks: state.entities.tracks,
         modal: state.ui.uploadModal,
         playlistModal: state.ui.playlistModal,
-        playlists: state.entities.playlists
+        playlists: state.entities.playlists,
+        users: state.entities.users
     }
 }
 
 const mdp = dispatch => {
     return {
-        fetchPlaylists: () => dispatch(fetchPlaylists()),
+        fetchPlaylists: (userId) => dispatch(fetchPlaylists(userId)),
         fetchUserTracks: user => dispatch(fetchUserTracks(user)),
         updateTrack: (track, id) => dispatch(updateTrack(track, id)),
         deleteTrack: id => dispatch(deleteTrack(id)),
         openUploadModal: (trackId) => dispatch(openUploadModal(trackId)),
         openPlaylistModal: (id, playlistType) => dispatch(openPlaylistModal(id, playlistType)),
         closeUploadModal: () => dispatch(closeUploadModal()),
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
+        fetchAllUsers: () => dispatch(fetchAllUsers()),
     }
 }
 

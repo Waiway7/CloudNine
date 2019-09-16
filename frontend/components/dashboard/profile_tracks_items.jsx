@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from "react-redux"
 import {receiveLibrary, receivePlay, receivePause, receiveCurrentAudio} from "../../actions/user_actions"
 
+
 class TrackItem extends React.Component {
     constructor(props) {
         super(props)
@@ -83,7 +84,7 @@ class TrackItem extends React.Component {
                             <i className={hoverPlay} id={track.id} onClick={this.handlePlay.bind(this)}></i>
                         </div>
                         <div className="index-track-item-info">
-                            <span className="index-username">{this.props.user.username}</span>
+                            <span className="index-username">{this.props.uploader}</span>
                             <span className="index-title">{track.title}</span>
                     </div>
                     <div className="index-buttons-up-del">
@@ -124,7 +125,7 @@ const msp = (state) => {
         play: state.ui.player,
         audio: state.entities.currentTrack.audio,
         currentTrackInfo,
-        playlists: state.entities.playlists
+        playlists: state.entities.playlists,
     }
 }
 

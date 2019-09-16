@@ -27,16 +27,7 @@ class UpdateModal extends React.Component{
         if (imagetype != -1){
             fileReader.readAsDataURL(imageFile);
         }
-        // this.setState({image: e.currentTarget.files[0]})
-        // this.handleCancel = this.handleCancel.bind(this)
     }
-
-    // handleImageFile(e) {
-    //     const imagetype = e.currentTarget.files[0].type.search("image")
-    //     if (imagetype === 0){
-    //         this.setState({image: e.currentTarget.files[0]})
-    //     } 
-    // }
     
     update(field) {
         return (e) => this.setState({[field]: e.target.value})
@@ -53,7 +44,7 @@ class UpdateModal extends React.Component{
         if (this.state.image) {
             formData.append('track[image]', this.state.image)
         }
-        this.props.updateTrack(formData, this.props.track.id).then(() => this.closeModal)
+        this.props.updateTrack(formData, this.props.track.id).then(() => this.closeModal())
     }
 
     render () {

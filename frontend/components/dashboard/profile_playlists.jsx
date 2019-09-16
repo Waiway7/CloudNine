@@ -2,9 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchPlaylists, updatePlaylist, deletePlaylist} from '../../actions/playlist_actions';
 import {openUploadModal, closeUploadModal} from '../../actions/modal_actions';
-import {fetchPlaylistsTracks} from "../../actions/playlist_tracks_actions"
-import PlaylistItem from './profile_playlists_items'
-import DeletePlaylistModal from '../modals/delete_modal'
+import {fetchPlaylistsTracks} from "../../actions/playlist_tracks_actions";
+import PlaylistItem from './profile_playlists_items';
+import DeletePlaylistModal from '../modals/delete_modal';
+import {fetchAllUsers} from "../../actions/user_actions";
+import UpdatePlaylist from "../modals/edit_playlist_modal";
+
 
 class Playlists extends React.Component {
     constructor(props){
@@ -16,31 +19,33 @@ class Playlists extends React.Component {
     }
 
     componentDidMount(){
-        this.props.fetchPlaylistsTracks().then(() => this.props.fetchPlaylists().then( () => 
-            this.setState({loaded: true}))
-        );
+        this.props.fetchAllUsers();
+        this.props.fetchPlaylists(this.props.userId)
+            .then( (playlists) => 
+                this.props.fetchPlaylistsTracks(Object.keys(playlists.playlists)[0]))
+                .then(() => 
+                    this.setState({loaded: true})) 
+        
         window.scrollTo(0, 0)
     }
-
-    // handleDelete(){
-    //     this.props.deletePlaylist(this.props.playlist.id);
-    // }
 
     render(){
         let playlistList;
         if (Object.keys(this.props.playlists).length > 0 && this.state.loaded === true) {
             const tracks = this.props.playlistTracks
             const playlists = this.props.playlists
+            const users = this.props.users
             const playlist = Object.keys(this.props.playlists).map(id => {
                 return (
                 <PlaylistItem 
                     key={`playlist-id${playlists[id].id}`} 
                     playlist={playlists[id]}
                     tracks={tracks[id]}
+                    users={users}
                 />)})
             playlistList = <ul className="index-list-tracks">{playlist}</ul>
         } 
-        else if (Object.keys(this.props.playlists).length === 0){
+        else if (Object.keys(this.props.playlists).length === 0 && this.state.loaded === true){
             playlistList = <div className="container-no-playlists">
                 <i className="far fa-list-alt fa-10x playlist-icon"></i>
                 <div className="text-no-playlists">You haven't created any playlists.</div>
@@ -48,6 +53,15 @@ class Playlists extends React.Component {
         }
 
         let modalComponent;
+        if (this.props.modal && this.props.modal[1] === "updatePlaylist"){
+            modalComponent = (
+                <UpdatePlaylist 
+                    playlist={this.props.playlists[this.props.modal[0]]}
+                    tracks={this.props.playlistTracks}
+                    modal={this.props.modal[1]}
+                />
+            )
+        }
         if (this.props.modal && this.props.modal[1] === "deletePlaylist") {
             modalComponent = (
                 <DeletePlaylistModal 
@@ -74,13 +88,15 @@ const msp = (state) => {
         currentUser: state.session.id,
         playlists: state.entities.playlists,
         modal: state.ui.playlistModal,
+        users: state.entities.users
     }
 }
 
 const mdp = dispatch => {
     return {
-        fetchPlaylistsTracks: () => dispatch(fetchPlaylistsTracks()),
-        fetchPlaylists: () => dispatch(fetchPlaylists()),
+        fetchAllUsers: () => dispatch(fetchAllUsers()),
+        fetchPlaylistsTracks: (userId) => dispatch(fetchPlaylistsTracks(userId)),
+        fetchPlaylists: (userId) => dispatch(fetchPlaylists(userId)),
         updatePlaylist: (playlist, id) => dispatch(updatePlaylist(playlist, id)),
         deletePlaylist: id => dispatch(deletePlaylist(id)),
         closeUploadModal: () => dispatch(closeUploadModal())

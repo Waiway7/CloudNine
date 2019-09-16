@@ -48,7 +48,7 @@ class CreatePlaylistModal extends React.Component{
             const playlist = {title: this.state.title, creater_id: this.state.current_id}
             this.props.createPlaylist(playlist).then((playlist) => {
                 this.props.addPlaylistTracks(Object.keys(playlist.playlist)[0], Object.keys(this.state.trackIds))
-                this.props.fetchPlaylists();
+                this.props.fetchPlaylists(this.props.currentUserId.id);
                 this.setState({uploaded: true, playlistId: Object.keys(playlist.playlist)[0]})
                 })
         }
@@ -128,7 +128,7 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
     return {
-        fetchPlaylists: () => dispatch(fetchPlaylists()),
+        fetchPlaylists: (userId) => dispatch(fetchPlaylists(userId)),
         createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
         addPlaylistTracks: (playlistId, trackIds) => dispatch(addPlaylistTracks(playlistId, trackIds))
     }

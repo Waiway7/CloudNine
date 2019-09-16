@@ -26,9 +26,9 @@ export const updatedPlaylistTracks = (playlistTrack) => ({
     playlistTrack
 })
 
-export const fetchPlaylistsTracks = () => {
+export const fetchPlaylistsTracks = (userId) => {
     return dispatch => {
-        return PlaylistTrackApiUtil.fetchPlaylistsTracks()
+        return PlaylistTrackApiUtil.fetchPlaylistsTracks(userId)
             .then(playlistsTracks => dispatch(receivePlaylistTracks(playlistsTracks)), error => {
                 return dispatch(receiveErrors(error.responseJSON))
             })
