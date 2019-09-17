@@ -49,6 +49,8 @@ class PlaylistItem extends React.Component {
         this.props.openModal(this.props.playlist.id, 'updatePlaylist')
     }
 
+   
+
     render() {
         // const {id} = this.props.currentTrackInfo;
         const {play} = this.props
@@ -73,7 +75,7 @@ class PlaylistItem extends React.Component {
         
         if (this.props.playlist.imageUrl !== undefined) {
             imgPlaylist = <img className="playlist-index-img" src={this.props.playlist.imageUrl}/>
-        } else if (this.props.tracks){
+        } else if (this.props.tracks !== undefined && Object.keys(this.props.tracks).length > 0){
             imgPlaylist = <img className="playlist-index-img" src={this.props.tracks[this.props.playlist.track_ids[0]].imageUrl}/>
         } else {
             imgPlaylist = <div className="playlist-index-img"></div>

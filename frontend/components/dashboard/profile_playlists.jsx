@@ -29,6 +29,7 @@ class Playlists extends React.Component {
         window.scrollTo(0, 0)
     }
 
+
     render(){
         let playlistList;
         if (Object.keys(this.props.playlists).length > 0 && this.state.loaded === true) {
@@ -62,11 +63,22 @@ class Playlists extends React.Component {
                 />
             )
         }
-        if (this.props.modal && this.props.modal[1] === "deletePlaylist") {
+        else if (this.props.modal && this.props.modal[1] === "deletePlaylistTracks"){
+            modalComponent = (
+                <UpdatePlaylist 
+                    playlist={this.props.playlists[this.props.modal[0]]}
+                    tracks={this.props.playlistTracks}
+                    modal={this.props.modal[1]}
+                    user={this.props.userId}
+                />
+            )
+        }
+        else if (this.props.modal && this.props.modal[1] === "deletePlaylist") {
             modalComponent = (
                 <DeletePlaylistModal 
                     playlist={this.props.playlists[this.props.modal[0]]} 
                     closeUploadModal={this.props.closeUploadModal}
+                    user={this.props.userId}
                 />
             )
         }

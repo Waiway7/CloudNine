@@ -36,8 +36,7 @@ class AddTrackToPlaylists extends React.Component {
 
     render() {
         let addTrackModal;
-        if (Object.keys(this.props.playlists).length > 0 && Object.keys(this.props.playlistTracks).length > 0) {
-
+        if (Object.keys(this.props.playlists).length > 0 && Object.keys(this.props.playlistTracks).length >= 0) {
             addTrackModal = <AddPlaylistItem 
                 playlistTracks={this.props.playlistTracks}
                 trackId={this.props.trackId}

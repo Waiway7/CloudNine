@@ -33,14 +33,24 @@ class Api::PlaylistTracksController < ApplicationController
     end
 
     def destroy
-        
-        @playlist_track = PlaylistTrack.find_by(
+        if (params[:trackId].is_a? Array)
+            @playlist_track = PlaylistTrack.where(playlist_id:params[:playlistId], track_id: params[:trackId])
+            @playlist_track.destroy_all
+            @playlist = Playlist.find_by(id: params[:playlistId])
+            if !(@playlist.tracks.empty?)
+                render "api/playlist_tracks/show"
+            elsif (@playlist.tracks.empty?)
+                render json: {params[:playlistId] => {}}
+            end
+        else 
+            @playlist_track = PlaylistTrack.find_by(
                 playlist_id: params[:playlistId],
                 track_id: params[:trackId]
-        )
-        @playlist_track.destroy
-        @playlist = @playlist_track.playlist
-        render json: @playlist_track
+            )
+            @playlist_track.destroy
+            @playlist = @playlist_track.playlist
+            render json: @playlist_track
+        end
     end
 
     private

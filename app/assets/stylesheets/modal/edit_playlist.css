@@ -44,7 +44,6 @@
 
 .playlist-edit-container {
     display: flex;
-    margin-top: 25px;
 }
 
 .playlist-right-side-info {
@@ -118,3 +117,53 @@
 .container-require {
     line-height: 26px;
 }
+
+.list-playlist-tracks-select {
+    width: 747px;
+    border-bottom: 1px solid #f2f2f2;
+    padding-bottom: 7px;
+}
+
+.track-img-playlist-track {
+    height: 30px;
+    width: 30px;
+    margin: 0 15px 0 0;
+}
+
+.container-update-modal-playlist-track {
+    margin-top: 25px;
+    display: block;
+}
+
+.list-playlist-tracks-select {
+    display: flex;
+}
+.container-playlist-list-track-info {
+    display: flex;
+    margin-top: 7px;
+}
+
+.track-title-playlist-track {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 8px;
+}
+
+.delete-playlist-track-now-container {
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+.delete-playlist-track-now {
+    color: #999;
+    cursor: pointer;
+}
+
+.empty-state-tracks {
+    width: 747px;
+    height: 15px;   
+}
+
+
