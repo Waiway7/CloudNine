@@ -1,5 +1,5 @@
 import {RECEIVE_PLAYLIST, DELETE_PLAYLIST, RECEIVE_PLAYLISTS} from "../../actions/playlist_actions";
-import {RECEIVE_PLAYLISTS_TRACKS, DELETE_PLAYLIST_TRACK, ADD_PLAYLIST_TRACK} from "../../actions/playlist_tracks_actions"
+import {RECEIVE_PLAYLISTS_TRACKS, DELETE_PLAYLIST_TRACK, ADD_PLAYLIST_TRACK, DELETE_PLAYLIST_TRACKS} from "../../actions/playlist_tracks_actions"
 import {merge} from "lodash";
 const playlistsReducer = (state = {}, action) => {
     Object.freeze(state)
@@ -22,14 +22,20 @@ const playlistsReducer = (state = {}, action) => {
         //     return merge({}, state, action.playlistsTracks);
         case DELETE_PLAYLIST:
             let newState = merge({}, state);
-            delete newState[action.playlistId];
+            delete newState[Object.keys(action.playlistId)[0]];
             return newState;
         case DELETE_PLAYLIST_TRACK: 
-            const playlistId = action.playlistTrack.playlist_id
+            const playlistId = action.playlistTrack.playlist_id;
             let modifiedTracksIds = merge({}, state);
             const idx = modifiedTracksIds[playlistId].track_ids.indexOf(action.playlistTrack.track_id)
             modifiedTracksIds[playlistId].track_ids.splice(idx, 1)
             return modifiedTracksIds
+        case DELETE_PLAYLIST_TRACKS:
+            const playlistIdTracks = Object.keys(action.playlistTracks)[0]
+            const tracks = Object.keys(action.playlistTracks[playlistIdTracks]);
+            let modifiedTracks = merge({}, state);
+            modifiedTracks[playlistIdTracks].track_ids = tracks
+            return modifiedTracks
         default:
             return state;
     }

@@ -12,9 +12,8 @@ class DeletePlaylistModal extends React.Component {
         this.handleDelete = this.handleDelete.bind(this)
     }
 
-    handleDelete(){
-        this.props.deletePlaylist(this.props.playlist.id).then(
-            this.props.fetchPlaylistsTracks().then(() => this.props.fetchPlaylists()))
+    handleDelete(e){
+        this.props.deletePlaylist(this.props.playlist.id)
         this.handleCancel();
     }
 

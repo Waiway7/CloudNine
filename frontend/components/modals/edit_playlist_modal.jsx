@@ -32,7 +32,10 @@ class UpdatePlaylist extends React.Component{
             targetBasic = "targeted-basic-info"
         }
         else if (this.props.modal === "deletePlaylistTracks"){
-            modal;
+            modal = <UpdatePlaylistItem
+                        playlist={this.props.playlist}
+                        tracks={this.props.tracks}     
+                    />
             targetDelete = "targeted-delete-tracks-info"
         }
         return (

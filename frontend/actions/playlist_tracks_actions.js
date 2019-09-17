@@ -2,7 +2,8 @@ import * as PlaylistTrackApiUtil from "../util/crud_playlists_tracks.util"
 export const DELETE_PLAYLIST_TRACK = "DELETE_PLAYLIST_TRACK";
 export const RECEIVE_PLAYLISTS_TRACKS = "RECEIVE_PLAYLISTS_TRACKS";
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
-export const ADD_PLAYLIST_TRACK = "ADD_PLAYLIST_TRACK"
+export const ADD_PLAYLIST_TRACK = "ADD_PLAYLIST_TRACK";
+export const DELETE_PLAYLIST_TRACKS = "DELETE_PLAYLIST_TRACKS"
 
 
 export const receivePlaylistTracks = (playlistsTracks) => ({
@@ -20,11 +21,16 @@ export const receiveErrors = errors => ({
     errors
 })
 
-
 export const updatedPlaylistTracks = (playlistTrack) => ({
     type: ADD_PLAYLIST_TRACK,
     playlistTrack
 })
+
+export const removePlaylistTracks = (playlistTracks) => {
+    return {
+    type: DELETE_PLAYLIST_TRACKS,
+    playlistTracks
+}}
 
 export const fetchPlaylistsTracks = (userId) => {
     return dispatch => {
@@ -57,6 +63,16 @@ export const deletePlaylistTrack = (trackId, playlistId) => {
     return dispatch => {
         return PlaylistTrackApiUtil.deletePlaylistTrack(trackId, playlistId)
             .then(playlist => dispatch(removePlaylistTrack(playlist)), error => {
+                return dispatch(receiveErrors(error.responseJSON))
+            })
+    }
+}
+
+export const deletePlaylistTracks = (trackId, playlistId) => {
+    return dispatch => {
+        return PlaylistTrackApiUtil.deletePlaylistTrack(trackId, playlistId)
+            .then(playlist => {
+                return dispatch(removePlaylistTracks(playlist))}, error => {
                 return dispatch(receiveErrors(error.responseJSON))
             })
     }
