@@ -21,24 +21,28 @@ class PlaylistTracks extends React.Component {
     }
 
     render() {
-        let expand;
-        let viewable;
-        if (Object.keys(this.props.tracks).length > 5 && this.state.view === false){
+        let expand = <div></div>
+        let viewable = ""
+        let playlistTracks;
+        const {tracks} = this.props !== undefined ? this.props : {}
+        if (tracks !== undefined && Object.keys(tracks).length > 5 && this.state.view === false){
             expand = <div className="show-all" onClick={this.onView}>
-                        {`View ${Object.keys(this.props.tracks).length} tracks`}
+                        {`View ${Object.keys(tracks).length} tracks`}
                     </div>
             viewable = "view-tracks"
-        } else if (Object.keys(this.props.tracks).length > 5 && this.state.view === true) {
+        } else if (tracks !== undefined && Object.keys(tracks).length > 5 && this.state.view === true) {
             expand = <div className="show-all" onClick={this.offView}>
                         View fewer tracks
                      </div>
             viewable = "hide-tracks"
-        } else if (Object.keys(this.props.tracks).length <= 5) {
+        } else if (tracks !== undefined && Object.keys(tracks).length <= 5) {
             viewable = ""
         }
+
+        if (tracks !== undefined) {
        
-        const playlistTracks = Object.keys(this.props.tracks).map ((id, idx) => {
-            const track = this.props.tracks[id];
+        playlistTracks = Object.keys(tracks).map ((id, idx) => {
+            const track = tracks[id];
             const users = this.props.users;
             return (
                 <li key={`track-${id}`} className={viewable}>
@@ -52,7 +56,7 @@ class PlaylistTracks extends React.Component {
                 </li>
     
             )
-        })
+        })}
         
         return (
             <div className="track-playlist-ul-container">

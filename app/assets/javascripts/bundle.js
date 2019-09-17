@@ -1901,39 +1901,46 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var expand;
-      var viewable;
+      var expand = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      var viewable = "";
+      var playlistTracks;
 
-      if (Object.keys(this.props.tracks).length > 5 && this.state.view === false) {
+      var _ref = this.props !== undefined ? this.props : {},
+          tracks = _ref.tracks;
+
+      if (tracks !== undefined && Object.keys(tracks).length > 5 && this.state.view === false) {
         expand = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "show-all",
           onClick: this.onView
-        }, "View ".concat(Object.keys(this.props.tracks).length, " tracks"));
+        }, "View ".concat(Object.keys(tracks).length, " tracks"));
         viewable = "view-tracks";
-      } else if (Object.keys(this.props.tracks).length > 5 && this.state.view === true) {
+      } else if (tracks !== undefined && Object.keys(tracks).length > 5 && this.state.view === true) {
         expand = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "show-all",
           onClick: this.offView
         }, "View fewer tracks");
         viewable = "hide-tracks";
-      } else if (Object.keys(this.props.tracks).length <= 5) {
+      } else if (tracks !== undefined && Object.keys(tracks).length <= 5) {
         viewable = "";
       }
 
-      var playlistTracks = Object.keys(this.props.tracks).map(function (id, idx) {
-        var track = _this2.props.tracks[id];
-        var users = _this2.props.users;
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: "track-".concat(id),
-          className: viewable
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_profile_playlist_tracks_items__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          viewable: viewable,
-          idx: idx,
-          track: track,
-          uploader: users[track.uploader_id].username,
-          playlist: _this2.props.playlist
-        }));
-      });
+      if (tracks !== undefined) {
+        playlistTracks = Object.keys(tracks).map(function (id, idx) {
+          var track = tracks[id];
+          var users = _this2.props.users;
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: "track-".concat(id),
+            className: viewable
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_profile_playlist_tracks_items__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            viewable: viewable,
+            idx: idx,
+            track: track,
+            uploader: users[track.uploader_id].username,
+            playlist: _this2.props.playlist
+          }));
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "track-playlist-ul-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -3037,7 +3044,6 @@ function (_React$Component) {
     //             ))}
     //         </ul>
     //     );
-    //     debugger
     //     return listErrors
     // }
 
@@ -5651,10 +5657,18 @@ var playlistsReducer = function playlistsReducer() {
       return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, state, action.playlist);
 
     case _actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_1__["ADD_PLAYLIST_TRACK"]:
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, state, action.playlistTrack);
-
-    case _actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PLAYLISTS_TRACKS"]:
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, state, action.playlistsTracks);
+      var statePlaylist = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, state);
+      var selectPlaylistId = Object.keys(action.playlistTrack)[0];
+      var trackIds = Object.keys(action.playlistTrack[selectPlaylistId]).map(function (num) {
+        return Number(num);
+      });
+      statePlaylist[selectPlaylistId].track_ids = trackIds;
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, statePlaylist);
+    // case RECEIVE_PLAYLISTS_TRACKS:
+    //     let statePlaylists = merge({}, state);
+    //     const eachPlaylists = Object.keys(statePlaylists)
+    //     for (let i = 0; i)
+    //     return merge({}, state, action.playlistsTracks);
 
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_PLAYLIST"]:
       var newState = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, state);
@@ -5701,9 +5715,13 @@ var playlistsTracksReducer = function playlistsTracksReducer() {
     case _actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PLAYLISTS_TRACKS"]:
       return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, action.playlistsTracks);
 
+    case _actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_0__["ADD_PLAYLIST_TRACK"]:
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, action.playlistTrack);
+
     case _actions_playlist_tracks_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_PLAYLIST_TRACK"]:
       var newState = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state);
-      delete newState[action.playlistTrack.track_id];
+      var playlist = action.playlistTrack;
+      delete newState[playlist.playlist_id][playlist.track_id];
       return newState;
 
     default:
