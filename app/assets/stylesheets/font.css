@@ -6,12 +6,12 @@
     font-style: normal;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'interstatelight';
     src: url(<%= asset_path './interstateregular.otf' %>)  format('otf');
     font-weight: normal;
     font-style: normal;
-}
+} */
 
 /* @font-face {
     font-family: 'interstatelight';
