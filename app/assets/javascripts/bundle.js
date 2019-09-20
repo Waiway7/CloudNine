@@ -1135,6 +1135,7 @@ function (_React$Component) {
     value: function render() {
       var currentTime = "0:00";
       var duration = "0:00";
+      var noTracks = "";
 
       if (this.getTime(this.state.currentTime)) {
         currentTime = this.getTime(this.state.currentTime);
@@ -1159,6 +1160,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-pause test-status"
       }));
+
+      if (Object.keys(this.props.library).indexOf(this.props.info.id) !== Object.keys(this.props.library).length - 1) {
+        noTracks = "unable";
+      }
 
       var content;
 
@@ -1188,7 +1193,7 @@ function (_React$Component) {
           className: "fas fa-step-backward",
           onClick: this.toggleBackward
         }), play, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fas fa-step-forward",
+          className: "fas fa-step-forward ".concat(noTracks),
           onClick: this.toggleForward
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "progress-bar-container"
@@ -1609,7 +1614,7 @@ function (_React$Component) {
         className: "header-tracks"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "your-tracks"
-      }, "Your Tracks")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Your tracks")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "track-list-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "user-track-list"
@@ -2908,7 +2913,7 @@ function (_React$Component) {
         className: "index-title"
       }, track.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-buttons-up-del"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "delete-track-index",
         onClick: function onClick() {
           return _this3.props.deleteTrack(track.id);
@@ -2917,7 +2922,7 @@ function (_React$Component) {
         className: "fas fa-trash audio-trash"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "delete-text"
-      }, "Delete")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Delete")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "update-track-index",
         onClick: function onClick() {
           return _this3.props.openUploadModal(track.id);
@@ -2926,7 +2931,7 @@ function (_React$Component) {
         className: "fas fa-pencil-alt audio-trash"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "edit-text"
-      }, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "edit-track-index",
         onClick: function onClick() {
           _this3.props.playlistModal(track.id, modalPlaylistType);
@@ -5056,9 +5061,9 @@ __webpack_require__.r(__webpack_exports__);
     className: "frontHero-content"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "frontHero-title"
-  }, "Discover music that's so free! LITERALLY!!!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, "Discover more with CloudNine"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "frontHero-description"
-  }, "Enjoy our free Royalty music. Here you don't need to be afraid of copyright infringement!")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Upload your first track and begin your journey. ")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "upload-search-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "search-splash",
@@ -6240,7 +6245,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_2___default.a));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"]));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
@@ -49531,7 +49536,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

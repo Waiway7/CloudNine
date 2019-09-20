@@ -88,23 +88,23 @@ class TrackItem extends React.Component {
                             <span className="index-title">{track.title}</span>
                     </div>
                     <div className="index-buttons-up-del">
-                        <button 
+                        <div
                             className="delete-track-index"
                             onClick={() => this.props.deleteTrack(track.id)}>
                                 <i className="fas fa-trash audio-trash"></i><p className="delete-text">Delete</p>
-                        </button>
-                        <button 
+                        </div>
+                        <div
                             className="update-track-index"
                             onClick={() => this.props.openUploadModal(track.id)}>
                                 <i className="fas fa-pencil-alt audio-trash"></i><p className="edit-text">Edit</p>
-                        </button>
-                        <button 
+                        </div>
+                        <div 
                             className="edit-track-index"
                             onClick={() => {
                                 this.props.playlistModal(track.id, modalPlaylistType)}
                                 }>
                                 <i className="fas fa-plus audio-trash"></i><p className="edit-text">Add to Playlist</p>
-                        </button>
+                        </div>
                 </div>
                 </div>
                     

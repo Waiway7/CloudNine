@@ -4,7 +4,7 @@
     text-align: center;
 }
 .text-no-playlists {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     font-size: 18px;
     margin-top: 15px;
 }
@@ -49,7 +49,7 @@
 
 .text-content-playlist-index {
     display: block;
-    font-family: interstate regular;
+    font-family: interstatelight;
 }
 
 .username-playlist-dashboard {
@@ -92,7 +92,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
 }
 
 .btns-playlist-items-options {
@@ -107,7 +107,7 @@
     min-width: 20px;
     height: 20px;
     font-size: 11px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     border: 1px solid;
     padding: 2px 9px 2px 9px;
     text-align: center;
@@ -176,7 +176,7 @@
 
 .text-list-track-playlist-container {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     font-size: 12px;
     margin-top: 3.5px;
 }
@@ -204,7 +204,7 @@
     cursor: pointer;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
 }
 
 .show-all:hover {

@@ -38,7 +38,7 @@
     border-bottom: 1px solid #f2f2f2;
     min-height: 48px;
     margin: 0;
-    font-family: interstate regular;
+    font-family: interstatelight;
     font-size: 14px;
     line-height: 2;
     align-content: center;
@@ -54,6 +54,8 @@
     height: 36px;
     margin-top: 12px;
     margin-left: 30px;
+    margin-bottom: -1px;
+
 }
 
 .selected-tracks-tag, .selected-upload-tag {
@@ -67,11 +69,13 @@
     height: 36px;
     margin-top: 12px;
     margin-left: 30px;
+    margin-bottom: -1px;
 }
 
 .upload-tag:hover, .tracks-tag:hover {
     color: rgb(50, 162, 227);
     border-bottom: 1px solid rgb(50, 162, 227);
+    margin-bottom: -1px;
 }
 
 .header-tracks {
@@ -139,7 +143,7 @@
 .user-name {
     margin-top: 10px;
     display: block;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     overflow: hidden;
     font-size: 14px;
     color: #999;
@@ -152,14 +156,14 @@
     font-size: 14px;
     line-height: 1.5;
     margin-top: 2px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
 }
 
 .duration-length {
     display: block;
     margin-right: 30px;
     text-align: right;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     overflow: hidden;
     font-size: 14px;
 }

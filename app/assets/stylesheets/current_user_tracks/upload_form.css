@@ -29,7 +29,7 @@
     display: block;
     border-bottom: 1px solid #f2f2f2;
     margin: 0;
-    font-family: "interstate regular";
+    font-family: interstateregular;
     font-size: 24px;
     line-height: 1.6;
 }
@@ -39,6 +39,7 @@
     box-sizing: border-box;
     display: inline-block;
     color: rgb(50, 162, 227);
+    font-family: interstateregular;
     border-bottom: 1px solid rgb(50, 162, 227);
     margin: 0px auto;
 }
@@ -86,7 +87,7 @@
 .title-string {
     display: inline-block;
     font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     margin-bottom: 3px;
 }
 .ast {
@@ -100,7 +101,7 @@
     width: 100%;
     position: relative;
     display: inline-block;
-    font-family: Arial;
+    font-family: interstatelight;
     font-weight: 100;
     font-size: 14px;
     line-height: 20px;
@@ -121,7 +122,7 @@
 .track-description {
     position: relative;
     display: inline-block;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     font-weight: 100;
     font-size: 14px;
     line-height: 20px;
@@ -138,7 +139,7 @@
 
 .description {
     font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     margin-bottom: 3px;
 }
 
@@ -155,7 +156,7 @@
     color: #333;
     font-size: 14px;
     line-height: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     font-weight: 100;
     text-align: center;
     box-sizing: border-box;
@@ -170,7 +171,7 @@
 
 .upload-text {
     display: inline-block;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
 }
 
 .track-image {
@@ -192,7 +193,7 @@
     margin-top: 10px;
     display: block;
     font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     line-height: 26px;
     color: rgb(50, 162, 227);
     margin-right: 2px;
@@ -203,7 +204,7 @@
     margin-top: 10px;
     display: block;
     font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     line-height: 26px;
 }
 
@@ -228,7 +229,7 @@
     font-size: 14px;
     line-height: 20px;
     white-space: nowrap;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     font-weight: 100;
     text-align: center;
 }
@@ -246,7 +247,7 @@
     color: black;
     font-size: 14px;
     line-height: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     font-weight: 100;
     text-align: center;
 }

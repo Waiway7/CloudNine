@@ -46,7 +46,7 @@ class Tracks extends React.Component {
         return (
             <div className="body">
                 <UserNav pathname={this.props.location.pathname}/>
-                <div className="header-tracks"><h1 className="your-tracks">Your Tracks</h1></div>
+                <div className="header-tracks"><h1 className="your-tracks">Your tracks</h1></div>
                 <div className="track-list-container">
                     <ul className="user-track-list">{trackList}</ul>
                 </div>

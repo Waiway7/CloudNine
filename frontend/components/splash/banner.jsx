@@ -13,8 +13,8 @@ export default () => {
                         </div>
                         <NavBarContainer />
                         <div className="frontHero-content">
-                            <h2 className="frontHero-title">Discover music that's so free! LITERALLY!!!</h2>
-                            <p className="frontHero-description">Enjoy our free Royalty music. Here you don't need to be afraid of copyright infringement!</p>
+                            <h2 className="frontHero-title">Discover more with CloudNine</h2>
+                            <p className="frontHero-description">Upload your first track and begin your journey. </p>
                         </div>
                     </div>
                 </div>

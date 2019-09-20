@@ -29,7 +29,7 @@
 .show-playlist-title {
     font-size: 14px;
     color: #333;
-    font-family: interstate regular;
+    font-family: interstateregular;
     margin-bottom: 3px;
     overflow: hidden;
     white-space: nowrap;
@@ -70,7 +70,7 @@
 }
 
 .added-to-playlist-text, .add-to-playlist-text {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     font-size: 14px;
     font-weight: 100;
     margin-top: 5px;

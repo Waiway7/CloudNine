@@ -107,8 +107,10 @@ class Music extends React.Component {
     }
 
     render() {
+       
         let currentTime = "0:00";
         let duration = "0:00";
+        let noTracks = "";
         if (this.getTime(this.state.currentTime)){
             currentTime = this.getTime(this.state.currentTime)}
         if (this.getTime(this.state.duration)) {
@@ -130,6 +132,9 @@ class Music extends React.Component {
                   <i className="fas fa-pause test-status"></i>
               </button>
         )
+        if (Object.keys(this.props.library).indexOf(this.props.info.id) !== Object.keys(this.props.library).length - 1) {
+            noTracks = "unable"
+        }
         let content;
         if (this.props.track.src){
             content =
@@ -149,7 +154,7 @@ class Music extends React.Component {
             <div className="button-container">
                 <i className="fas fa-step-backward" onClick={this.toggleBackward}></i>
                 {play}
-                <i className="fas fa-step-forward" onClick={this.toggleForward}></i>
+                <i className={`fas fa-step-forward ${noTracks}`} onClick={this.toggleForward}></i>
             </div>
             <div className="progress-bar-container">
                 <div className="current-time">{currentTime}</div>

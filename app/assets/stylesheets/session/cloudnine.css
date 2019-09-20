@@ -9,7 +9,7 @@ https://unsplash.com/photos/zepnJQycr4U */
     left: 30px;
     top: 23px;
     font-weight: 100;
-    font-family: "Interstate regular", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
+    font-family: interstateregular;
     color: white;
 }
 .logo-background{
@@ -51,7 +51,7 @@ https://unsplash.com/photos/zepnJQycr4U */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     text-align: center;
 }
 
@@ -64,7 +64,7 @@ https://unsplash.com/photos/zepnJQycr4U */
     font-size: 16px;
     display: block;
     line-height: 150%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
 }
 
 .splash {
@@ -79,7 +79,7 @@ https://unsplash.com/photos/zepnJQycr4U */
     display: flex;
     margin: 0 auto;
     height: 100px;;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
 }
 
 .search-splash {
@@ -134,6 +134,7 @@ https://unsplash.com/photos/zepnJQycr4U */
     font-size: 24px;
     font-size: 100;
     text-align: center;
+    font-family: interstatelight;
 }
 
 .cover {
@@ -217,7 +218,7 @@ https://unsplash.com/photos/zepnJQycr4U */
     outline: none;
     background-color: #48b8e6;
     border-radius: 5px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     font-size: 18px;
     color: white;
 }

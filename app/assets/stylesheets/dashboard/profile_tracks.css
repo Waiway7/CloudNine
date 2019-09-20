@@ -13,6 +13,7 @@
     font-size: 18px;
     margin-right: 20px;
     color: #333;
+    font-family: interstateregular;
 }
 
 .profile-links-container-index {
@@ -24,6 +25,7 @@
 
 .dashboard-link:hover {
     border-bottom: 1px solid black;
+    margin-bottom: -1px;
 }
 
 .targeted {
@@ -33,6 +35,8 @@
     margin-right: 20px;
     color: rgb(50, 162, 227);
     border-bottom: 1px solid rgb(50, 162, 227);
+    font-family: interstateregular;
+    margin-bottom: -1px;
 }
 
 .track-index-container {
@@ -75,6 +79,7 @@
     max-width: 160px;
     height: 160px;
     border: 1px solid #999;
+    object-fit: cover;
 }
 
 .index-track-item-container {
@@ -85,6 +90,7 @@
 
 .index-track-item-info {
     display: flex;
+    font-family: interstatelight;
     flex-direction: column;
     float: left;
     height: 48px;
@@ -117,7 +123,7 @@
 }
 
 .index-title{
-    font-size: 18px;
+    font-size: 15px;
     line-height: 1.2;
     color: #333;
     font-weight: 100;
@@ -145,51 +151,66 @@
 }
 
 .delete-track-index {
-    text-align: center;
     display: flex;
-    overflow: hidden;
-    padding: 5px;
+    min-width: 20px;
+    height: 20px;
+    font-size: 11px;
+    font-family: interstatelight;
+    border: 1px solid;
+    padding: 2px 9px 2px 9px;
+    text-align: center;
+    height: 22px;
+    margin-right: 5px;
+    border: 1px solid #e5e5e5;
     border-radius: 3px;
-    margin-right: 20px;
-    width: 75px;
     cursor: pointer;
-    margin-right: 15px;
-
 }
 
 .audio-trash {
-    top: 1px;
-    left: 0;
-    display: flex;
-    margin: 0 auto;
+    margin-top: 5px;
+    margin-right: 10px;
 }
 
 .edit-text, .delete-text {
     margin: 0 auto;
+    margin-top: 5px;
 }
 
 
 .edit-track-index {
-    text-align: center;
     display: flex;
-    overflow: hidden;
-    padding: 5px;
-    width: 120px;
+    min-width: 20px;
+    height: 20px;
+    font-size: 11px;
+    font-family: interstatelight;
+    border: 1px solid;
+    padding: 2px 9px 2px 9px;
+    text-align: center;
+    height: 22px;
+    margin-right: 5px;
+    border: 1px solid #e5e5e5;
     border-radius: 3px;
     cursor: pointer;
-    margin-right: 15px;
 }
 
 .update-track-index {
-    text-align: center;
     display: flex;
-    overflow: hidden;
-    padding: 5px;
-    width: 65px;
+    min-width: 20px;
+    height: 20px;
+    font-size: 11px;
+    font-family: interstatelight;
+    border: 1px solid;
+    padding: 2px 9px 2px 9px;
+    text-align: center;
+    height: 22px;
+    margin-right: 5px;
+    border: 1px solid #e5e5e5;
     border-radius: 3px;
     cursor: pointer;
-    margin-right: 15px;
+}
 
+.update-track-index:hover, .edit-track-index:hover, .delete-track-index:hover {
+    border: 1px solid #999;
 }
 
 .track-list-container-index {

@@ -15,7 +15,7 @@
 
 .delete-playlist-header {
     font-size: 22px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     font-weight: 100;
     padding-bottom: 9px;
     border-bottom: 1px solid #f2f2f2;
@@ -24,7 +24,7 @@
 
 .text-delete-playlist {
     font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     margin-bottom: 10px;
     line-height: 1.25;
 }
@@ -41,7 +41,7 @@
 
 .cancel-btn-playlist-delete, .delete-btn-playlist-delete {
     font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     padding: 2px 11px 2px 10px;
     cursor: pointer;
 }

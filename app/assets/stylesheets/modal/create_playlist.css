@@ -270,7 +270,7 @@
 .add-tracks-header-container {
     font-size: 16px;
     margin-bottom: 12px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
 }
 
 .tracks-container-add-info {
@@ -285,20 +285,20 @@
 }
 
 .creater-name-add {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     font-size: 14px;
     font-weight: 100;
     color: #999;
 }
 
 .add-tracks-title {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     font-size: 14px;
     font-weight: 100;
 }
 
 .btn-add-track {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     margin-top: 17px;
     min-width: 120px;
     border: 1px solid #e5e5e5;
@@ -310,7 +310,7 @@
 }
 
 .text-btn-add {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: interstatelight;
     font-size: 14px;
     margin-top: 3.5px;
 }
