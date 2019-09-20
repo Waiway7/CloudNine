@@ -73,6 +73,7 @@
     display: block;
     background-image: linear-gradient(150deg, rgba(2,0,36,1) 0%, rgba(150,150,208,1) 0%, rgba(0,251,255,0.5060399159663865) 78%);
     box-shadow: 1px solid, black;
+    object-fit: cover;
 }
 
 .upload-title {

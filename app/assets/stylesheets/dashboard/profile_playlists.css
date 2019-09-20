@@ -32,6 +32,7 @@
     display: block;
     margin-right: 15px;
     background-color: aliceblue;
+    object-fit: cover;
 }
 
 .play-btn-playlist-dashboard {
@@ -145,6 +146,7 @@
     max-width: 20px;
     min-height: 20px;
     max-height: 20px;
+    object-fit: cover;
 }
 
 .container-for-img-track-list {
