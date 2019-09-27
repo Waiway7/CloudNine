@@ -42,20 +42,17 @@
 
 .button-container {
     font-size: 20px;
-    float: left;
     position: relative;
     height: auto;
-    top: 10px;
+    top: 14px;
     display: flex;
 }
 
 .progress-bar-container{
     display: flex;
     position: relative; 
-    min-width: 40vw;
     top: 17px;
     font-size: 20px;
-    
 }
 
 .current-time {
@@ -63,7 +60,7 @@
     font-family: interstatelight;
     font-size: 12px;
     margin-left: 50px;
-    margin-right: 7px;
+    width: 2.5em;
 }
 
 .track-time {
@@ -74,11 +71,11 @@
 }
 
 .progress-bar {
-    min-width: 45vw;
     border-top: 1px solid #999;;
     position:relative;
     top: 7px;
     display: flex;
+    width: 100%;
 }
 
 .fa-volume-up{
@@ -86,6 +83,10 @@
     position: relative;
     color: #333;
     cursor: pointer;
+}
+
+.container-progress {
+    min-width: 50vw;
 }
    
 .volume{

@@ -19,6 +19,7 @@
     margin: 30px auto;
     width: 200px;
     height: 200px;
+    object-fit: cover;
     border-radius: 50%;
     /* background-size: cover;
     background-repeat: no-repeat */

@@ -132,7 +132,8 @@ class Music extends React.Component {
                   <i className="fas fa-pause test-status"></i>
               </button>
         )
-        if (Object.keys(this.props.library).indexOf(this.props.info.id) !== Object.keys(this.props.library).length - 1) {
+        if (Object.keys(this.props.library).length > 0 && 
+            Object.keys(this.props.library[Object.keys(this.props.library)[0]]).indexOf(this.props.info.id.toString()) === Object.keys(this.props.library[Object.keys(this.props.library)[0]]).length - 1) {
             noTracks = "unable"
         }
         let content;
@@ -158,7 +159,9 @@ class Music extends React.Component {
             </div>
             <div className="progress-bar-container">
                 <div className="current-time">{currentTime}</div>
-                <div className="progress-bar"></div>
+                <div className="container-progress">
+                    <div className="progress-bar"></div>
+                </div>
                 <div className="track-time">{duration}</div>
                 <div className="volume"><i className="fas fa-volume-up"></i></div>
             </div>
@@ -173,8 +176,9 @@ class Music extends React.Component {
 const msp = (state) => {
     const track = state.entities.currentTrack.audio || {};
     const info = state.entities.currentTrack.info || {};
+    const library = state.entities.tracklist || {}
     return {
-        library: state.entities.tracklist,
+        library,
         playlists: state.entities.playlists,
         play: state.ui.player,
         user: state.session,

@@ -1161,7 +1161,7 @@ function (_React$Component) {
         className: "fas fa-pause test-status"
       }));
 
-      if (Object.keys(this.props.library).indexOf(this.props.info.id) !== Object.keys(this.props.library).length - 1) {
+      if (Object.keys(this.props.library).length > 0 && Object.keys(this.props.library[Object.keys(this.props.library)[0]]).indexOf(this.props.info.id.toString()) === Object.keys(this.props.library[Object.keys(this.props.library)[0]]).length - 1) {
         noTracks = "unable";
       }
 
@@ -1200,8 +1200,10 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "current-time"
         }, currentTime), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container-progress"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "progress-bar"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "track-time"
         }, duration), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "volume"
@@ -1220,8 +1222,9 @@ function (_React$Component) {
 var msp = function msp(state) {
   var track = state.entities.currentTrack.audio || {};
   var info = state.entities.currentTrack.info || {};
+  var library = state.entities.tracklist || {};
   return {
-    library: state.entities.tracklist,
+    library: library,
     playlists: state.entities.playlists,
     play: state.ui.player,
     user: state.session,
