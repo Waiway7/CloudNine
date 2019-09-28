@@ -16,6 +16,7 @@ Cloudnine is a soundcloud clone with a blue theme to it that can do similar feat
 
 # Music Player
 The music's player core component is the capability to play audio while transversing through the website. Futhermore, Cloudnine's music player includes a backward and forward ability for user's to switch songs in their playlist or library. More features will be implemented such as a seek bar and volume bar. 
+
 ![](https://github.com/Waiway7/CloudNine/blob/master/app/assets/images/Screen%20Shot%202019-09-28%20at%201.01.40%20PM.png)
 
 With React and Redux, storing the audio infomation in the redux store made it possible for continous play. By using the life cycle methods in React, I was able to load the information into the component's state and once a track has been selected to be played by the user, the music player will always be rendered out similarly to Soundcloud. 
@@ -64,5 +65,13 @@ componentDidUpdate(prevProps){
                     }
 }})})}}
 ```
+# Playlist
+The playlist was the most challenging aspect of creating Cloudnine due to a sheer amount of it being what information needs to be render on the frontend and how much information is needed. The solution I came up with is to extract all the playlist and the associated tracks in an array of their ids. This makes the information being parsed readable and less taxing on the backend. If there is a need to fully extract the tracks information, then it sends another ajax request to the backend. The next hardest part was rendering the information in a similar format to Soundcloud, but due to the interaction with React and Redux, a majority of the time it would error out as some of the conditional checks result to undefined because in the initial render the information does not exist only when the componentDidMount will the information be in the redux state. 
+
+# Planned Feature Components
+* Seek bar and volume bar
+* Comment 
+* Show page for an individual track/playlist
+* Search Bar
 
 
